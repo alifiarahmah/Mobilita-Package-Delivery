@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "modules/wordmachine.h"
+#include "modules/adt.h"
 
 int main(){
 	// TODO: ganti hehe
