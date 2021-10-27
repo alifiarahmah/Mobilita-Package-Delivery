@@ -80,5 +80,38 @@ void advWord(){
 	}
 }
 
+Word stringToWord (char arr[]){
+/* Mengubah input string menjadi type Word*/
+	int i = 0;
+	Word kata;
+	while (arr[i] != '\0'){
+		kata.contents[i] = arr[i];
+		i++;
+	}
+	kata.length = i;
+	return kata;
+}
+
+boolean cekKataSama(char arr1[], char arr2[]){
+/* Memeriksa apakah kedua string yang dimasukkan sama atau tidak*/
+	int i = 0;
+	Word kata1,kata2;
+	boolean sama = true;
+	kata1 = stringToWord(arr1);
+	kata2 = stringToWord(arr2);
+	if (kata1.length == kata2.length){
+		while ((sama == true) && (i<kata1.length)){
+			if (kata1.contents[i] != kata2.contents[i]){
+				sama = false;
+			}
+			i++;
+		}
+	}
+	else{
+		sama = false;
+	}
+	return sama;	
+}
+
 #endif
 
