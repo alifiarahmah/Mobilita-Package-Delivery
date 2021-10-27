@@ -45,5 +45,11 @@ void copyWord();
           currentChar adalah karakter sesudah karakter terakhir yang diakuisisi.
           Jika panjang kata melebihi CAPACITY, maka sisa kata terpotong */
 
+Word stringToWord (char arr[]);
+/* Mengubah input string menjadi type Word*/
+
+boolean cekKataSama(char arr1[], char arr2[]);
+/* Memeriksa apakah kedua string yang dimasukkan sama atau tidak*/
+
 #endif
 
