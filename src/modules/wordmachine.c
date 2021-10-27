@@ -88,6 +88,7 @@ Word stringToWord (char arr[]){
 		kata.contents[i] = arr[i];
 		i++;
 	}
+	kata.contents[i] = '\0';
 	kata.length = i;
 	return kata;
 }
