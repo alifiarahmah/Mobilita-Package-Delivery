@@ -85,6 +85,30 @@ Word stringToWord (char arr[]){
 	return kata;
 }
 
+Word concatKata (char arr1[], char arr2[]){
+/* Menggabungkan 2 string menjadi 1 Word */
+	int i,j = 0;
+	Word kata1,kata2,kata3;
+	kata1 = stringToWord(arr1);
+	kata2 = stringToWord(arr2);
+	i = 0;
+	while (i<kata1.length){
+		kata3.contents[j] = kata1.contents[i];
+		i++;
+		j++;
+	}
+	kata3.length = kata1.length;
+	i = 0;
+	while (i<kata2.length){
+		kata3.contents[j] = kata2.contents[i];
+		i++;
+		j++;
+	}
+	kata3.contents[j] = '\0';
+	kata3.length += kata2.length;
+	return kata3;
+}
+
 boolean cekKataSama(char arr1[], char arr2[]){
 /* Memeriksa apakah kedua string yang dimasukkan sama atau tidak*/
 	int i = 0;
