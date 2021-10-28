@@ -48,6 +48,9 @@ void copyWord();
 Word stringToWord (char arr[]);
 /* Mengubah input string menjadi type Word*/
 
+Word concatKata (char arr1[], char arr2[]);
+/* Menggabungkan 2 string menjadi 1 Word */
+
 boolean cekKataSama(char arr1[], char arr2[]);
 /* Memeriksa apakah kedua string yang dimasukkan sama atau tidak*/
 
