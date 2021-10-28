@@ -1,11 +1,3 @@
-/*
-	NIM : 13520122
-	Nama : Alifia Rahmah
-	Tanggal : 24/09/2021
-	Topik praktikum : Mesin Kata
-	Deskripsi : Pra-Praktikum 6 - wordmachine.c
-*/
-
 /* Definisi Word Engine */
 
 #ifndef WORD_ENGINE_H

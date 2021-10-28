@@ -1,11 +1,3 @@
-/*
-	NIM : 13520122
-	Nama : Alifia Rahmah
-	Tanggal : 15/09/2021
-	Topik praktikum : ADT List Dinamis
-	Deskripsi : Pra-Praktikum 4 - listdin.c
-*/
-
 /* MODUL INTEGER DYNAMIC LIST */
 /* Berisi definisi dan semua primitif pemrosesan list integer */
 /* Penempatan elemen selalu rapat kiri */

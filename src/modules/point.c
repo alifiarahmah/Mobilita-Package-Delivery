@@ -1,6 +1,4 @@
 /* File : point.c */
-/* NIM/Nama : 13520122/Alifia Rahmah */
-/* Tanggal  : 2 September 2021 */
 
 #include <stdio.h>
 #include <math.h>

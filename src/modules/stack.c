@@ -1,11 +1,3 @@
-/*
-	NIM : 13520122
-	Nama : Alifia Rahmah
-	Tanggal : 09/10/2021
-	Topik praktikum : ADT Stack
-	Deskripsi : Pra-Praktikum 8 - stack.c
-*/
-
 /* File : stack.h */
 /* Definisi ADT Stack dengan representasi array secara eksplisit dan alokasi statik */
 /* TOP adalah alamat elemen puncak */

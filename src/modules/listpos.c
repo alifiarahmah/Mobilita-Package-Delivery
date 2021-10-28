@@ -1,18 +1,3 @@
-/*
-	NIM							: 13520122
-	Nama						: Alifia Rahmah
-	Tanggal					: 7 September 2021
-	Topik praktikum	: ADT List
-	Deskripsi				: File implementasi ADT List implisit listpos.h
-*/
-
-/*
-	Downloadlah file header listpos.h yang merupakan ADT List dengan representasi implisit, 
-	alokasi statik dengan elemen bilangan bulat positif, lalu buatlah file implementasinya.
-	Untuk menandai elemen yang tidak terdefinisi dalam list, digunakan nilai -999.
-	Kumpulkan file bernama listpos.c
-*/
-
 /* MODUL LIST INTEGER DENGAN ELEMEN POSITIF */
 /* Berisi definisi dan semua primitif pemrosesan list integer dengan elemen 
 	 positif */

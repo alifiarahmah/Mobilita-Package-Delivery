@@ -1,11 +1,3 @@
-/*
-	NIM : 13520122
-	Nama : Alifia Rahmah
-	Tanggal : 01/10/2021
-	Topik praktikum : ADT Queue
-	Deskripsi : Pra-Praktikum 7 - queue.c
-*/
-
 /* File : queue.h */
 /* Definisi ADT Queue dengan representasi array secara eksplisit dan alokasi statik */
 

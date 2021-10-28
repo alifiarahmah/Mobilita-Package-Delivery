@@ -1,11 +1,3 @@
-/*
-	NIM : 13520122
-	Nama : Alifia Rahmah
-	Tanggal : 21/09/2021
-	Topik praktikum : ADT Matriks
-	Deskripsi : Pra-Praktikum 5 - matrix.c
-*/
-
 /* ********** Definisi TYPE Matrix dengan Index dan elemen integer ********** */
 
 #ifndef Matrix_H
