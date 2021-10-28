@@ -107,18 +107,24 @@ void displayListGadget(ListGadget l){
 int indexOfListGadget(ListGadget l, ElType val){}
 
 /* ********** MENAMBAH DAN MENGHAPUS ELEMEN ********** */
-/* *** Menambahkan elemen terakhir *** */
-/* Proses: Menambahkan val sebagai elemen terakhir List */
+/* Proses: Menambahkan val sebagai elemen dalam list, di indeks tempat VAL_UNDEF pertama */
 /* I.S. List l boleh kosong, tetapi tidak penuh */
 /* F.S. val adalah elemen terakhir l yang baru */
+void insertGadget(ListGadget *l, ElType val){
+	int i = 0;
+	while(ELMT(*l, i) != VAL_UNDEF){
+		i++;
+	}
+	ELMT(*l, i) = val;
+}
+
 /* ********** MENGHAPUS ELEMEN ********** */
-void insertLast(ListGadget *l, ElType val){}
 /* Proses : Menghapus elemen terakhir List */
 /* I.S. List tidak kosong */
 /* F.S. val adalah nilai elemen terakhir l sebelum penghapusan, */
 /*      Banyaknya elemen List berkurang satu */
 /*      List l mungkin menjadi kosong */
-void deleteLast(ListGadget *l, ElType *val){}
+void deleteLastGadget(ListGadget *l, ElType *val){}
 
 /* Proses: Menampilkan antarmuka pembelian gadget */
 /* I.S. Mobita berada di Headquarter, banyak gadget dalam inventory tidak melebihi capacity */
@@ -134,7 +140,6 @@ void buyGadget(ListGadget *l, int money){
 		printf("4. Mesin Waktu (3000 Yen)\n");
 		printf("Gadget mana yang ingin kau beli? (ketik 0 jika ingin kembali)\n");
 		printf("\nENTER COMMAND: ");
-		// TODO: lengkapin lagi buyGadget
 	} else {
 		printf("Inventory anda penuh. Anda tidak bisa membeli gadget baru.\n");
 	}

@@ -85,12 +85,13 @@ int indexOfListGadget(ListGadget l, ElType val);
 
 /* ********** MENAMBAH DAN MENGHAPUS ELEMEN DI AKHIR ********** */
 /* *** Menambahkan elemen terakhir *** */
-void insertLast(ListGadget *l, ElType val);
+void insertGadget(ListGadget *l, ElType val);
 /* Proses: Menambahkan val sebagai elemen terakhir List */
 /* I.S. List l boleh kosong, tetapi tidak penuh */
 /* F.S. val adalah elemen terakhir l yang baru */
+
 /* ********** MENGHAPUS ELEMEN ********** */
-void deleteLast(ListGadget *l, ElType *val);
+void deleteLastGadget(ListGadget *l, ElType *val);
 /* Proses : Menghapus elemen terakhir List */
 /* I.S. List tidak kosong */
 /* F.S. val adalah nilai elemen terakhir l sebelum penghapusan, */
