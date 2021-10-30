@@ -13,9 +13,11 @@
 /*  Kamus Umum */
 #define MAXCAP 100
 /* Kapasitas penyimpanan */
-#define IDX_UNDEF -1
+#ifndef IDX_UNDEF
+	#define IDX_UNDEF -1
+#endif
 /* Indeks tak terdefinisi*/
-#define VAL_UNDEF -999
+#define VAL_UNDEF '0'
 /* Nilai elemen tak terdefinisi*/
 
 /* Definisi elemen dan koleksi objek */

@@ -6,11 +6,11 @@
 #include "boolean.h"
 #include "charmachine.h"
 
-#define CAPACITY 50
+#define WM_CAPACITY 50
 #define BLANK ' '
 
 typedef struct {
-   char contents[CAPACITY]; /* container penyimpan kata, indeks yang dipakai [0..CAPACITY-1] */
+   char contents[WM_CAPACITY]; /* container penyimpan kata, indeks yang dipakai [0..WM_CAPACITY-1] */
    int length;
 } Word;
 
@@ -32,10 +32,10 @@ void ignoreBlank(){
    F.S. : currentWord berisi kata yang sudah diakuisisi; 
           currentChar = BLANK atau currentChar = MARK; 
           currentChar adalah karakter sesudah karakter terakhir yang diakuisisi.
-          Jika panjang kata melebihi CAPACITY, maka sisa kata terpotong */
+          Jika panjang kata melebihi WM_CAPACITY, maka sisa kata terpotong */
 void copyWord(){
 	int i = 0;
-	while ((currentChar != MARK) && (currentChar != BLANK) && (i < CAPACITY)){
+	while ((currentChar != MARK) && (currentChar != BLANK) && (i < WM_CAPACITY)){
 		currentWord.contents[i] = currentChar;
 		adv();
 		i++;
@@ -109,15 +109,12 @@ Word concatKata (char arr1[], char arr2[]){
 	return kata3;
 }
 
-boolean cekKataSama(char arr1[], char arr2[]){
-/* Memeriksa apakah kedua string yang dimasukkan sama atau tidak*/
-	int i = 0;
-	Word kata1,kata2;
+boolean isWordEqual(Word kata1, Word kata2) {
 	boolean sama = true;
-	kata1 = stringToWord(arr1);
-	kata2 = stringToWord(arr2);
+	int i = 0;
+
 	if (kata1.length == kata2.length){
-		while ((sama == true) && (i<kata1.length)){
+		while ((sama) && (i<kata1.length)){
 			if (kata1.contents[i] != kata2.contents[i]){
 				sama = false;
 			}
@@ -127,8 +124,19 @@ boolean cekKataSama(char arr1[], char arr2[]){
 	else{
 		sama = false;
 	}
-	return sama;	
+	return sama;
 }
+
+boolean cekKataSama(char arr1[], char arr2[]){
+/* Memeriksa apakah kedua string yang dimasukkan sama atau tidak*/
+	int i = 0;
+	Word kata1,kata2;
+	
+	kata1 = stringToWord(arr1);
+	kata2 = stringToWord(arr2);
+	return isWordEqual(kata1, kata2);
+}
+
 
 #endif
 

@@ -5,14 +5,10 @@
 #include "boolean.h"
 #include "point.h"
 
-typedef struct { 
-	float X; /* absis   */
-	float Y; /* ordinat */
-} POINT;
-
 /* *** Notasi Akses: Selektor POINT *** */
 #define Absis(P) (P).X
 #define Ordinat(P) (P).Y
+#define Name(P) (P).name
 		
 /* *** DEFINISI PROTOTIPE PRIMITIF *** */
 /* *** Konstruktor membentuk POINT *** */

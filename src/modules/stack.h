@@ -7,12 +7,14 @@
 
 #include "boolean.h"
 
-#define IDX_UNDEF -1
-#define CAPACITY 100
+#ifndef IDX_UNDEF
+  #define IDX_UNDEF -1
+#endif
+#define STACK_CAPACITY 100
 
 typedef int ElType;
 typedef struct {
-  ElType buffer[CAPACITY]; /* tabel penyimpan elemen */
+  ElType buffer[STACK_CAPACITY]; /* tabel penyimpan elemen */
   int idxTop;              /* alamat TOP: elemen puncak */
 } Stack;
 
@@ -29,9 +31,9 @@ void CreateStack(Stack *s);
 /* Proses : Melakukan alokasi, membuat sebuah s kosong */
 
 /* ************ Prototype ************ */
-boolean isEmpty(Stack s);
+boolean isEmptyStack(Stack s);
 /* Mengirim true jika s kosong: lihat definisi di atas */
-boolean isFull(Stack s);
+boolean isFullStack(Stack s);
 /* Mengirim true jika tabel penampung nilai s stack penuh */
 
 /* ************ Menambahkan sebuah elemen ke Stack ************ */

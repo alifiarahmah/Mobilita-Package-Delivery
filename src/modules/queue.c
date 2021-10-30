@@ -7,13 +7,15 @@
 #include <stdio.h>
 #include "boolean.h"
 
-#define IDX_UNDEF -1
-#define CAPACITY 100
+#ifndef IDX_UNDEF
+	#define IDX_UNDEF -1
+#endif
+#define QUEUE_CAPACITY 100
 
 /* Definisi elemen dan address */
 typedef int ElType;
 typedef struct {
-	ElType buffer[CAPACITY]; 
+	ElType buffer[QUEUE_CAPACITY]; 
 	int idxHead;
 	int idxTail;
 } Queue;
@@ -21,10 +23,10 @@ typedef struct {
 
 /* ********* AKSES (Selektor) ********* */
 /* Jika q adalah Queue, maka akses elemen : */
-#define IDX_HEAD(q) (q).idxHead
-#define IDX_TAIL(q) (q).idxTail
-#define     HEAD(q) (q).buffer[(q).idxHead]
-#define     TAIL(q) (q).buffer[(q).idxTail]
+#define IDX_HEAD_Q(q) (q).idxHead
+#define IDX_TAIL_Q(q) (q).idxTail
+#define     HEAD_Q(q) (q).buffer[(q).idxHead]
+#define     TAIL_Q(q) (q).buffer[(q).idxTail]
 
 /* *** Kreator *** */
 /* I.S. sembarang */
@@ -33,64 +35,64 @@ typedef struct {
 /* - Index tail bernilai IDX_UNDEF */
 /* Proses : Melakukan alokasi, membuat sebuah q kosong */
 void CreateQueue(Queue *q){
-	IDX_HEAD(*q) = IDX_UNDEF;
-	IDX_TAIL(*q) = IDX_UNDEF;
+	IDX_HEAD_Q(*q) = IDX_UNDEF;
+	IDX_TAIL_Q(*q) = IDX_UNDEF;
 }
 
 /* ********* Prototype ********* */
 /* Mengirim true jika q kosong: lihat definisi di atas */
-boolean isEmpty(Queue q){
-	return (IDX_HEAD(q) == IDX_UNDEF) && (IDX_TAIL(q) == IDX_UNDEF);
+boolean isEmptyQ(Queue q){
+	return (IDX_HEAD_Q(q) == IDX_UNDEF) && (IDX_TAIL_Q(q) == IDX_UNDEF);
 }
 /* Mengirim true jika tabel penampung elemen q sudah penuh */
-/* yaitu jika index head bernilai 0 dan index tail bernilai CAPACITY-1 */
-boolean isFull(Queue q){
-	return (IDX_HEAD(q) == 0) && (IDX_TAIL(q) == CAPACITY-1);
+/* yaitu jika index head bernilai 0 dan index tail bernilai QUEUE_CAPACITY-1 */
+boolean isFullQ(Queue q){
+	return (IDX_HEAD_Q(q) == 0) && (IDX_TAIL_Q(q) == QUEUE_CAPACITY-1);
 }
 /* Mengirimkan banyaknya elemen queue. Mengirimkan 0 jika q kosong. */
-int length(Queue q){
-	if (isEmpty(q)){
+int lengthQ(Queue q){
+	if (isEmptyQ(q)){
 		return 0;
 	}
-	return (IDX_TAIL(q) - IDX_HEAD(q) + 1);
+	return (IDX_TAIL_Q(q) - IDX_HEAD_Q(q) + 1);
 }
 
 /* *** Primitif Add/Delete *** */
 
 /* Proses: Menambahkan val pada q dengan aturan FIFO */
 /* I.S. q mungkin kosong, tabel penampung elemen q TIDAK penuh */
-/* F.S. val menjadi TAIL yang baru, IDX_TAIL "mundur".
+/* F.S. val menjadi TAIL_Q yang baru, IDX_TAIL_Q "mundur".
         Jika q penuh semu, maka perlu dilakukan aksi penggeseran "maju" elemen-elemen q
-        menjadi rata kiri untuk membuat ruang kosong bagi TAIL baru  */
-void enqueue(Queue *q, ElType val){
+        menjadi rata kiri untuk membuat ruang kosong bagi TAIL_Q baru  */
+void enqueueQ(Queue *q, ElType val){
 	int i, tmpIdx = 0;
-	if (isEmpty(*q)){
-		IDX_HEAD(*q) = 0;
-		IDX_TAIL(*q) = 0;
+	if (isEmptyQ(*q)){
+		IDX_HEAD_Q(*q) = 0;
+		IDX_TAIL_Q(*q) = 0;
 	} else {
-		if (IDX_TAIL(*q) == (CAPACITY-1)){
-			for(i = IDX_HEAD(*q); i <= IDX_TAIL(*q); i++){
-				(*q).buffer[i - IDX_HEAD(*q)] = (*q).buffer[i];
+		if (IDX_TAIL_Q(*q) == (QUEUE_CAPACITY-1)){
+			for(i = IDX_HEAD_Q(*q); i <= IDX_TAIL_Q(*q); i++){
+				(*q).buffer[i - IDX_HEAD_Q(*q)] = (*q).buffer[i];
 			}
-			IDX_TAIL(*q) -= IDX_HEAD(*q);
-			IDX_HEAD(*q) = 0;
+			IDX_TAIL_Q(*q) -= IDX_HEAD_Q(*q);
+			IDX_HEAD_Q(*q) = 0;
 		}
-		IDX_TAIL(*q)++;
+		IDX_TAIL_Q(*q)++;
 	}
-	TAIL(*q) = val;
+	TAIL_Q(*q) = val;
 }
 
 /* Proses: Menghapus val pada q dengan aturan FIFO */
 /* I.S. q tidak mungkin kosong */
-/* F.S. val = nilai elemen HEAD pd I.S., HEAD dan IDX_HEAD "mundur"; 
+/* F.S. val = nilai elemen HEAD_Q pd I.S., HEAD_Q dan IDX_HEAD_Q "mundur"; 
         q mungkin kosong */
-void dequeue(Queue *q, ElType *val){
-	*val = HEAD(*q);
-	if (IDX_HEAD(*q) == IDX_TAIL(*q)){
-		IDX_HEAD(*q) = IDX_UNDEF;
-		IDX_TAIL(*q) = IDX_UNDEF;
+void dequeueQ(Queue *q, ElType *val){
+	*val = HEAD_Q(*q);
+	if (IDX_HEAD_Q(*q) == IDX_TAIL_Q(*q)){
+		IDX_HEAD_Q(*q) = IDX_UNDEF;
+		IDX_TAIL_Q(*q) = IDX_UNDEF;
 	} else {
-		IDX_HEAD(*q)++;
+		IDX_HEAD_Q(*q)++;
 	}
 }
 
@@ -105,12 +107,12 @@ void dequeue(Queue *q, ElType *val){
 void displayQueue(Queue q){
 	int i;
 	printf("[");
-	if (IDX_HEAD(q) == 0 && IDX_TAIL(q) == 0){
-		printf("%d", HEAD(q));
-	} else if (!isEmpty(q)){
-		for(i = IDX_HEAD(q); i <= IDX_TAIL(q); i++){
+	if (IDX_HEAD_Q(q) == 0 && IDX_TAIL_Q(q) == 0){
+		printf("%d", HEAD_Q(q));
+	} else if (!isEmptyQ(q)){
+		for(i = IDX_HEAD_Q(q); i <= IDX_TAIL_Q(q); i++){
 			printf("%d", (q).buffer[i]);
-			if (i < IDX_TAIL(q)) printf(",");
+			if (i < IDX_TAIL_Q(q)) printf(",");
 		}
 	}
 	printf("]");

@@ -31,10 +31,10 @@ void CreateMatrix(int nRow, int nCol, Matrix *m);
 /* *** Selektor *** */
 #define ROWS(M) (M).rowEff
 #define COLS(M) (M).colEff
-#define ELMT(M, i, j) (M).contents[(i)][(j)]
+#define MAT_ELMT(M, i, j) (M).contents[(i)][(j)]
 
 /* *** Selektor "DUNIA Matrix" *** */
-boolean isIdxValid(int i, int j);
+boolean isIdxValidMat(int i, int j);
 /* Mengirimkan true jika i, j adalah Index yang valid untuk matriks apa pun */
 
 /* *** Selektor: Untuk sebuah matriks m yang terdefinisi: *** */
@@ -42,7 +42,7 @@ Index getLastIdxRow(Matrix m);
 /* Mengirimkan Index baris terbesar m */
 Index getLastIdxCol(Matrix m);
 /* Mengirimkan Index kolom terbesar m */
-boolean isIdxEff(Matrix m, Index i, Index j);
+boolean isIdxEffMat(Matrix m, Index i, Index j);
 /* Mengirimkan true jika i, j adalah Index efektif bagi m */
 ElType getElmtDiagonal(Matrix m, Index i);
 /* Mengirimkan elemen m(i,i) */
@@ -53,7 +53,7 @@ void copyMatrix(Matrix mIn, Matrix *mRes);
 
 /* ********** KELOMPOK BACA/TULIS ********** */
 void readMatrix(Matrix *m, int nRow, int nCol);
-/* I.S. isIdxValid(nRow,nCol) */
+/* I.S. isIdxValidMat(nRow,nCol) */
 /* F.S. m terdefinisi nilai elemen efektifnya, berukuran nRow x nCol */
 /* Proses: Melakukan CreateMatrix(m,nRow,nCol) dan mengisi nilai efektifnya */
 /* Selanjutnya membaca nilai elemen per baris dan kolom */

@@ -7,7 +7,7 @@ void CreateList(List *l) {
     FIRST(*l) = NULL;
 }
 
-boolean isEmpty(List l) {
+boolean isEmptyLL(List l) {
     return FIRST(l) == NULL;
 }
 
@@ -15,7 +15,7 @@ ElType getElmt(List l, int idx) {
     Address p;
 
     p = l;
-    if (!(idx == length(l))) {
+    if (!(idx == lengthListLinked(l))) {
         for (int i = 0; i < idx; i++) {
             p = NEXT(p);
         }
@@ -31,8 +31,8 @@ void setElmt(List *l, int idx, ElType val) {
 
     i = 0;
     p = *l;
-    if (idx == length(*l)) {
-        insertLast(l, val);
+    if (idx == lengthListLinked(*l)) {
+        insertLastLL(l, val);
     } else {
         while (i < idx) {
             i++;
@@ -42,7 +42,7 @@ void setElmt(List *l, int idx, ElType val) {
     }
 }
 
-int indexOf(List l, ElType val) {
+int indexOfLL(List l, ElType val) {
     Address p;
     boolean found;
     int i;
@@ -76,10 +76,10 @@ void insertFirst(List *l, ElType val) {
     }
 }
 
-void insertLast(List *l, ElType val) {
+void insertLastLL(List *l, ElType val) {
     Address p, last;
 
-    if (isEmpty(*l)) {
+    if (isEmptyLL(*l)) {
         insertFirst(l, val);
     } else {
         p = newNode(val);
@@ -99,8 +99,8 @@ void insertAt(List *l, ElType val, int idx) {
 
     if (idx == 0) {
         insertFirst(l, val);
-    } else if (idx == length(*l)) {
-        insertLast(l, val);
+    } else if (idx == lengthListLinked(*l)) {
+        insertLastLL(l, val);
     } else {
         p = newNode(val);
         if (p != NULL) {
@@ -125,7 +125,7 @@ void deleteFirst(List *l, ElType *val) {
     free(p);
 }
 
-void deleteLast(List *l, ElType *val) {
+void deleteLastLL(List *l, ElType *val) {
     Address p, loc;
 
     p = *l;
@@ -163,11 +163,11 @@ void deleteAt(List *l, int idx, ElType *val) {
     }
 }
 
-void displayList(List l) {
+void displayListLinked(List l) {
     Address p;
 
     p = l;
-    if (isEmpty(l)) {
+    if (isEmptyLL(l)) {
         printf("[]");
     } else {
         printf("[");
@@ -181,7 +181,7 @@ void displayList(List l) {
     }
 }
 
-int length(List l) {
+int lengthListLinked(List l) {
     int i;
     Address p;
 
@@ -202,13 +202,13 @@ List concat(List l1, List l2) {
     p = l1;
 
     while (p != NULL) {
-        insertLast(&l3, INFO(p));
+        insertLastLL(&l3, INFO(p));
         p = NEXT(p);
     }
 
     p = l2;
     while (p != NULL) {
-        insertLast(&l3, INFO(p));
+        insertLastLL(&l3, INFO(p));
         p = NEXT(p);
     }
 

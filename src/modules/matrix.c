@@ -36,11 +36,11 @@ void CreateMatrix(int nRow, int nCol, Matrix *m){
 /* *** Selektor *** */
 #define ROWS(M) (M).rowEff
 #define COLS(M) (M).colEff
-#define ELMT(M, i, j) (M).contents[(i)][(j)]
+#define MAT_ELMT(M, i, j) (M).contents[(i)][(j)]
 
 /* *** Selektor "DUNIA Matrix" *** */
 /* Mengirimkan true jika i, j adalah Index yang valid untuk matriks apa pun */
-boolean isIdxValid(int i, int j){
+boolean isIdxValidMat(int i, int j){
 	return (i >= 0) && (i < ROW_CAP) && (j >= 0) && (j < COL_CAP);
 }
 
@@ -54,12 +54,12 @@ Index getLastIdxCol(Matrix m){
 	return COLS(m)-1;
 }
 /* Mengirimkan true jika i, j adalah Index efektif bagi m */
-boolean isIdxEff(Matrix m, Index i, Index j){
+boolean isIdxEffMat(Matrix m, Index i, Index j){
 	return (i >= 0) && (i < ROWS(m)) && (j >= 0) && (j < COLS(m));
 }
 /* Mengirimkan elemen m(i,i) */
 ElType getElmtDiagonal(Matrix m, Index i){
-	return ELMT(m,i,i);
+	return MAT_ELMT(m,i,i);
 }
 
 /* ********** Assignment  Matrix ********** */
@@ -69,13 +69,13 @@ void copyMatrix(Matrix mIn, Matrix *mRes){
 	int i, j;
 	for (i = 0; i < ROWS(mIn); i++){
 		for(j = 0; j < COLS(mIn); j++){
-			ELMT(*mRes, i, j) = ELMT(mIn, i, j);
+			MAT_ELMT(*mRes, i, j) = MAT_ELMT(mIn, i, j);
 		}
 	}
 }
 
 /* ********** KELOMPOK BACA/TULIS ********** */
-/* I.S. isIdxValid(nRow,nCol) */
+/* I.S. isIdxValidMat(nRow,nCol) */
 /* F.S. m terdefinisi nilai elemen efektifnya, berukuran nRow x nCol */
 /* Proses: Melakukan CreateMatrix(m,nRow,nCol) dan mengisi nilai efektifnya */
 /* Selanjutnya membaca nilai elemen per baris dan kolom */
@@ -89,7 +89,7 @@ void readMatrix(Matrix *m, int nRow, int nCol){
 	int i, j;
 	for(i = 0; i < ROWS(*m); i++){
 		for(j = 0; j < COLS(*m); j++){
-			scanf("%d", &ELMT(*m, i, j));
+			scanf("%d", &MAT_ELMT(*m, i, j));
 		}
 	}
 }
@@ -106,7 +106,7 @@ void displayMatrix(Matrix m){
 	int i, j;
 	for(i = 0; i < ROWS(m); i++){
 		for(j = 0; j < COLS(m); j++){
-			printf("%d", ELMT(m, i, j));
+			printf("%d", MAT_ELMT(m, i, j));
 			if (j < COLS(m) -1){
 				printf(" ");
 			}
@@ -126,7 +126,7 @@ Matrix addMatrix(Matrix m1, Matrix m2){
 	int i, j;
 	for(i = 0; i < ROWS(m); i++){
 		for(j = 0; j < COLS(m); j++){
-			ELMT(m, i, j) = ELMT(m1, i, j) + ELMT(m2, i, j);
+			MAT_ELMT(m, i, j) = MAT_ELMT(m1, i, j) + MAT_ELMT(m2, i, j);
 		}
 	}
 	return m;
@@ -139,7 +139,7 @@ Matrix subtractMatrix(Matrix m1, Matrix m2){
 	int i, j;
 	for(i = 0; i < ROWS(m); i++){
 		for(j = 0; j < COLS(m); j++){
-			ELMT(m, i, j) = ELMT(m1, i, j) - ELMT(m2, i, j);
+			MAT_ELMT(m, i, j) = MAT_ELMT(m1, i, j) - MAT_ELMT(m2, i, j);
 		}
 	}
 	return m;
@@ -152,9 +152,9 @@ Matrix multiplyMatrix(Matrix m1, Matrix m2){
 	int i, j, k;
 	for(i = 0; i < ROWS(m1); i++){
 		for(j = 0; j < COLS(m2); j++){
-			ELMT(m, i, j) = 0;
+			MAT_ELMT(m, i, j) = 0;
 			for(k = 0; k < COLS(m1); k++){
-				ELMT(m, i, j) += (ELMT(m1, i, k) * ELMT(m2, k, j));
+				MAT_ELMT(m, i, j) += (MAT_ELMT(m1, i, k) * MAT_ELMT(m2, k, j));
 			}
 		}
 	}
@@ -167,7 +167,7 @@ Matrix multiplyConst(Matrix m, ElType x){
 	int i, j;
 	for(i = 0; i < ROWS(m); i++){
 		for(j = 0; j < COLS(m); j++){
-			ELMT(mk, i, j) = ELMT(m, i, j) * x;
+			MAT_ELMT(mk, i, j) = MAT_ELMT(m, i, j) * x;
 		}
 	}
 	return mk;
@@ -178,7 +178,7 @@ void pMultiplyConst(Matrix *m, ElType k){
 	int i, j;
 	for(i = 0; i < ROWS(*m); i++){
 		for(j = 0; j < COLS(*m); j++){
-			ELMT(*m, i, j) *= k;
+			MAT_ELMT(*m, i, j) *= k;
 		}
 	}
 }
@@ -197,7 +197,7 @@ boolean isEqual(Matrix m1, Matrix m2){
 	int i = 0, j = 0;
 	for(i = 0; i < ROWS(m1); i++){
 		for(j = 0; j < COLS(m1); j++){
-			if (ELMT(m1, i, j) != ELMT(m2, i, j)) check = false;
+			if (MAT_ELMT(m1, i, j) != MAT_ELMT(m2, i, j)) check = false;
 		}
 	}
 	return check;
@@ -229,7 +229,7 @@ boolean isSymmetric(Matrix m){
 	int i = 0, j = 0;
 	while(check && i < ROWS(m)){
 		while(check && j < i){
-			check = ELMT(m, i, j) == ELMT(m, j, i);
+			check = MAT_ELMT(m, i, j) == MAT_ELMT(m, j, i);
 			if (check) j++;
 		}
 		if (check) i++;
@@ -244,9 +244,9 @@ boolean isIdentity(Matrix m){
 	while(check && i < ROWS(m)){
 		while(check && j < COLS(m)){
 			if (i == j){
-				check = ELMT(m, i, j) == 1;
+				check = MAT_ELMT(m, i, j) == 1;
 			} else {
-				check = ELMT(m, i, j) == 0;
+				check = MAT_ELMT(m, i, j) == 0;
 			}
 			j++;
 		}
@@ -260,7 +260,7 @@ boolean isSparse(Matrix m){
 	int i, j, counter;
 	for(i = 0; i < ROWS(m); i++){
 		for(j = 0; j < COLS(m); j++){
-			if (ELMT(m, i, j) != 0){
+			if (MAT_ELMT(m, i, j) != 0){
 				counter++;
 			}
 		}
@@ -285,7 +285,7 @@ Matrix minor(Matrix m, int r, int c){ // fungsi antara saja
 		if (i != r){ // biar hemat beberapa putaran sj
 			for(j = 0; j < COLS(m); j++){ // loop kolom m
 				if (j != c){ // 
-					ELMT(mc, ic, jc) = ELMT(m, i, j);
+					MAT_ELMT(mc, ic, jc) = MAT_ELMT(m, i, j);
 					if (jc == COLS(mc)-1){ // increment indeks ngisi mc
 						jc = 0;
 						ic++;
@@ -304,11 +304,11 @@ float determinant(Matrix m){
 	int i;
 	float det;
 	if (count(m) == 4){
-		return (ELMT(m, 0, 0) * ELMT(m, 1, 1)) - (ELMT(m, 0, 1) * ELMT(m, 1, 0));
+		return (MAT_ELMT(m, 0, 0) * MAT_ELMT(m, 1, 1)) - (MAT_ELMT(m, 0, 1) * MAT_ELMT(m, 1, 0));
 	} else {
 		det = 0;
 		for(i = 0; i < COLS(m); i++){
-			det += pow(-1, i) * ELMT(m, 0, i) * determinant(minor(m, 0, i));
+			det += pow(-1, i) * MAT_ELMT(m, 0, i) * determinant(minor(m, 0, i));
 		}
 	}
 	return det;
@@ -322,7 +322,7 @@ void transpose(Matrix *m){
 	int i, j;
 	for(i = 0; i < ROWS(temp); i++){
 		for(j = 0; j < COLS(temp); j++){
-			ELMT(temp, i, j) = ELMT(*m, j, i);
+			MAT_ELMT(temp, i, j) = MAT_ELMT(*m, j, i);
 		}
 	}
 	copyMatrix(temp, m);

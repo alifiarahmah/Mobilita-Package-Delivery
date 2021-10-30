@@ -8,7 +8,9 @@
 #include "boolean.h"
 
 #define TIME_UNDEF -1
-#define IDX_UNDEF -1
+#ifndef IDX_UNDEF
+    #define IDX_UNDEF -1
+#endif
 #define CAPACITY 30
 
 /* Definisi elemen dan address */

@@ -7,14 +7,18 @@
 
 #include "boolean.h"
 
-typedef struct { 
-	float X; /* absis   */
-	float Y; /* ordinat */
+#define M_PI 3.14159265
+
+typedef struct {
+   char name;  /* Nama titik */
+	float X;    /* absis   */
+	float Y;    /* ordinat */
 } POINT;
 
 /* *** Notasi Akses: Selektor POINT *** */
 #define Absis(P) (P).X
 #define Ordinat(P) (P).Y
+#define Name(P) (P).name
         
 /* *** DEFINISI PROTOTIPE PRIMITIF *** */
 /* *** Konstruktor membentuk POINT *** */

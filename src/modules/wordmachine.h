@@ -7,11 +7,11 @@
 #include "boolean.h"
 #include "charmachine.h"
 
-#define CAPACITY 50
+#define WM_CAPACITY 50
 #define BLANK ' '
 
 typedef struct {
-   char contents[CAPACITY]; /* container penyimpan kata, indeks yang dipakai [0..CAPACITY-1] */
+   char contents[WM_CAPACITY]; /* container penyimpan kata, indeks yang dipakai [0..WM_CAPACITY-1] */
    int length;
 } Word;
 
@@ -43,7 +43,7 @@ void copyWord();
    F.S. : currentWord berisi kata yang sudah diakuisisi; 
           currentChar = BLANK atau currentChar = MARK; 
           currentChar adalah karakter sesudah karakter terakhir yang diakuisisi.
-          Jika panjang kata melebihi CAPACITY, maka sisa kata terpotong */
+          Jika panjang kata melebihi WM_CAPACITY, maka sisa kata terpotong */
 
 Word stringToWord (char arr[]);
 /* Mengubah input string menjadi type Word*/
@@ -53,6 +53,9 @@ Word concatKata (char arr1[], char arr2[]);
 
 boolean cekKataSama(char arr1[], char arr2[]);
 /* Memeriksa apakah kedua string yang dimasukkan sama atau tidak*/
+
+boolean isWordEqual(Word kata1, Word kata2);
+/* Memeriksa apakah kedua word yang dimasukkan sama atau tidak*/
 
 #endif
 

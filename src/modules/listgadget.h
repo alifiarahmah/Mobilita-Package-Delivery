@@ -12,8 +12,11 @@
 /*  Kamus Umum */
 #define MAXCAP 100
 /* Kapasitas penyimpanan */
-#define IDX_UNDEF -1
+#ifndef IDX_UNDEF
+	#define IDX_UNDEF -1
+#endif
 /* Indeks tak terdefinisi*/
+// FIXME: jadi VAL_UNDEF nya '0' atau -999?
 #define VAL_UNDEF '0'
 /* Nilai elemen tak terdefinisi*/
 
