@@ -14,5 +14,7 @@
 #include "stack.h"
 #include "wordmachine.h"
 #include "list_linked.h"
+#include "pcolor.h"
+#include "pesanan.h"
 
 #endif

@@ -57,5 +57,8 @@ boolean cekKataSama(char arr1[], char arr2[]);
 boolean isWordEqual(Word kata1, Word kata2);
 /* Memeriksa apakah kedua word yang dimasukkan sama atau tidak*/
 
+void printWord(Word kata);
+/* I.S. : Sembarang 
+   F.S. : kata tertulis di layar */
 #endif
 

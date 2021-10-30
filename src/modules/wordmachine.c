@@ -138,5 +138,14 @@ boolean cekKataSama(char arr1[], char arr2[]){
 }
 
 
+void printWord(Word kata)
+{
+    for (int i = 0; i < kata.length; i++)
+    {
+        printf("%c", kata.contents[i]);
+    }   
+}
+
+
 #endif
 
