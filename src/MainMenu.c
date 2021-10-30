@@ -1,12 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
-#include "boolean.h"
-#include "wordmachine.h"
+#include "../modules/boolean.h"
+#include "../modules/wordmachine.h"
 
 int cekFileAda(char namaFile[]){
     FILE *fileKonfigurasi;
-    char cwd[CAPACITY];
+    char cwd[100]; // jumlah dari cwd ini belom tetap
     Word path,isi;
 
     getcwd(cwd, sizeof(cwd));
@@ -21,7 +21,7 @@ int cekFileAda(char namaFile[]){
 
 void MainMenu(Word *filePath){
     int pilihan;
-    char namaFile[CAPACITY];
+    char namaFile[100]; // jumlah dari namaFile ini belom tetap
     printf("SELAMAT DATANG DI PERMAINAN MOBITA\n");
     printf("1.NEW GAME\n");
     printf("2.EXIT\n");
