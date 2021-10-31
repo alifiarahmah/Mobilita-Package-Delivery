@@ -29,9 +29,9 @@ typedef struct {
 /* Indeks yang digunakan [0..CAPACITY-1] */
 /* Jika l adalah ListGadget, cara deklarasi dan akses: */
 /* Deklarasi : l : ListGadget */
-/* Maka cara akses: 
+/* Maka cara akses:
 	 ELMT(l,i) untuk mengakses elemen ke-i */
-/* Definisi : 
+/* Definisi :
 	 List kosong: semua elemen bernilai VAL_UNDEF
 	 Definisi elemen pertama: ELMT(l,i) dengan i=0 */
 
@@ -58,10 +58,14 @@ void CreateListGadget(ListGadget *l){
 /* Mengirimkan nol jika List kosong */
 int lengthListGadget(ListGadget l){
 	int i = 0;
-	while((ELMT(l, i) != VAL_UNDEF) && (i < CAPACITY(l))){
-		i++;
+	int count = 0;
+	while(i < CAPACITY(l)){
+        while (ELMT(l,i) != VAL_UNDEF) {
+            count++;
+        }
+        i++;
 	}
-	return i;
+	return count;
 }
 
 /* ********** Test Indeks yang valid ********** */
@@ -89,15 +93,32 @@ boolean isFullListGadget(ListGadget l){
 }
 
 /* ********** BACA dan TULIS dengan INPUT/OUTPUT device ********** */
-/* Proses : Menuliskan isi List dengan traversal, List ditulis di antara kurung 
-	 siku; antara dua elemen dipisahkan dengan separator "koma", tanpa tambahan 
+/* Proses : Menuliskan isi List dengan traversal, List ditulis di antara kurung
+	 siku; antara dua elemen dipisahkan dengan separator "koma", tanpa tambahan
 	 karakter di depan, di tengah, atau di belakang, termasuk spasi dan enter */
 /* I.S. l boleh kosong */
 /* F.S. Jika l tidak kosong: [e1,e2,...,en] */
 /* Contoh : jika ada tiga elemen bernilai 1, 20, 30 akan dicetak: [1,20,30] */
 /* Jika List kosong : menulis [] */
 void displayListGadget(ListGadget l){
-	// TODO: mungkin command inventory bisa tulis di sini
+	int i;
+    int j = 1;
+    for (i=0; i<CAPACITY(l); i++) {
+        printf("%d. ", (i+1));
+        if (ELMT(*l,i) != VAL_UNDEF) {
+            if (ELMT(*l,i) == "Kain Pembungkus Waktu") {
+                printf("Kain Pembungkus Waktu (800 Yen)\n")
+            } else if (ELMT(*l,i) == "Senter Pembesar") {
+                printf("Senter Pembesar (1200 Yen)\n");
+            } else if (ELMT(*l,i) == "Pintu Kemana Saja") {
+                printf("Pintu Kemana Saja (1500 Yen)\n");
+            } else if (ELMT(*l,i) == "Mesin Waktu") {
+                printf("Mesin Waktu (3000 Yen)\n");
+            }
+        } else {
+            printf("-\n");
+        }
+    }
 }
 
 /* ********** SEARCHING ********** */
@@ -126,7 +147,10 @@ void insertGadget(ListGadget *l, ElType val){
 /* F.S. val adalah nilai elemen terakhir l sebelum penghapusan, */
 /*      Banyaknya elemen List berkurang satu */
 /*      List l mungkin menjadi kosong */
-void deleteLastGadget(ListGadget *l, ElType *val){}
+void deleteGadget(ListGadget *l, int idx, ElType *val){
+    *val = ELMT(*l,idx);
+    ELMT(*l,idx) = VAL_UNDEF;
+}
 
 /* Proses: Menampilkan antarmuka pembelian gadget */
 /* I.S. Mobita berada di Headquarter, banyak gadget dalam inventory tidak melebihi capacity */
@@ -144,6 +168,40 @@ void buyGadget(ListGadget *l, int money){
 		printf("\nENTER COMMAND: ");
 	} else {
 		printf("Inventory anda penuh. Anda tidak bisa membeli gadget baru.\n");
+	}
+}
+
+/* Proses: Menampilkan antarmuka pemakaian gadget */
+/* I.S. Banyak gadget dalam inventory tidak melebihi capacity */
+/* F.S Jika pemakaian berhasil, gadget yang terpakai menghilang dari inventory */
+/*     Jika pemakaian gagal, menuliskan pesan */
+void useGadget(ListGadget *l) {
+    int i;
+    int j = 1;
+    int val;
+    for (i=0; i<CAPACITY(*l); i++) {
+        printf("%d. ", (i+1));
+        if (ELMT(*l,i) != VAL_UNDEF) {
+            if (ELMT(*l,i) == "Kain Pembungkus Waktu") {
+                printf("Kain Pembungkus Waktu (800 Yen)\n")
+            } else if (ELMT(*l,i) == "Senter Pembesar") {
+                printf("Senter Pembesar (1200 Yen)\n");
+            } else if (ELMT(*l,i) == "Pintu Kemana Saja") {
+                printf("Pintu Kemana Saja (1500 Yen)\n");
+            } else if (ELMT(*l,i) == "Mesin Waktu") {
+                printf("Mesin Waktu (3000 Yen)\n");
+            }
+        } else {
+            printf("-\n");
+        }
+    }
+    printf("\nENTER COMMAND: ");
+    /* Sesuai Command
+    if (ELMT(*l,COMMAND-1) != VAL_UNDEF) {
+        deleteGadget(l,COMMAND-1,&val);
+    }
+    else {
+		printf("Tidak ada Gadget yang dapat digunakan!\n");
 	}
 }
 

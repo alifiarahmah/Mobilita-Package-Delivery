@@ -29,9 +29,9 @@ typedef struct {
 /* Indeks yang digunakan [0..CAPACITY-1] */
 /* Jika l adalah ListGadget, cara deklarasi dan akses: */
 /* Deklarasi : l : ListGadget */
-/* Maka cara akses: 
+/* Maka cara akses:
 	 ELMT(l,i) untuk mengakses elemen ke-i */
-/* Definisi : 
+/* Definisi :
 	 List kosong: semua elemen bernilai VAL_UNDEF
 	 Definisi elemen pertama: ELMT(l,i) dengan i=0 */
 
@@ -70,8 +70,8 @@ boolean isFullListGadget(ListGadget l);
 
 /* ********** BACA dan TULIS dengan INPUT/OUTPUT device ********** */
 void displayListGadget(ListGadget l);
-/* Proses : Menuliskan isi List dengan traversal, List ditulis di antara kurung 
-	 siku; antara dua elemen dipisahkan dengan separator "koma", tanpa tambahan 
+/* Proses : Menuliskan isi List dengan traversal, List ditulis di antara kurung
+	 siku; antara dua elemen dipisahkan dengan separator "koma", tanpa tambahan
 	 karakter di depan, di tengah, atau di belakang, termasuk spasi dan enter */
 /* I.S. l boleh kosong */
 /* F.S. Jika l tidak kosong: [e1,e2,...,en] */
@@ -106,5 +106,11 @@ void buyGadget(ListGadget *l);
 /* I.S. Mobita berada di Headquarter, banyak gadget dalam inventory tidak melebihi capacity */
 /* F.S. Jika pembelian berhasil, gadget yang terbeli masuk ke inventory */
 /* 		Jika pembelian gagal, menuliskan pesan */
+
+void useGadget(ListGadget *l);
+/* Proses: Menampilkan antarmuka pemakaian gadget */
+/* I.S. Banyak gadget dalam inventory tidak melebihi capacity */
+/* F.S Jika pemakaian berhasil, gadget yang terpakai menghilang dari inventory */
+/*     Jika pemakaian gagal, menuliskan pesan */
 
 #endif

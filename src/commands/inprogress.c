@@ -3,5 +3,5 @@
 #include "../modules/adt.h"
 
 void inProgress(Stack backpack) {
-    
+
 }
