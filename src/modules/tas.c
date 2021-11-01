@@ -37,6 +37,3 @@ void pop(Stack *s, Pesanan *val){
 	*val = TOP(*s);
 	IDX_TOP(*s)--;
 }
-
-#endif
-

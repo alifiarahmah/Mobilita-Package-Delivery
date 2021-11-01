@@ -105,14 +105,14 @@ void displayListGadget(ListGadget l){
     int j = 1;
     for (i=0; i<CAPACITY(l); i++) {
         printf("%d. ", (i+1));
-        if (ELMT(*l,i) != VAL_UNDEF) {
-            if (ELMT(*l,i) == "Kain Pembungkus Waktu") {
-                printf("Kain Pembungkus Waktu (800 Yen)\n")
-            } else if (ELMT(*l,i) == "Senter Pembesar") {
+        if (ELMT(l,i) != VAL_UNDEF) {
+            if (ELMT(l,i) == "Kain Pembungkus Waktu") {
+                printf("Kain Pembungkus Waktu (800 Yen)\n");
+            } else if (ELMT(l,i) == "Senter Pembesar") {
                 printf("Senter Pembesar (1200 Yen)\n");
-            } else if (ELMT(*l,i) == "Pintu Kemana Saja") {
+            } else if (ELMT(l,i) == "Pintu Kemana Saja") {
                 printf("Pintu Kemana Saja (1500 Yen)\n");
-            } else if (ELMT(*l,i) == "Mesin Waktu") {
+            } else if (ELMT(l,i) == "Mesin Waktu") {
                 printf("Mesin Waktu (3000 Yen)\n");
             }
         } else {
@@ -183,7 +183,7 @@ void useGadget(ListGadget *l) {
         printf("%d. ", (i+1));
         if (ELMT(*l,i) != VAL_UNDEF) {
             if (ELMT(*l,i) == "Kain Pembungkus Waktu") {
-                printf("Kain Pembungkus Waktu (800 Yen)\n")
+                printf("Kain Pembungkus Waktu (800 Yen)\n");
             } else if (ELMT(*l,i) == "Senter Pembesar") {
                 printf("Senter Pembesar (1200 Yen)\n");
             } else if (ELMT(*l,i) == "Pintu Kemana Saja") {
