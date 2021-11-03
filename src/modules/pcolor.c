@@ -8,6 +8,11 @@ Created at: 17/10/2019
 #include <stdio.h>
 #include "pcolor.h"
 
+void print_black(char c) {
+    printf("%s%c", BLACK, c);
+    printf("%s", NORMAL);
+}
+
 void print_red(char c) {
     printf("%s%c", RED, c);
     printf("%s", NORMAL);
