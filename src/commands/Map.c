@@ -1,9 +1,9 @@
 #include <stdio.h>
-#include "point.h"
-#include "matrix.h"
-#include "pcolor.h"
-#include "queue.h"
-#include "stack.h"
+#include "../modules/point.h"
+#include "../modules/matrix.h"
+#include "../modules/pcolor.h"
+#include "../modules/queue.h"
+#include "../modules/stack.h"
 
 void initMap (Matrix *peta){
     int i,j;
