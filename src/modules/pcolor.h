@@ -13,6 +13,7 @@ We only provide 8 colors. Feel free to modify/add colors if you want to.
 **/
 
 #define NORMAL "\x1B[0m"
+#define BLACK "\x1b[30m"
 #define RED "\x1B[31m"
 #define GREEN "\x1B[32m"
 #define YELLOW "\x1B[33m"
@@ -20,6 +21,7 @@ We only provide 8 colors. Feel free to modify/add colors if you want to.
 #define MAGENTA "\x1B[35m"
 #define CYAN "\x1B[36m"
 
+void print_black(char c);
 void print_red(char c);
 void print_green(char c);
 void print_yellow(char c);
