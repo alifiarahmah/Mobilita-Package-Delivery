@@ -12,7 +12,7 @@
 #define COL_CAP 100
 
 typedef int Index; /* Index baris, kolom */
-typedef int ElType;
+typedef char ElType;
 typedef struct
 {
    ElType contents[ROW_CAP][COL_CAP];
@@ -89,7 +89,7 @@ void readMatrix(Matrix *m, int nRow, int nCol){
 	int i, j;
 	for(i = 0; i < ROWS(*m); i++){
 		for(j = 0; j < COLS(*m); j++){
-			scanf("%d", &MAT_ELMT(*m, i, j));
+			scanf(" %c", &MAT_ELMT(*m, i, j));
 		}
 	}
 }
@@ -106,7 +106,7 @@ void displayMatrix(Matrix m){
 	int i, j;
 	for(i = 0; i < ROWS(m); i++){
 		for(j = 0; j < COLS(m); j++){
-			printf("%d", MAT_ELMT(m, i, j));
+			printf("%c", MAT_ELMT(m, i, j));
 			if (j < COLS(m) -1){
 				printf(" ");
 			}
