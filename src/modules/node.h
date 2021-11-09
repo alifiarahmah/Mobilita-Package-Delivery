@@ -2,18 +2,18 @@
 #define NODE_H
 
 #include <stdlib.h>
+#include "pesanan.h"
 
-typedef int ElType;
 typedef struct node* Address;
 typedef struct node {
-    ElType info;
+    Pesanan info;
     Address next;
 } Node;
 
 #define INFO(p) (p)->info
 #define NEXT(p) (p)->next
 
-Address newNode(ElType val);
+Address newNode(Pesanan val);
 
 
 #endif

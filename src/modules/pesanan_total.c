@@ -1,4 +1,4 @@
-#include "list_linked.h"
+#include "pesanan_total.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -11,7 +11,7 @@ boolean isEmptyLL(List l) {
     return FIRST(l) == NULL;
 }
 
-ElType getElmt(List l, int idx) {
+Pesanan getElmt(List l, int idx) {
     Address p;
 
     p = l;
@@ -25,7 +25,7 @@ ElType getElmt(List l, int idx) {
     }
 }
 
-void setElmt(List *l, int idx, ElType val) {
+void setElmt(List *l, int idx, Pesanan val) {
     int i;
     Address p;
 
@@ -42,7 +42,7 @@ void setElmt(List *l, int idx, ElType val) {
     }
 }
 
-int indexOfLL(List l, ElType val) {
+int indexOfLL(List l, Pesanan val) {
     Address p;
     boolean found;
     int i;
@@ -66,7 +66,7 @@ int indexOfLL(List l, ElType val) {
     }
 }
 
-void insertFirst(List *l, ElType val) {
+void insertFirst(List *l, Pesanan val) {
     Address p;
 
     p = newNode(val);
@@ -76,7 +76,7 @@ void insertFirst(List *l, ElType val) {
     }
 }
 
-void insertLastLL(List *l, ElType val) {
+void insertLastLL(List *l, Pesanan val) {
     Address p, last;
 
     if (isEmptyLL(*l)) {
@@ -93,7 +93,7 @@ void insertLastLL(List *l, ElType val) {
     }
 }
 
-void insertAt(List *l, ElType val, int idx) {
+void insertAt(List *l, Pesanan val, int idx) {
     Address p, loc;
     int i;
 
@@ -116,7 +116,7 @@ void insertAt(List *l, ElType val, int idx) {
     }
 }
 
-void deleteFirst(List *l, ElType *val) {
+void deleteFirst(List *l, Pesanan *val) {
     Address p;
 
     p = *l;
@@ -125,7 +125,7 @@ void deleteFirst(List *l, ElType *val) {
     free(p);
 }
 
-void deleteLastLL(List *l, ElType *val) {
+void deleteLastLL(List *l, Pesanan *val) {
     Address p, loc;
 
     p = *l;
@@ -143,7 +143,7 @@ void deleteLastLL(List *l, ElType *val) {
     free(p);
 }
 
-void deleteAt(List *l, int idx, ElType *val) {
+void deleteAt(List *l, int idx, Pesanan *val) {
     Address p, loc;
     int ctr;
 
