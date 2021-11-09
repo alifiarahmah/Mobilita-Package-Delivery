@@ -1,19 +1,18 @@
-#include "pesanan_total.h"
+#include "pesanan_todo.h"
 
 #include <stdio.h>
 #include <stdlib.h>
 
-void CreateList(List *l) {
+void CreateList(LList *l) {
     FIRST(*l) = NULL;
 }
 
-boolean isEmptyLL(List l) {
+boolean isEmptyLL(LList l) {
     return FIRST(l) == NULL;
 }
 
-Pesanan getElmt(List l, int idx) {
+Pesanan getElmt(LList l, int idx) {
     Address p;
-
     p = l;
     if (!(idx == lengthListLinked(l))) {
         for (int i = 0; i < idx; i++) {
@@ -21,11 +20,11 @@ Pesanan getElmt(List l, int idx) {
         }
         return INFO(p);
     } else {
-        return 0;
+        return ;
     }
 }
 
-void setElmt(List *l, int idx, Pesanan val) {
+void setElmt(LList *l, int idx, Pesanan val) {
     int i;
     Address p;
 
@@ -42,17 +41,15 @@ void setElmt(List *l, int idx, Pesanan val) {
     }
 }
 
-int indexOfLL(List l, Pesanan val) {
+int indexOfLL(LList l, Pesanan val) {
     Address p;
     boolean found;
     int i;
-
     p = l;
     found = false;
     i = 0;
-
     while (p != NULL && !found) {
-        if (INFO(p) == val) {
+        if (isPesananEqual(INFO(p), val)) {
             found = true;
         } else {
             p = NEXT(p);
@@ -66,7 +63,7 @@ int indexOfLL(List l, Pesanan val) {
     }
 }
 
-void insertFirst(List *l, Pesanan val) {
+void insertFirst(LList *l, Pesanan val) {
     Address p;
 
     p = newNode(val);
@@ -76,7 +73,7 @@ void insertFirst(List *l, Pesanan val) {
     }
 }
 
-void insertLastLL(List *l, Pesanan val) {
+void insertLastLL(LList *l, Pesanan val) {
     Address p, last;
 
     if (isEmptyLL(*l)) {
@@ -93,7 +90,7 @@ void insertLastLL(List *l, Pesanan val) {
     }
 }
 
-void insertAt(List *l, Pesanan val, int idx) {
+void insertAt(LList *l, Pesanan val, int idx) {
     Address p, loc;
     int i;
 
@@ -116,7 +113,7 @@ void insertAt(List *l, Pesanan val, int idx) {
     }
 }
 
-void deleteFirst(List *l, Pesanan *val) {
+void deleteFirst(LList *l, Pesanan *val) {
     Address p;
 
     p = *l;
@@ -125,7 +122,7 @@ void deleteFirst(List *l, Pesanan *val) {
     free(p);
 }
 
-void deleteLastLL(List *l, Pesanan *val) {
+void deleteLastLL(LList *l, Pesanan *val) {
     Address p, loc;
 
     p = *l;
@@ -143,7 +140,7 @@ void deleteLastLL(List *l, Pesanan *val) {
     free(p);
 }
 
-void deleteAt(List *l, int idx, Pesanan *val) {
+void deleteAt(LList *l, int idx, Pesanan *val) {
     Address p, loc;
     int ctr;
 
@@ -163,25 +160,7 @@ void deleteAt(List *l, int idx, Pesanan *val) {
     }
 }
 
-void displayListLinked(List l) {
-    Address p;
-
-    p = l;
-    if (isEmptyLL(l)) {
-        printf("[]");
-    } else {
-        printf("[");
-        while (NEXT(p) != NULL) {
-            printf("%d", INFO(p));
-            printf(",");
-            p = NEXT(p);
-        }
-        printf("%d", INFO(p));
-        printf("]");
-    }
-}
-
-int lengthListLinked(List l) {
+int lengthListLinked(LList l) {
     int i;
     Address p;
 
@@ -194,8 +173,8 @@ int lengthListLinked(List l) {
     return i;
 }
 
-List concat(List l1, List l2) {
-    List l3;
+LList concat(LList l1, LList l2) {
+    LList l3;
     Address p;
 
     CreateList(&l3);

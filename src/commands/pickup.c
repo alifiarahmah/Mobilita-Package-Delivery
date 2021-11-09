@@ -1,11 +1,12 @@
 #include <stdio.h>
-#include "../modules/point.h"
-#include "../modules/list_linked.h"
-// #include "pesanan.h" <- buatan dari linked list
+#include "Map.c"
+#include "../modules/pesanan.h"
+#include "../modules/pesanan_todo.h"
+#include "../modules/tas.h"
 
 /*	PICKUP: Mengambil item jika ada pesanan yang harus diambil pada lokasi
 	Proses:
-	1. 	Iterasi linked list pesanan-yang-harus-dikerjakan,
+	1. 	Iterasi queue pesanan-yang-harus-dikerjakan,
 		cari pesanan pertama dengan pickup di point tsb
 		Pakai indexOf()
 	2.	Jika ketemu, pesanan dimasukkan ke
@@ -19,10 +20,11 @@
 	TODO:
 	- Bedakan list statis, dinamis, dan linked list dari ADTnya, soalnya nama-namanya konflik
 	  Apalagi tipenya juga bakal beda, pakai ADT Item dan Gadget
-	  Ada 2 kemungkinan:
-	  - Modif ADT dari praktikum (not recommended)
-	  - Buat ADT baru sesuai fungsi (misal: toDoPesanan, onGoingPesanan)
 */
 
-void pickUp(POINT p, List *toDo, List *onGoing){
+void pickUp(POINT posNow, Matrix LokMat, Queue *queuePesanan){
+	// lokasi bangunan
+	char loc = posisiSkrg(posNow, LokMat);
+	// search dari queue, eh, gaboleh langsung cabut dari badannya kan ya queue tuh?
+	
 }

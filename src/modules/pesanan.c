@@ -1,3 +1,4 @@
+#include "boolean.h"
 #include <stdio.h>
 #include "pesanan.h"
 
@@ -15,6 +16,11 @@ void SetPesanan(Pesanan *p, int tval, POINT pval, POINT dval, char ival, int Ptv
     DROP_OFF(*p) = dval;
     ITEM(*p) = ival;
     PTIME(*p) = Ptval;
+}
+
+boolean isPesananEqual(Pesanan a, Pesanan b){
+	return (TIME(a) == TIME(b)) && EQ(PICK_UP(a),PICK_UP(b))
+	&& EQ(DROP_OFF(a), DROP_OFF(b)) && (ITEM(a) == ITEM(b)) && (PTIME(a) == PTIME(b));
 }
 
 /* *** Kreator *** */
