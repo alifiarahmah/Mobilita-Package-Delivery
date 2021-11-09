@@ -1,6 +1,19 @@
 #ifndef GADGET_H
 #define GADGET_H
 
+/* Tipe Gadget */
+
+/* 
+	Jenis-jenis gadget, gadgetType dilambangkan dengan:
+	1. Kain Pembungkus Waktu (800 Yen), gadgetType 'A'
+	2. Senter Pembesar (1200 Yen), gadgetType 'B'
+	3. Pintu Kemana Saja (1500 Yen) gadgetType 'C'
+	4. Mesin Waktu (3000 Yen) gadgetType 'D'
+*/
+
 typedef char Gadget;
+
+/* Proses: Menuliskan output nama Gadget secara lengkap */
+void printGadgetName(Gadget x);
 
 #endif
