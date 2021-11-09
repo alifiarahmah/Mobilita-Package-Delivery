@@ -21,9 +21,8 @@
 /* Nilai elemen tak terdefinisi*/
 
 /* Definisi elemen dan koleksi objek */
-typedef Gadget ElType;  /* type elemen List */
 typedef struct {
-	ElType contents[MAXCAP]; /* memori tempat penyimpan elemen (container) */
+	Gadget contents[MAXCAP]; /* memori tempat penyimpan elemen (container) */
 	int capacity; /* kapasitas gadget yang dapat ditaruh di inventory, awalnya 5 */
 } ListGadget;
 /* Indeks yang digunakan [0..CAPACITY-1] */
@@ -80,7 +79,7 @@ void displayListGadget(ListGadget l);
 
 /* ********** SEARCHING ********** */
 /* ***  Perhatian : List boleh kosong!! *** */
-int indexOfListGadget(ListGadget l, ElType val);
+int indexOfListGadget(ListGadget l, Gadget val);
 /* Search apakah ada elemen List l yang bernilai val */
 /* Jika ada, menghasilkan indeks i terkecil, dengan ELMT(l,i) = val */
 /* Jika tidak ada atau jika l kosong, mengirimkan IDX_UNDEF */
@@ -88,13 +87,13 @@ int indexOfListGadget(ListGadget l, ElType val);
 
 /* ********** MENAMBAH DAN MENGHAPUS ELEMEN DI AKHIR ********** */
 /* *** Menambahkan elemen terakhir *** */
-void insertGadget(ListGadget *l, ElType val);
+void insertGadget(ListGadget *l, Gadget val);
 /* Proses: Menambahkan val sebagai elemen terakhir List */
 /* I.S. List l boleh kosong, tetapi tidak penuh */
 /* F.S. val adalah elemen terakhir l yang baru */
 
 /* ********** MENGHAPUS ELEMEN ********** */
-void deleteLastGadget(ListGadget *l, ElType *val);
+void deleteGadget(ListGadget *l, Gadget *val);
 /* Proses : Menghapus elemen terakhir List */
 /* I.S. List tidak kosong */
 /* F.S. val adalah nilai elemen terakhir l sebelum penghapusan, */
