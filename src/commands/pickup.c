@@ -50,6 +50,6 @@ void pickUp(POINT posNow, Matrix LokMat, Queue *queuePesanan, LList *todo, Stack
 		// output tujuan pesanan
 		printf("Tujuan Pesanan: %c\n", posisiSkrg(DROP_OFF(thisPesanan)));
 	} else {
-
+		printf("Pesanan tidak ditemukan!\n");
 	}
 }
