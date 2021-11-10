@@ -43,7 +43,7 @@ void pickUp(POINT posNow, Matrix LokMat, Queue *queuePesanan, LList *todo, Stack
 			printf("Pesanan berupa Perishable Item berhasil diambil!\n");
 		}
 		// output tujuan pesanan
-		printf("Tujuan Pesanan: %c\n", posisiSkrg(DROP_OFF(thisPesanan)));
+		printf("Tujuan Pesanan: %c\n", posisiSkrg(DROP_OFF(thisPesanan), LokMat));
 	} else {
 		printf("Pesanan tidak ditemukan!\n");
 	}
