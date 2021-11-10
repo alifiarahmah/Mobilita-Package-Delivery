@@ -20,7 +20,6 @@
 */
 
 void pickUp(POINT posNow, Matrix LokMat, Queue *queuePesanan, LList *todo, Stack *tas){
-	
 	// search dari queue, eh, gaboleh langsung cabut dari badannya kan ya queue tuh?
 	// jadi cek dari head aja
 	// cek lokasi pick up queue terbaru sama seperti lokasi kita sekarang
@@ -29,21 +28,24 @@ void pickUp(POINT posNow, Matrix LokMat, Queue *queuePesanan, LList *todo, Stack
 		Pesanan thisPesanan;
 		dequeue(queuePesanan, &thisPesanan);
 
-		// TODO: kalo ngerjain bonus, taroh juga aturannya di sini
-		insertLastLL(todo, thisPesanan); // taroh queue ke inprogress
-		// push(tas, ITEM(thisPesanan)); // taroh itemnya ke tas
-		push(tas, thisPesanan);
+		if (IDX_TOP(*tas)+1 > TASCAPACITY(*tas)){ // kalo tasnya tidak penuh
+			insertLastLL(todo, thisPesanan); // taroh queue ke inprogress
+			push(tas, ITEM(thisPesanan)); // taroh itemnya ke tas
 
-		// output tipe pesanan
-		if(TYPE(ITEM(thisPesanan)) == 'N'){
-			printf("Pesanan berupa Normal Item berhasil diambil!\n");
-		} else if(TYPE(ITEM(thisPesanan)) == 'H'){
-			printf("Pesanan berupa Heavy Item berhasil diambil!\n");
-		} else if(TYPE(ITEM(thisPesanan)) == 'P'){
-			printf("Pesanan berupa Perishable Item berhasil diambil!\n");
+			// output tipe pesanan
+			if(TYPE(ITEM(thisPesanan)) == 'N'){
+				printf("Pesanan berupa Normal Item berhasil diambil!\n");
+			} else if(TYPE(ITEM(thisPesanan)) == 'H'){
+				printf("Pesanan berupa Heavy Item berhasil diambil!\n");
+			} else if(TYPE(ITEM(thisPesanan)) == 'P'){
+				printf("Pesanan berupa Perishable Item berhasil diambil!\n");
+			}
+			// output tujuan pesanan
+			printf("Tujuan Pesanan: %c\n", posisiSkrg(DROP_OFF(thisPesanan), LokMat));
+		} else {
+			printf("Tas anda penuh. Anda tidak dapat menambah pesanan lagi.\n");
 		}
-		// output tujuan pesanan
-		printf("Tujuan Pesanan: %c\n", posisiSkrg(DROP_OFF(thisPesanan), LokMat));
+
 	} else {
 		printf("Pesanan tidak ditemukan!\n");
 	}
