@@ -29,7 +29,7 @@ void pickUp(POINT posNow, Matrix LokMat, Queue *queuePesanan, LList *todo, Stack
 	// search dari queue, eh, gaboleh langsung cabut dari badannya kan ya queue tuh?
 	// jadi cek dari head aja
 	// cek lokasi pick up queue terbaru sama seperti lokasi kita sekarang
-	if (EQ(posisiSkrg(posNow, LokMat), PICK_UP(HEAD(*queuePesanan)))){
+	if (EQ(posNow, PICK_UP(HEAD(*queuePesanan)))){
 		// ceritanya udah ketemu dulu, dequeque?
 		Pesanan thisPesanan;
 		dequeue(queuePesanan, &thisPesanan);
