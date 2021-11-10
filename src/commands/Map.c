@@ -5,6 +5,7 @@
 #include "../modules/queue.h"
 #include "../modules/stack.h"
 
+/* Inisialisasi map, mengisi matrix map dengan '*' dan ' '*/
 void initMap (Matrix *peta){
     int i,j;
     for (i=0;i<ROWS(*peta);i++){
@@ -19,6 +20,7 @@ void initMap (Matrix *peta){
     }
 }
 
+/* mengisi map dengan bangunan sesuai dengan lokasi (index matrix) */
 void isiMap (Matrix *peta, int jumlah){
     int i,row,col;
     char val;
@@ -28,12 +30,14 @@ void isiMap (Matrix *peta, int jumlah){
     }
 }
 
+/* mengubah koordinat dari posisi menjadi nama bangunan pada posisi sekarang */
 char posisiSkrg (POINT posNow, Matrix lokMat){
     int x = Absis(posNow), y = Ordinat(posNow);
     char posisi = ELMT(lokMat,x,y);
     return posisi;
 }
 
+/* mencetak bangunan sesuai dengan warna */
 void printBerwarna (int pilihan, char bangunan){
     switch (pilihan){
     case 1:
@@ -57,6 +61,7 @@ void printBerwarna (int pilihan, char bangunan){
     }
 }
 
+/* konversi bangunan menjadi index matrix Adj */
 int posisiToIdx(char bangunan){
     int idx;
     if (bangunan == '8'){
@@ -68,6 +73,7 @@ int posisiToIdx(char bangunan){
     return idx;
 }
 
+/* memeriksa apakah bangunan adjacent dengan posisi sekarang */
 boolean cekAdj (Matrix adjMat, char bangunan, char posisiSkrg){
     boolean adj = false;
     int letakAdjMat = posisiToIdx(bangunan), posisi = posisiToIdx(posisiSkrg);
@@ -77,6 +83,7 @@ boolean cekAdj (Matrix adjMat, char bangunan, char posisiSkrg){
     return adj;    
 }
 
+/* memeriksa apakah bangunan merupakan HEAD dari toDo */
 boolean cekToDo (char bangunan, Queue toDo){
     char i;
     boolean ada = false;
@@ -87,6 +94,7 @@ boolean cekToDo (char bangunan, Queue toDo){
     return ada;
 }
 
+/* mencetak peta */
 void Map (Matrix adjMat, Matrix lokMat, POINT posNow, Queue toDo, Stack dropOff){
     int i,j,warna;
     char bangunan,drop;
