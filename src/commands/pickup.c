@@ -1,8 +1,11 @@
-#include <stdio.h>
-#include "Map.c"
+#include "../modules/point.h"
+#include "../modules/matrix.h"
 #include "../modules/pesanan.h"
 #include "../modules/pesanan_todo.h"
 #include "../modules/tas.h"
+
+#include "Map.c" // gabisa?
+#include <stdio.h>
 
 /*	PICKUP: Mengambil item jika ada pesanan yang harus diambil pada lokasi
 	Proses:
@@ -19,12 +22,34 @@
 		Lalu tulis tujuan
 	TODO:
 	- Bedakan list statis, dinamis, dan linked list dari ADTnya, soalnya nama-namanya konflik
-	  Apalagi tipenya juga bakal beda, pakai ADT Item dan Gadget
 */
 
-void pickUp(POINT posNow, Matrix LokMat, Queue *queuePesanan){
-	// lokasi bangunan
-	char loc = posisiSkrg(posNow, LokMat);
-	// search dari queue, eh, gaboleh langsung cabut dari badannya kan ya queue tuh?
+void pickUp(POINT posNow, Matrix LokMat, Queue *queuePesanan, LList *todo, Stack *tas){
 	
+	// search dari queue, eh, gaboleh langsung cabut dari badannya kan ya queue tuh?
+	// jadi cek dari head aja
+	// cek lokasi pick up queue terbaru sama seperti lokasi kita sekarang
+	if (EQ(posisiSkrg(posNow, LokMat), PICK_UP(HEAD(*queuePesanan)))){
+		// ceritanya udah ketemu dulu, dequeque?
+		Pesanan thisPesanan;
+		dequeue(queuePesanan, &thisPesanan);
+
+		// TODO: kalo ngerjain bonus, taroh juga aturannya di sini
+		insertLastLL(todo, thisPesanan); // taroh queue ke inprogress
+		// push(tas, ITEM(thisPesanan)); // taroh itemnya ke tas
+		push(tas, thisPesanan);
+
+		// output tipe pesanan
+		if(TYPE(ITEM(thisPesanan)) == 'N'){
+			printf("Pesanan berupa Normal Item berhasil diambil!\n");
+		} else if(TYPE(ITEM(thisPesanan)) == 'H'){
+			printf("Pesanan berupa Heavy Item berhasil diambil!\n");
+		} else if(TYPE(ITEM(thisPesanan)) == 'P'){
+			printf("Pesanan berupa Perishable Item berhasil diambil!\n");
+		}
+		// output tujuan pesanan
+		printf("Tujuan Pesanan: %c\n", posisiSkrg(DROP_OFF(thisPesanan)));
+	} else {
+
+	}
 }
