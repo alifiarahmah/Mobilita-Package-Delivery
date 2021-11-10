@@ -6,6 +6,7 @@
 
 #include "point.h"
 #include "boolean.h"
+#include "item.h"
 
 #define TIME_UNDEF -1
 #ifndef IDX_UNDEF
@@ -14,14 +15,17 @@
 #define CAPACITY 30
 
 /* Definisi elemen dan address */
+/* Definisi ADT Pesanan */
 typedef struct {
     int time;
     POINT pickup;
     POINT dropoff;
-    char item;
+    Item item;
     int Ptime;
 } Pesanan;
 
+/* Definisi List keseluruhan pesanan yang harus diselesaikan Mobita. */
+/* Diimplementasikan dengan ADT Queue. */
 typedef struct {
 	Pesanan buffer[CAPACITY];
 	int idxHead;
@@ -41,7 +45,7 @@ typedef struct {
 #define     TAIL(q) (q).buffer[(q).idxTail]
 
 /* *** Selektor lain *** */
-void SetPesanan(Pesanan *p, int tval, POINT pval, POINT dval, char ival, int Ptval);
+void SetPesanan(Pesanan *p, int tval, POINT pval, POINT dval, Item ival, int Ptval);
 /* I.S. pesanan p sembarang */
 /* F.S. pesanan p terbentuk dengan sbb: */
 /* - time bernilai tval */
@@ -49,6 +53,9 @@ void SetPesanan(Pesanan *p, int tval, POINT pval, POINT dval, char ival, int Ptv
 /* - lokasi drop off bernilai dval */
 /* - item bernilai ival */
 /* - Ptime bernilai Ptval */
+
+/* Mengecek apakah pesanan a dan b sama */
+boolean isPesananEqual(Pesanan a, Pesanan b);
 
 /* *** Kreator *** */
 void CreateQueue(Queue *q);

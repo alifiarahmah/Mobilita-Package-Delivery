@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include "pesanan.h"
 
-void SetPesanan(Pesanan *p, int tval, POINT pval, POINT dval, char ival, int Ptval) {
+void SetPesanan(Pesanan *p, int tval, POINT pval, POINT dval, Item ival, int Ptval) {
 /* I.S. pesanan p sembarang */
 /* F.S. pesanan p terbentuk dengan sbb: */
 /* - time bernilai tval */
@@ -18,9 +18,10 @@ void SetPesanan(Pesanan *p, int tval, POINT pval, POINT dval, char ival, int Ptv
     PTIME(*p) = Ptval;
 }
 
+/* Mengecek apakah pesanan a dan b sama */
 boolean isPesananEqual(Pesanan a, Pesanan b){
-	return (TIME(a) == TIME(b)) && EQ(PICK_UP(a),PICK_UP(b))
-	&& EQ(DROP_OFF(a), DROP_OFF(b)) && (ITEM(a) == ITEM(b)) && (PTIME(a) == PTIME(b));
+	return (TIME(a) == TIME(b)) && EQ(PICK_UP(a), PICK_UP(b)) 
+	&& EQ(DROP_OFF(a), DROP_OFF(b)) && isItemEqual(ITEM(a), ITEM(b)) && (PTIME(a) == PTIME(b));
 }
 
 /* *** Kreator *** */
