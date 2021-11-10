@@ -24,7 +24,7 @@ boolean isFullStack(Stack s){
 /* Menambahkan val sebagai elemen Stack s */
 /* I.S. s mungkin kosong, tabel penampung elemen stack TIDAK penuh */
 /* F.S. val menjadi TOP yang baru,IDX_TOP bertambah 1 */
-void push(Stack *s, Pesanan val){
+void push(Stack *s, Item val){
 	IDX_TOP(*s)++;
 	TOP(*s) = val;
 }
@@ -33,7 +33,7 @@ void push(Stack *s, Pesanan val){
 /* Menghapus val dari Stack s */
 /* I.S. s tidak mungkin kosong */
 /* F.S. val adalah nilai elemen TOP yang lama, IDX_TOP berkurang 1 */
-void pop(Stack *s, Pesanan *val){
+void pop(Stack *s, Item *val){
 	*val = TOP(*s);
 	IDX_TOP(*s)--;
 }
