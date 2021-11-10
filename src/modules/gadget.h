@@ -13,7 +13,12 @@
 
 typedef char Gadget;
 
+Gadget getGadgetName(char gtype);
+/*mengembalikan nama gadget*/
+
 /* Proses: Menuliskan output nama Gadget secara lengkap */
 void printGadgetName(Gadget x);
 
+int displayGadgetPrice(Gadget x);
+/* menampilkan harga dari setiap gadget */
 #endif
