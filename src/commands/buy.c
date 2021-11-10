@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "../modules/listgadget.h"
+#include "../modules/adt.h"
 
 /*	BUY: Menampilkan gadget yang dapat dibeli, dan membelinya
 	Proses:

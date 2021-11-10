@@ -1,11 +1,6 @@
-#include "../modules/point.h"
-#include "../modules/matrix.h"
-#include "../modules/pesanan.h"
-#include "../modules/pesanan_todo.h"
-#include "../modules/tas.h"
-
-#include "Map.c" // gabisa?
 #include <stdio.h>
+#include "Map.c"
+#include "../modules/adt.h"
 
 /*	PICKUP: Mengambil item jika ada pesanan yang harus diambil pada lokasi
 	Proses:
