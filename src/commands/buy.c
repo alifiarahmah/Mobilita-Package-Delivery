@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "../modules/adt.h"
+#include "commands.h"
 
 /*	BUY: Menampilkan gadget yang dapat dibeli, dan membelinya
 	Proses:

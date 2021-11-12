@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include "commands.h"
 
 void help() {
     printf("MENU HELP\n");

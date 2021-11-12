@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include "commands.h"
 
 #include "../modules/adt.h"
 

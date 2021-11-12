@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include "commands.h"
+
 #include "../modules/point.h"
 #include "../modules/matrix.h"
 #include "../modules/pcolor.h"

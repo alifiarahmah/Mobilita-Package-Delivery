@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include "commands.h"
+
 #include "Map.c"
 #include "../modules/adt.h"
 

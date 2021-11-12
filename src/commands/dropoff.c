@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "../modules/adt.h"
+#include "commands.h"
 
 void dropOff(Stack *s, POINT p) {
     Pesanan val;
