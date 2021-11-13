@@ -1,75 +1,47 @@
-/* Definisi Word Engine */
+#include <stdio.h>
 
-#ifndef WORD_ENGINE_H
-#define WORD_ENGINE_H
-
-#include "boolean.h"
+#include "wordmachine.h"
 #include "charmachine.h"
 
-#define WM_CAPACITY 50
-#define BLANK ' '
-
-typedef struct {
-   char contents[WM_CAPACITY]; /* container penyimpan kata, indeks yang dipakai [0..WM_CAPACITY-1] */
-   int length;
-} Word;
-
-/* Word Engine State */
 boolean endWord;
 Word currentWord;
 
-/* Mengabaikan satu atau beberapa BLANK
-   I.S. : currentChar sembarang 
-   F.S. : currentChar ≠ BLANK atau currentChar = MARK */
 void ignoreBlank(){
-	while(currentChar == BLANK){
-		adv();
-	}
+    while (currentChar == BLANK){
+        adv();
+    }
 }
 
-/* Mengakuisisi kata, menyimpan dalam currentWord
-   I.S. : currentChar adalah karakter pertama dari kata
-   F.S. : currentWord berisi kata yang sudah diakuisisi; 
-          currentChar = BLANK atau currentChar = MARK; 
-          currentChar adalah karakter sesudah karakter terakhir yang diakuisisi.
-          Jika panjang kata melebihi WM_CAPACITY, maka sisa kata terpotong */
-void copyWord(){
-	int i = 0;
-	while ((currentChar != MARK) && (currentChar != BLANK) && (i < WM_CAPACITY)){
-		currentWord.contents[i] = currentChar;
-		adv();
-		i++;
-	}
-	currentWord.length = i;
-	ignoreBlank();
-}
-/* I.S. : currentChar sembarang 
-   F.S. : endWord = true, dan currentChar = MARK; 
-          atau endWord = false, currentWord adalah kata yang sudah diakuisisi,
-          currentChar karakter pertama sesudah karakter terakhir kata */
 void startWord(){
-	start();
-	ignoreBlank();
-	if (currentChar == MARK){
-		endWord = true;
-	} else {
-		endWord = false;
-		copyWord();
-	}
+    start();
+    ignoreBlank();
+    if (currentChar == MARK){
+        endWord = true;
+    } else {
+        endWord = false;
+        copyWord();
+    }
 }
 
-/* I.S. : currentChar adalah karakter pertama kata yang akan diakuisisi 
-   F.S. : currentWord adalah kata terakhir yang sudah diakuisisi, 
-          currentChar adalah karakter pertama dari kata berikutnya, mungkin MARK
-          Jika currentChar = MARK, endWord = true.		  
-   Proses : Akuisisi kata menggunakan procedure copyWord */
 void advWord(){
-	ignoreBlank();
-	if (currentChar == MARK){
-		endWord = true;
-	} else {
-		copyWord();
-	}
+    ignoreBlank();
+    if (currentChar == MARK){
+        endWord = true;
+    } else {
+        copyWord();
+        ignoreBlank();
+    }
+}
+
+void copyWord(){
+    int i = 0;
+
+    while ((currentChar != BLANK) && (currentChar != MARK) && (i < WM_CAPACITY)){
+        currentWord.contents[i] = currentChar;
+        adv();
+        i++;
+    }
+    currentWord.length = i;
 }
 
 Word stringToWord (char arr[]){
@@ -146,6 +118,11 @@ void printWord(Word kata)
     }   
 }
 
-
-#endif
-
+void cekKata() {
+	startWord();
+	while (!endWord) {
+		printWord(currentWord);
+		printf("\n");
+		advWord();
+	}
+}

@@ -60,5 +60,8 @@ boolean isWordEqual(Word kata1, Word kata2);
 void printWord(Word kata);
 /* I.S. : Sembarang 
    F.S. : kata tertulis di layar */
+
+void cekKata();
+
 #endif
 
