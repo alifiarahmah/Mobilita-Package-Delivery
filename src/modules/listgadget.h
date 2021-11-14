@@ -100,11 +100,12 @@ void deleteGadget(ListGadget *l, Gadget *val);
 /*      Banyaknya elemen List berkurang satu */
 /*      List l mungkin menjadi kosong */
 
-void buyGadget(ListGadget *l, int money);
+/* void buyGadget(ListGadget *l, int money); */
 /* Proses: Menampilkan antarmuka pembelian gadget */
 /* I.S. Mobita berada di Headquarter, banyak gadget dalam inventory tidak melebihi capacity */
 /* F.S. Jika pembelian berhasil, gadget yang terbeli masuk ke inventory */
 /* 		Jika pembelian gagal, menuliskan pesan */
+/* Note: Pindah ke /src/commands/buy.c dengan nama fungsi buy() */
 
 void useGadget(ListGadget *l);
 /* Proses: Menampilkan antarmuka pemakaian gadget */

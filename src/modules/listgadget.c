@@ -151,49 +151,8 @@ void deleteGadget(ListGadget *l, int idx, Gadget *val){
     ELMT(*l,idx) = VAL_UNDEF;
 }
 
-/* Proses: Menampilkan antarmuka pembelian gadget */
-/* I.S. Mobita berada di Headquarter, banyak gadget dalam inventory tidak melebihi capacity. */
-/*      Terdapat uang sebesar money yen, uang bisa kosong */
-/* F.S. Jika list gadget tidak kosong dan uang cukup, gadget yang terbeli masuk ke inventory */
-/* 		Jika pembelian gagal, menuliskan pesan. */
-void buyGadget(ListGadget *l, int money){
-	if(!isFullListGadget(*l)){
-        char command, gtype;
-        int cost;
-		printf("Uang anda sekarang: %d Yen\n", money);
-		printf("Gadget yang tersedia:\n"); // iterasi pake list
-		printf("1. Kain Pembungkus Waktu (800 Yen)\n");
-		printf("2. Senter Pembesar (1200 Yen)\n");
-		printf("3. Pintu Kemana Saja (1500 Yen)\n");
-		printf("4. Mesin Waktu (3000 Yen)\n");
-		printf("Gadget mana yang ingin kau beli? (ketik 0 jika ingin kembali)\n");
-		printf("\nENTER COMMAND: ");
-        scanf("%c", &command);
-        if (command == '1'){
-            cost = 800; // Kain pembungkus waktu
-            gtype = 'A';
-        } else if (command == '2'){
-            cost = 1200; // Senter pembesar
-            gtype = 'B';
-        } else if (command == '3'){
-            cost = 1500; // Pintu kemana saja
-            gtype = 'C';
-        } else if (command == '4'){
-            cost = 3000; // Mesin waktu
-            gtype = 'D';
-        }
-        if (money >= cost){
-            money -= cost;
-            insertGadget(l, gtype);
-            printGadgetName(gtype);
-            printf(" berhasil dibeli.\n");
-        } else {
-            printf("Uang tidak cukup untuk membeli Gadget!\n");
-        }
-	} else { // list gadget penuh
-		printf("Inventory anda penuh. Anda tidak bisa membeli gadget baru.\n");
-	}
-}
+/* void buyGadget(ListGadget *l, int money); */
+/* Note: Pindah ke /src/commands/buy.c dengan nama fungsi buy() */
 
 /* Proses: Menampilkan antarmuka pemakaian gadget */
 /* I.S. Banyak gadget dalam inventory tidak melebihi capacity */
