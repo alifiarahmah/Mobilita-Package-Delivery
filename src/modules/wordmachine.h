@@ -9,6 +9,7 @@
 
 #define WM_CAPACITY 50
 #define BLANK ' '
+#define NEWLINE '\n'
 
 typedef struct {
    char contents[WM_CAPACITY]; /* container penyimpan kata, indeks yang dipakai [0..WM_CAPACITY-1] */
@@ -24,7 +25,7 @@ void ignoreBlank();
    I.S. : currentChar sembarang 
    F.S. : currentChar ≠ BLANK atau currentChar = MARK */
 
-void startWord();
+void startWord(FILE* file);
 /* I.S. : currentChar sembarang 
    F.S. : endWord = true, dan currentChar = MARK; 
           atau endWord = false, currentWord adalah kata yang sudah diakuisisi,

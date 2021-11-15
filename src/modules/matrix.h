@@ -4,6 +4,7 @@
 #define Matrix_H
 
 #include "boolean.h"
+#include "point.h"
 
 /* Ukuran minimum dan maksimum baris dan kolom */
 #define ROW_CAP 100
@@ -72,6 +73,12 @@ void displayMatrix(Matrix m);
 4 5 6
 8 9 10
 */
+
+void setElmt (Matrix *m, char val, int row, int col);
+/*Memasukkan elemen ke dalam sebuah matriks pada indeks tertentu*/
+
+POINT elmtToPoint(Matrix m, ElType bangunan);
+/* convert dari bangunan menjadi koordinat(type Point) */
 
 /* ********** KELOMPOK OPERASI ARITMATIKA TERHADAP TYPE ********** */
 Matrix addMatrix(Matrix m1, Matrix m2);
