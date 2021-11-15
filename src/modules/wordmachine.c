@@ -7,13 +7,13 @@ boolean endWord;
 Word currentWord;
 
 void ignoreBlank(){
-    while (currentChar == BLANK){
+    while ((currentChar == BLANK) || (currentChar == NEWLINE)){
         adv();
     }
 }
 
-void startWord(){
-    start();
+void startWord(FILE* file){
+    start(file);
     ignoreBlank();
     if (currentChar == MARK){
         endWord = true;
@@ -36,7 +36,7 @@ void advWord(){
 void copyWord(){
     int i = 0;
 
-    while ((currentChar != BLANK) && (currentChar != MARK) && (i < WM_CAPACITY)){
+    while ((currentChar != BLANK) && (currentChar != NEWLINE) && (currentChar != MARK) && (i < WM_CAPACITY)){
         currentWord.contents[i] = currentChar;
         adv();
         i++;
