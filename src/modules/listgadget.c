@@ -11,19 +11,16 @@
 #include "gadget.h"
 
 /*  Kamus Umum */
-#define MAXCAP 100
-/* Kapasitas penyimpanan */
 #ifndef IDX_UNDEF
 	#define IDX_UNDEF -1
 #endif
 /* Indeks tak terdefinisi*/
-#define VAL_UNDEF '0'
+#define GADGET_UNDEF '0'
 /* Nilai elemen tak terdefinisi*/
 
 /* Definisi elemen dan koleksi objek */
 typedef struct {
-	Gadget contents[MAXCAP]; /* memori tempat penyimpan elemen (container) */
-	int capacity;
+	Gadget contents[5]; /* memori tempat penyimpan elemen (container) */
 } ListGadget;
 /* Indeks yang digunakan [0..CAPACITY-1] */
 /* Jika l adalah ListGadget, cara deklarasi dan akses: */
@@ -31,7 +28,7 @@ typedef struct {
 /* Maka cara akses:
 	 ELMT(l,i) untuk mengakses elemen ke-i */
 /* Definisi :
-	 List kosong: semua elemen bernilai VAL_UNDEF
+	 List kosong: semua elemen bernilai GADGET_UNDEF
 	 Definisi elemen pertama: ELMT(l,i) dengan i=0 */
 
 /* ********** SELEKTOR ********** */
@@ -42,13 +39,12 @@ typedef struct {
 /* Konstruktor : create List kosong  */
 /* I.S. l sembarang */
 /* F.S. Terbentuk ListGadget l kosong dengan kapasitas 5 */
-/* Proses: Inisialisasi semua elemen List l dengan VAL_UNDEF, set capacity 5 */
+/* Proses: Inisialisasi semua elemen List l dengan GADGET_UNDEF, set capacity 5 */
 void CreateListGadget(ListGadget *l){
 	int i;
-	for(i = 0; i < MAXCAP; i++){
-		ELMT(*l, i) = VAL_UNDEF;
+	for(i = 0; i < 5; i++){
+		ELMT(*l, i) = GADGET_UNDEF;
 	}
-	CAPACITY(*l) = 5;
 }
 
 /* ********** SELEKTOR (TAMBAHAN) ********** */
@@ -58,8 +54,8 @@ void CreateListGadget(ListGadget *l){
 int lengthListGadget(ListGadget l){
 	int i = 0;
 	int count = 0;
-	while(i < CAPACITY(l)){
-        while (ELMT(l,i) != VAL_UNDEF) {
+	while(i < 5){
+        while (ELMT(l,i) != GADGET_UNDEF) {
             count++;
         }
         i++;
@@ -71,12 +67,12 @@ int lengthListGadget(ListGadget l){
 /* Mengirimkan true jika i adalah indeks yang valid utk kapasitas List l */
 /* yaitu antara indeks yang terdefinisi utk container*/
 boolean isIdxListGadgetValid(ListGadget l, int i){
-	return (i >= 0) && (i <= MAXCAP);
+	return (i >= 0) && (i <= 5);
 }
 /* Mengirimkan true jika i adalah indeks yang terdefinisi utk List l */
 /* yaitu antara 0..length(l)-1 */
 boolean isIdxListGadgetEff(ListGadget l, int i){
-	return (i >= 0) && (i <= CAPACITY(l));
+	return (i >= 0) && (i <= lengthListGadget(l));
 }
 
 /* ********** TEST KOSONG/PENUH ********** */
@@ -88,7 +84,7 @@ boolean isEmptyListGadget(ListGadget l){
 }
 /* Mengirimkan true jika List l penuh, mengirimkan false jika tidak */
 boolean isFullListGadget(ListGadget l){
-	return lengthListGadget(l) == CAPACITY(l);
+	return lengthListGadget(l) == 5;
 }
 
 /* ********** BACA dan TULIS dengan INPUT/OUTPUT device ********** */
@@ -102,9 +98,9 @@ boolean isFullListGadget(ListGadget l){
 void displayListGadget(ListGadget l){
 	int i;
     int j = 1;
-    for (i=0; i<CAPACITY(l); i++) {
+    for (i = 0; i < 5; i++) {
         printf("%d. ", (i+1));
-        if (ELMT(l,i) != VAL_UNDEF) {
+        if (ELMT(l,i) != GADGET_UNDEF) {
             if (ELMT(l,i) == "Kain Pembungkus Waktu") {
                 printf("Kain Pembungkus Waktu (800 Yen)\n");
             } else if (ELMT(l,i) == "Senter Pembesar") {
@@ -129,63 +125,32 @@ void displayListGadget(ListGadget l){
 int indexOfListGadget(ListGadget l, Gadget val){}
 
 /* ********** MENAMBAH DAN MENGHAPUS ELEMEN ********** */
-/* Proses: Menambahkan val sebagai elemen dalam list, di indeks tempat VAL_UNDEF pertama */
+/* Proses: Menambahkan val sebagai elemen dalam list, di indeks tempat GADGET_UNDEF pertama */
 /* I.S. List l boleh kosong, tetapi tidak penuh */
 /* F.S. val adalah elemen terakhir l yang baru */
 void insertGadget(ListGadget *l, Gadget val){
 	int i = 0;
-	while(ELMT(*l, i) != VAL_UNDEF){
+	while(ELMT(*l, i) != GADGET_UNDEF){
 		i++;
 	}
 	ELMT(*l, i) = val;
 }
 
 /* ********** MENGHAPUS ELEMEN ********** */
-/* Proses : Menghapus elemen terakhir List */
-/* I.S. List tidak kosong */
+/* Proses : Menghapus elemen List pada indeks tertentu */
+/* I.S. List tidak kosong, idx indeks yang valid */
 /* F.S. val adalah nilai elemen terakhir l sebelum penghapusan, */
 /*      Banyaknya elemen List berkurang satu */
 /*      List l mungkin menjadi kosong */
 void deleteGadget(ListGadget *l, int idx, Gadget *val){
     *val = ELMT(*l,idx);
-    ELMT(*l,idx) = VAL_UNDEF;
+    ELMT(*l, idx) = GADGET_UNDEF;
 }
 
 /* void buyGadget(ListGadget *l, int money); */
 /* Note: Pindah ke /src/commands/buy.c dengan nama fungsi buy() */
 
-/* Proses: Menampilkan antarmuka pemakaian gadget */
-/* I.S. Banyak gadget dalam inventory tidak melebihi capacity */
-/* F.S Jika pemakaian berhasil, gadget yang terpakai menghilang dari inventory */
-/*     Jika pemakaian gagal, menuliskan pesan */
-void useGadget(ListGadget *l) {
-    int i;
-    int j = 1;
-    int val;
-    for (i=0; i<CAPACITY(*l); i++) {
-        printf("%d. ", (i+1));
-        if (ELMT(*l,i) != VAL_UNDEF) {
-            if (ELMT(*l,i) == '"Kain Pembungkus Waktu"') {
-                printf("Kain Pembungkus Waktu (800 Yen)\n");
-            } else if (ELMT(*l,i) == "Senter Pembesar") {
-                printf("Senter Pembesar (1200 Yen)\n");
-            } else if (ELMT(*l,i) == "Pintu Kemana Saja") {
-                printf("Pintu Kemana Saja (1500 Yen)\n");
-            } else if (ELMT(*l,i) == "Mesin Waktu") {
-                printf("Mesin Waktu (3000 Yen)\n");
-            }
-        } else {
-            printf("-\n");
-        }
-    }
-    printf("\nENTER COMMAND: ");
-    /* Sesuai Command*/
-    if (ELMT(*l,COMMAND-1) != VAL_UNDEF) {
-        deleteGadget(l,COMMAND-1,&val);
-    }
-    else {
-		printf("Tidak ada Gadget yang dapat digunakan!\n");
-	}
-}
+/* void useGadget(ListGadget *l); */
+/* Note: Pindah ke /src/commands/inventory.c dengan nama fungsi inventory() */
 
 #endif

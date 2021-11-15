@@ -93,9 +93,9 @@ void insertGadget(ListGadget *l, Gadget val);
 /* F.S. val adalah elemen terakhir l yang baru */
 
 /* ********** MENGHAPUS ELEMEN ********** */
-void deleteGadget(ListGadget *l, Gadget *val);
-/* Proses : Menghapus elemen terakhir List */
-/* I.S. List tidak kosong */
+void deleteGadget(ListGadget *l, int idx, Gadget *val);
+/* Proses : Menghapus elemen List pada indeks tertentu */
+/* I.S. List tidak kosong, idx indeks yang valid */
 /* F.S. val adalah nilai elemen terakhir l sebelum penghapusan, */
 /*      Banyaknya elemen List berkurang satu */
 /*      List l mungkin menjadi kosong */
@@ -107,10 +107,11 @@ void deleteGadget(ListGadget *l, Gadget *val);
 /* 		Jika pembelian gagal, menuliskan pesan */
 /* Note: Pindah ke /src/commands/buy.c dengan nama fungsi buy() */
 
-void useGadget(ListGadget *l);
+/* void useGadget(ListGadget *l); */
 /* Proses: Menampilkan antarmuka pemakaian gadget */
 /* I.S. Banyak gadget dalam inventory tidak melebihi capacity */
 /* F.S Jika pemakaian berhasil, gadget yang terpakai menghilang dari inventory */
 /*     Jika pemakaian gagal, menuliskan pesan */
+/* Note: Pindah ke /src/commands/inventory.c dengan nama fungsi inventory() */
 
 #endif
