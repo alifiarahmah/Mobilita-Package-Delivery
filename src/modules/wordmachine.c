@@ -12,8 +12,19 @@ void ignoreBlank(){
     }
 }
 
-void startWord(FILE* file){
-    start(file);
+void startWord(){
+	start();
+	ignoreBlank();
+	if (currentChar == MARK){
+		endWord = true;
+	} else {
+		endWord = false;
+		copyWord();
+	}
+}
+
+void startWordFile(FILE* file){
+    startfile(file);
     ignoreBlank();
     if (currentChar == MARK){
         endWord = true;

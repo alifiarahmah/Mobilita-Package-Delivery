@@ -38,7 +38,7 @@ void bacaFile (Word namafile, Matrix *peta, Matrix *adj, Queue *pesanan){
     fp = fopen(namafile.contents,"r");
 
     /* Inisialisasi peta */
-    startWord(fp);
+    startWordFile(fp);
     row = charToInt(currentWord);
     advWord();
     col = charToInt(currentWord);

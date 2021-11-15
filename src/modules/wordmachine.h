@@ -25,7 +25,13 @@ void ignoreBlank();
    I.S. : currentChar sembarang 
    F.S. : currentChar ≠ BLANK atau currentChar = MARK */
 
-void startWord(FILE* file);
+void startWord();
+/* I.S. : currentChar sembarang 
+   F.S. : endWord = true, dan currentChar = MARK; 
+          atau endWord = false, currentWord adalah kata yang sudah diakuisisi,
+          currentChar karakter pertama sesudah karakter terakhir kata */
+
+void startWordFile(FILE* file);
 /* I.S. : currentChar sembarang 
    F.S. : endWord = true, dan currentChar = MARK; 
           atau endWord = false, currentWord adalah kata yang sudah diakuisisi,
