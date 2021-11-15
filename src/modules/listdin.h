@@ -102,6 +102,8 @@ void readListDin(ListDin *l);
 /* Contoh : jika ada tiga elemen bernilai 1, 20, 30 akan dicetak: [1,20,30] */
 /* Jika list kosong : menulis [] */
 
+void setElmtLDin(ListDin *lDin, char bangunan, float absis, float ordinat, int index);
+
 void displayElmtDin(ListDin l, IdxType idx);
 
 /* ********** SEARCHING ********** */

@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <math.h>
+#include "commands/commands.h"
 #include "modules/adt.h"
 #include "read_file.h"
 
@@ -32,7 +33,7 @@ void sortPsn(Pesanan temp[],int length){
     }
 }
 
-void bacaFile (Word namafile, Matrix *peta, Matrix *adj, Queue *pesanan){
+void bacaFile (Word namafile, Matrix *peta, Matrix *adj, Queue *pesanan, ListDin *lBuilding){
     int row,col;
     FILE *fp;
     fp = fopen(namafile.contents,"r");
@@ -50,11 +51,12 @@ void bacaFile (Word namafile, Matrix *peta, Matrix *adj, Queue *pesanan){
     int rowHQ = charToInt(currentWord);
     advWord();
     int colHQ = charToInt(currentWord);
-    setElmt(peta,'8',rowHQ,colHQ);
+    setElmtMat(peta,'8',rowHQ,colHQ);
 
     /* Isi peta */
     advWord();
     int N = charToInt(currentWord);
+    CreateListDin(lBuilding,N+1);
     for (int i=0;i<N;i++){
         advWord();
         char bangunan = currentWord.contents[0];
@@ -62,15 +64,17 @@ void bacaFile (Word namafile, Matrix *peta, Matrix *adj, Queue *pesanan){
         int rowBangunan = charToInt(currentWord);
         advWord();
         int colBangunan = charToInt(currentWord);
-        setElmt(peta,bangunan,rowBangunan,colBangunan);
+        setElmtMat(peta,bangunan,rowBangunan,colBangunan);
+        setElmtLDin(lBuilding,bangunan,rowBangunan,colBangunan,i+1);
     }
+    setElmtLDin(lBuilding,'8',rowHQ,colHQ,0);
 
     /* Adj Mat */
     CreateMatrix(N+1,N+1,adj);
     for (int i=0;i<N+1;i++){
         for (int j=0;j<N+1;j++){
             advWord();
-            setElmt(adj,currentWord.contents[0],i,j);
+            setElmtMat(adj,currentWord.contents[0],i,j);
         }
     }
 

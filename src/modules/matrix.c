@@ -118,12 +118,12 @@ void displayMatrix(Matrix m){
 	}
 }
 
-void setElmt (Matrix *m, char val, int row, int col){
-   ELMT(*m,row,col) = val;
+void setElmtMat (Matrix *m, char val, int row, int col){
+   MAT_ELMT(*m,row,col) = val;
 }
 /*Memasukkan elemen ke dalam sebuah matriks pada indeks tertentu*/
 
-POINT elmtToPoint(Matrix m, ElType bangunan){
+POINT elmtToPoint(Matrix m, MatElType bangunan){
    int row,col;
    for (int i=0;i<ROWS(m);i++){
       for (int j=0;j<COLS(m);j++){

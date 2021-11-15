@@ -1,11 +1,7 @@
 #include <stdio.h>
 #include "commands.h"
 
-#include "../modules/point.h"
-#include "../modules/matrix.h"
-#include "../modules/pcolor.h"
-#include "../modules/pesanan.h"
-#include "../modules/tas.h"
+#include "../modules/adt.h"
 
 /* Inisialisasi map, mengisi matrix map dengan '*' dan ' '*/
 void initMap (Matrix *peta){
@@ -13,10 +9,10 @@ void initMap (Matrix *peta){
     for (i=0;i<ROWS(*peta);i++){
         for (j=0;j<COLS(*peta);j++){
             if ((i == 0) | (j == 0) | (i == ROWS(*peta)-1) | (j == COLS(*peta)-1)){
-                setElmt(peta,'*',i,j);
+                setElmtMat(peta,'*',i,j);
             }
             else{
-                setElmt(peta,' ',i,j);
+                setElmtMat(peta,' ',i,j);
             }
         }
     }
@@ -28,14 +24,14 @@ void isiMap (Matrix *peta, int jumlah){
     char val;
     for (i=0;i<jumlah;i++){
         scanf(" %c %d %d",&val,&row,&col);
-        setElmt(peta,val,row,col);
+        setElmtMat(peta,val,row,col);
     }
 }
 
 /* mengubah koordinat dari posisi menjadi nama bangunan pada posisi sekarang */
 char posisiSkrg (POINT posNow, Matrix lokMat){
     int x = Absis(posNow), y = Ordinat(posNow);
-    char posisi = ELMT(lokMat,x,y);
+    char posisi = MAT_ELMT(lokMat,x,y);
     return posisi;
 }
 
@@ -79,7 +75,7 @@ int posisiToIdx(char bangunan){
 boolean cekAdj (Matrix adjMat, char bangunan, char posisiSkrg){
     boolean adj = false;
     int letakAdjMat = posisiToIdx(bangunan), posisi = posisiToIdx(posisiSkrg);
-    if (ELMT(adjMat,posisi,letakAdjMat) == '1'){
+    if (MAT_ELMT(adjMat,posisi,letakAdjMat) == '1'){
         adj = true;
     }
     return adj;    
@@ -103,7 +99,7 @@ void Map (Matrix adjMat, Matrix lokMat, POINT posNow, Queue toDo, Stack dropOff)
     for (i=0;i<ROWS(lokMat);i++){
         for (j=0;j<COLS(lokMat);j++){
             warna = 6;
-            bangunan = ELMT(lokMat,i,j);
+            bangunan = MAT_ELMT(lokMat,i,j);
             pop(&dropOff,&drop);
             if (bangunan!='*' && bangunan!=' '){
                 warna = 5;
