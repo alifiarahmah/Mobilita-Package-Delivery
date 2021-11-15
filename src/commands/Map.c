@@ -83,10 +83,10 @@ boolean cekAdj (Matrix adjMat, char bangunan, char posisiSkrg){
 
 /* memeriksa apakah bangunan merupakan HEAD dari toDo */
 boolean cekToDo (char bangunan, Queue toDo){
-    char i;
+    Pesanan i;
     boolean ada = false;
     dequeue(&toDo,&i);
-    if (i == bangunan){
+    if (Name(DROP_OFF(i)) == bangunan){
         ada = true;
     }
     return ada;
@@ -95,7 +95,8 @@ boolean cekToDo (char bangunan, Queue toDo){
 /* mencetak peta */
 void Map (Matrix adjMat, Matrix lokMat, POINT posNow, Queue toDo, Stack dropOff){
     int i,j,warna;
-    char bangunan,drop;
+    char bangunan;
+    Item drop;
     for (i=0;i<ROWS(lokMat);i++){
         for (j=0;j<COLS(lokMat);j++){
             warna = 6;

@@ -12,7 +12,7 @@
 #ifndef IDX_UNDEF
     #define IDX_UNDEF -1
 #endif
-#define CAPACITY 30
+#define P_CAPACITY 30
 
 /* Definisi elemen dan address */
 /* Definisi ADT Pesanan */
@@ -27,7 +27,7 @@ typedef struct {
 /* Definisi List keseluruhan pesanan yang harus diselesaikan Mobita. */
 /* Diimplementasikan dengan ADT Queue. */
 typedef struct {
-	Pesanan buffer[CAPACITY];
+	Pesanan buffer[P_CAPACITY];
 	int idxHead;
 	int idxTail;
 } Queue;
