@@ -32,7 +32,7 @@ void pickUp(POINT posNow, Matrix LokMat, Queue *queuePesanan, LList *todo, Stack
 
 		if (IDX_TOP(*tas)+1 > TASCAPACITY(*tas)){ // kalo tasnya tidak penuh
 			insertLastLL(todo, thisPesanan); // taroh queue ke inprogress
-			push(tas, ITEM(thisPesanan)); // taroh itemnya ke tas
+			push(tas, thisPesanan); // taroh itemnya ke tas
 
 			// output tipe pesanan
 			if(TYPE(ITEM(thisPesanan)) == 'N'){

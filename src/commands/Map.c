@@ -78,7 +78,7 @@ boolean cekAdj (Matrix adjMat, char bangunan, char posisiSkrg){
     if (MAT_ELMT(adjMat,posisi,letakAdjMat) == '1'){
         adj = true;
     }
-    return adj;    
+    return adj;
 }
 
 /* memeriksa apakah bangunan merupakan HEAD dari toDo */
@@ -96,7 +96,7 @@ boolean cekToDo (char bangunan, Queue toDo){
 void Map (Matrix adjMat, Matrix lokMat, POINT posNow, Queue toDo, Stack dropOff){
     int i,j,warna;
     char bangunan;
-    Item drop;
+    Pesanan drop;
     for (i=0;i<ROWS(lokMat);i++){
         for (j=0;j<COLS(lokMat);j++){
             warna = 6;
@@ -111,7 +111,7 @@ void Map (Matrix adjMat, Matrix lokMat, POINT posNow, Queue toDo, Stack dropOff)
             if (cekToDo(bangunan,toDo)){
                 warna = 3;
             }
-            if (bangunan == drop){
+            if (bangunan == TYPE(ITEM(drop))){
                 warna = 2;
             }
             if (bangunan == posisiSkrg(posNow,lokMat)){
@@ -119,7 +119,7 @@ void Map (Matrix adjMat, Matrix lokMat, POINT posNow, Queue toDo, Stack dropOff)
             }
             printBerwarna(warna,bangunan);
         }
-        printf("\n");   
+        printf("\n");
     }
-    printf("\n");   
+    printf("\n");
 }
