@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
-#include "../modules/adt.h"
+#include "modules/adt.h"
 
 int cekFileAda(char namaFile[]);
 
