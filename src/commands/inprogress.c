@@ -3,18 +3,23 @@
 
 #include "../modules/adt.h"
 
-void inProgress(Queue backpack) {
+void inProgress(Queue pesanan) {
     int idx;
     int ctr;
+    POINT pointDropOff;
+    Item order;
 
     printf("Pesanan yang sedang diantarkan: \n");
-    if (!isEmpty(backpack)) {
+    if (!isEmpty(pesanan)) {
         ctr = 1;
-        idx = IDX_HEAD(backpack);
+        idx = IDX_HEAD(pesanan);
 
-        while (idx != IDX_TAIL(backpack)) {
-            // TODO: Ubah tergantung quality item-nya
-            printf("%d. Normal Item (Tujuan: %c)", ctr, Name(DROP_OFF(backpack.buffer[idx])));
+        pointDropOff = DROP_OFF(pesanan.buffer[idx]);
+        order = ITEM(pesanan.buffer[idx]);
+        while (idx != IDX_TAIL(pesanan)) {
+            printf("%d. ");
+            getItemType(order);
+            printf(" (Tujuan: %c)", Name(pointDropOff));
             idx++;
         }
     } else {
