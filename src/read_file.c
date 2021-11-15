@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <math.h>
 #include "../modules/adt.h"
+#include "read_file.h"
 
 boolean endWord;
 Word currentWord;
