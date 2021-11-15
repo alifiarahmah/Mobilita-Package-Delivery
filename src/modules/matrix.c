@@ -6,6 +6,7 @@
 #include <stdio.h>
 #include <math.h>
 #include "boolean.h"
+#include "point.h"
 
 /* Ukuran minimum dan maksimum baris dan kolom */
 #define ROW_CAP 100
@@ -116,6 +117,12 @@ void displayMatrix(Matrix m){
 		}
 	}
 }
+
+void setElmt (Matrix *m, char val, int row, int col);
+/*Memasukkan elemen ke dalam sebuah matriks pada indeks tertentu*/
+
+POINT elmtToPoint(Matrix m, ElType bangunan);
+/* convert dari bangunan menjadi koordinat(type Point) *.
 
 /* ********** KELOMPOK OPERASI ARITMATIKA TERHADAP TYPE ********** */
 /* Prekondisi : m1 berukuran sama dengan m2 */
