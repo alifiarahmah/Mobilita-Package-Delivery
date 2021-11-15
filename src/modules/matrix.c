@@ -118,11 +118,25 @@ void displayMatrix(Matrix m){
 	}
 }
 
-void setElmt (Matrix *m, char val, int row, int col);
+void setElmt (Matrix *m, char val, int row, int col){
+   ELMT(*m,row,col) = val;
+}
 /*Memasukkan elemen ke dalam sebuah matriks pada indeks tertentu*/
 
-POINT elmtToPoint(Matrix m, ElType bangunan);
-/* convert dari bangunan menjadi koordinat(type Point) *.
+POINT elmtToPoint(Matrix m, ElType bangunan){
+   int row,col;
+   for (int i=0;i<ROWS(m);i++){
+      for (int j=0;j<COLS(m);j++){
+         if (ELMT(m,i,j) == bangunan){
+            row = i;
+            col = j;
+            break;
+         }
+      }
+   }
+   return MakePOINT(row,col);
+}
+/* convert dari bangunan menjadi koordinat(type Point) */
 
 /* ********** KELOMPOK OPERASI ARITMATIKA TERHADAP TYPE ********** */
 /* Prekondisi : m1 berukuran sama dengan m2 */
