@@ -4,8 +4,8 @@
 #include "../modules/point.h"
 #include "../modules/matrix.h"
 #include "../modules/pcolor.h"
-#include "../modules/queue.h"
-#include "../modules/stack.h"
+#include "../modules/pesanan.h"
+#include "../modules/tas.h"
 
 /* Inisialisasi map, mengisi matrix map dengan '*' dan ' '*/
 void initMap (Matrix *peta){
