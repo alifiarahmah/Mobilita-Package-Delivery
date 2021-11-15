@@ -14,31 +14,29 @@ boolean isItemEqual(Item a, Item b){
    return (TYPE(a) == TYPE(b)) && (EXPIRED(a) == EXPIRED(b));
 }
 
-Item getItemName(char type){
-   char item;
-	switch(type){
+void printItemType(Item x){
+	switch(TYPE(x)){
 		case 'P':
-			item = 'Perishabel Item';
+			printf("Perishable Item");
 		case 'N':
-			item = 'Normal Item';
+			printf("Perishable Item");
 		case 'H':
-			item = 'Heavy Item';
+			printf("Perishable Item");
 		case 'V':
-			item = 'VIP Item';
+			printf("Perishable Item");
 	}
-	return item;
 }
 /*mengembalikan nama item*/
 
 int getItemPrice(Item x){
     int money;
-    if(x == 'P'){
+    if(TYPE(x) == 'P'){
         money = 400;
-    } else if (x == 'N'){
+    } else if (TYPE(x) == 'N'){
         money = 200;
-    } else if (x == 'H'){
+    } else if (TYPE(x) == 'H'){
         money = 400;
-    } else if (x == 'V'){
+    } else if (TYPE(x) == 'V'){
         money = 600;
     }
     return money;

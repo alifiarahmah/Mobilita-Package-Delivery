@@ -29,7 +29,7 @@ void createItem(Item *x, char itemType, int expiryTime);
 /* Mengecek apakah Item a dan b memiliki tipe dan expiry time sama */
 boolean isItemEqual(Item a, Item b);
 
-Item getItemName(char type);
+void printItemType(Item x);
 /*mengembalikan nama item*/
 
 int getItemPrice(Item x);
