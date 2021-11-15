@@ -10,7 +10,7 @@ int cekFileAda(char namaFile[]){
     Word path,isi;
 
     getcwd(cwd, sizeof(cwd));
-    path = concatKata(cwd,"\\test\\"); // string "\\test\\" diganti dengan nama folder dari file konfigurasi
+    path = concatKata(cwd,"\\config\\");
     isi = concatKata(path.contents,namaFile);
     if (fileKonfigurasi = fopen(isi.contents,"r")){
         fclose(fileKonfigurasi);
