@@ -7,7 +7,6 @@
 #include "item.h"
 #include "listdin.h"
 #include "listgadget.h"
-#include "listpos.h"
 #include "matrix.h"
 #include "point.h"
 #include "pesanan.h"
