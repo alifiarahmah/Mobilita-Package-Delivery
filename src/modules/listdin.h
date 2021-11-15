@@ -17,11 +17,11 @@
 /* Indeks tak terdefinisi*/
 
 /* Definisi elemen dan koleksi objek */
-typedef POINT ElType; /* type elemen list */
+typedef POINT ListDinElType; /* type elemen list */
 typedef int IdxType;
 typedef struct
 {
-    ElType *buffer; /* memori tempat penyimpan elemen (container) */
+    ListDinElType *buffer; /* memori tempat penyimpan elemen (container) */
     int nEff;       /* >=0, banyaknya elemen efektif */
     int capacity;   /* ukuran elemen */
 } ListDin;
@@ -115,12 +115,12 @@ IdxType indexOfDin(ListDin l, char val);
 
 /* ********** MENAMBAH DAN MENGHAPUS ELEMEN DI AKHIR ********** */
 /* *** Menambahkan elemen terakhir *** */
-void insertLastDin(ListDin *l, ElType val);
+void insertLastDin(ListDin *l, ListDinElType val);
 /* Proses: Menambahkan val sebagai elemen terakhir list */
 /* I.S. List l boleh kosong, tetapi tidak penuh */
 /* F.S. val adalah elemen terakhir l yang baru */
 /* ********** MENGHAPUS ELEMEN ********** */
-void deleteLastDin(ListDin *l, ElType *val);
+void deleteLastDin(ListDin *l, ListDinElType *val);
 /* Proses : Menghapus elemen terakhir list */
 /* I.S. List tidak kosong */
 /* F.S. val adalah nilai elemen terakhir l sebelum penghapusan, */

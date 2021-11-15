@@ -16,7 +16,7 @@
 void CreateListDin(ListDin *l, int capacity) {
     LISTDIN_CAPACITY(*l) = capacity;
     LISTDIN_NEFF(*l) = 0;
-    BUFFER(*l) = (ElType *)malloc(capacity * sizeof(ElType));
+    BUFFER(*l) = (ListDinElType *)malloc(capacity * sizeof(ListDinElType));
 }
 
 /* I.S. l terdefinisi; */
@@ -84,7 +84,7 @@ boolean isFullLD(ListDin l) {
 			0 satu per satu diakhiri enter */
 /*    Jika N = 0; hanya terbentuk l kosong */
 void readListDin(ListDin *l) {
-	ElType p;
+	ListDinElType p;
 	char name;
 	int absis, ordinat;
     // TODO: pakai mesin kata, bukan scanf
@@ -173,7 +173,7 @@ void copyList(ListDin lIn, ListDin *lOut) {
 /* Proses: Menambahkan val sebagai elemen terakhir list */
 /* I.S. List l boleh kosong, tetapi tidak penuh */
 /* F.S. val adalah elemen terakhir l yang baru */
-void insertLastDin(ListDin *l, ElType val) {
+void insertLastDin(ListDin *l, ListDinElType val) {
     ELMT_DIN(*l, lengthListDin(*l)) = val;
     LISTDIN_NEFF(*l)
     ++;
@@ -185,7 +185,7 @@ void insertLastDin(ListDin *l, ElType val) {
 /* F.S. val adalah nilai elemen terakhir l sebelum penghapusan, */
 /*      Banyaknya elemen list berkurang satu */
 /*      List l mungkin menjadi kosong */
-void deleteLastDin(ListDin *l, ElType *val) {
+void deleteLastDin(ListDin *l, ListDinElType *val) {
     *val = ELMT_DIN(*l, lengthListDin(*l) - 1);
     LISTDIN_NEFF(*l)
     --;
@@ -238,7 +238,7 @@ void compactList(ListDin *l) {
     void *ptr;
 
     copyList(*l, &temp);
-    ptr = realloc(BUFFER(*l), lengthListDin(temp) * sizeof(ElType));
+    ptr = realloc(BUFFER(*l), lengthListDin(temp) * sizeof(ListDinElType));
     LISTDIN_CAPACITY(*l) = lengthListDin(temp);
     for (i = 0; i < lengthListDin(temp); i++) {
         ELMT_DIN(*l, i) = ELMT_DIN(temp, i);

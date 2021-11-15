@@ -22,9 +22,9 @@
 /* Nilai elemen tak terdefinisi*/
 
 /* Definisi elemen dan koleksi objek */
-typedef int ElType;  /* type elemen List */
+typedef int ListPosElType;  /* type elemen List */
 typedef struct {
-	 ElType contents[LISTPOS_CAPACITY]; /* memori tempat penyimpan elemen (container) */
+	 ListPosElType contents[LISTPOS_CAPACITY]; /* memori tempat penyimpan elemen (container) */
 } ListPos;
 /* Indeks yang digunakan [0..LISTPOS_CAPACITY-1] */
 /* Jika l adalah ListPos, cara deklarasi dan akses: */
@@ -171,7 +171,7 @@ boolean isListPosEqual(ListPos l1, ListPos l2){
 
 /* ********** SEARCHING ********** */
 /* ***  Perhatian : List boleh kosong!! *** */
-int indexOfPos(ListPos l, ElType val){
+int indexOfPos(ListPos l, ListPosElType val){
 	/* Search apakah ada elemen List l yang bernilai val */
 	/* Jika ada, menghasilkan indeks i terkecil, dengan LISTPOS_ELMT(l,i) = val */
 	/* Jika tidak ada atau jika l kosong, mengirimkan IDX_UNDEF */
@@ -186,7 +186,7 @@ int indexOfPos(ListPos l, ElType val){
 }
 
 /* ********** NILAI EKSTREM ********** */
-void extremesPos(ListPos l, ElType *max, ElType *min){
+void extremesPos(ListPos l, ListPosElType *max, ListPosElType *min){
 	/* I.S. List l tidak kosong */
 	/* F.S. Max berisi nilai terbesar dalam l;
 					Min berisi nilai terkecil dalam l */
@@ -222,7 +222,7 @@ void sortPos(ListPos *l, boolean asc){
 	/* Proses : Mengurutkan l dengan salah satu algoritma sorting,
 		algoritma bebas */
 	int i, j;
-	ElType temp;
+	ListPosElType temp;
 	if (asc){ // ascending order
 		for(i = 0; i < lengthListPos(*l) - 1; i++){
 			for(j = i+1; j < lengthListPos(*l); j++){
@@ -248,14 +248,14 @@ void sortPos(ListPos *l, boolean asc){
 
 /* ********** MENAMBAH DAN MENGHAPUS ELEMEN DI AKHIR ********** */
 /* *** Menambahkan elemen terakhir *** */
-void insertLastPos(ListPos *l, ElType val){
+void insertLastPos(ListPos *l, ListPosElType val){
 	/* Proses: Menambahkan val sebagai elemen terakhir List */
 	/* I.S. List l boleh kosong, tetapi tidak penuh */
 	/* F.S. val adalah elemen terakhir l yang baru */
 	LISTPOS_ELMT(*l, lengthListPos(*l)) = val;
 }
 /* ********** MENGHAPUS ELEMEN ********** */
-void deleteLastPos(ListPos *l, ElType *val){
+void deleteLastPos(ListPos *l, ListPosElType *val){
 	/* Proses : Menghapus elemen terakhir List */
 	/* I.S. List tidak kosong */
 	/* F.S. val adalah nilai elemen terakhir l sebelum penghapusan, */

@@ -14,7 +14,7 @@ int main(){
     
     CreateQueue(&pesanan);
     MainMenu(&fileKonfig);
-    bacaFile(filekonfig,&peta,&adj,&pesanan);
+    bacaFile(fileKonfig,&peta,&adj,&pesanan);
     do{
         printf("\n\n");
         printf("Mobita berada di posisi \n");
