@@ -11,10 +11,10 @@
 #define COL_CAP 100
 
 typedef int Index; /* Index baris, kolom */
-typedef char ElType;
+typedef char MatElType;
 typedef struct
 {
-   ElType contents[ROW_CAP][COL_CAP];
+   MatElType contents[ROW_CAP][COL_CAP];
    int rowEff; /* banyaknya/ukuran baris yg terdefinisi */
    int colEff; /* banyaknya/ukuran kolom yg terdefinisi */
 } Matrix;
@@ -45,7 +45,7 @@ Index getLastIdxCol(Matrix m);
 /* Mengirimkan Index kolom terbesar m */
 boolean isIdxEffMat(Matrix m, Index i, Index j);
 /* Mengirimkan true jika i, j adalah Index efektif bagi m */
-ElType getElmtDiagonal(Matrix m, Index i);
+MatElType getElmtDiagonal(Matrix m, Index i);
 /* Mengirimkan elemen m(i,i) */
 
 /* ********** Assignment  Matrix ********** */
@@ -90,9 +90,9 @@ Matrix subtractMatrix(Matrix m1, Matrix m2);
 Matrix multiplyMatrix(Matrix m1, Matrix m2);
 /* Prekondisi : Ukuran kolom efektif m1 = ukuran baris efektif m2 */
 /* Mengirim hasil perkalian matriks: salinan m1 * m2 */
-Matrix multiplyConst(Matrix m, ElType x);
+Matrix multiplyConst(Matrix m, MatElType x);
 /* Mengirim hasil perkalian setiap elemen m dengan x */
-void pMultiplyConst(Matrix *m, ElType k);
+void pMultiplyConst(Matrix *m, MatElType k);
 /* I.S. m terdefinisi, k terdefinisi */
 /* F.S. Mengalikan setiap elemen m dengan k */
 

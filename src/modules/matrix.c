@@ -13,10 +13,10 @@
 #define COL_CAP 100
 
 typedef int Index; /* Index baris, kolom */
-typedef char ElType;
+typedef char MatElType;
 typedef struct
 {
-   ElType contents[ROW_CAP][COL_CAP];
+   MatElType contents[ROW_CAP][COL_CAP];
    int rowEff; /* banyaknya/ukuran baris yg terdefinisi */
    int colEff; /* banyaknya/ukuran kolom yg terdefinisi */
 } Matrix;
@@ -59,7 +59,7 @@ boolean isIdxEffMat(Matrix m, Index i, Index j){
 	return (i >= 0) && (i < ROWS(m)) && (j >= 0) && (j < COLS(m));
 }
 /* Mengirimkan elemen m(i,i) */
-ElType getElmtDiagonal(Matrix m, Index i){
+MatElType getElmtDiagonal(Matrix m, Index i){
 	return MAT_ELMT(m,i,i);
 }
 
@@ -182,7 +182,7 @@ Matrix multiplyMatrix(Matrix m1, Matrix m2){
 	return m;
 }
 /* Mengirim hasil perkalian setiap elemen m dengan x */
-Matrix multiplyConst(Matrix m, ElType x){
+Matrix multiplyConst(Matrix m, MatElType x){
 	Matrix mk;
 	CreateMatrix(ROWS(m), COLS(m), &mk);
 	int i, j;
@@ -195,7 +195,7 @@ Matrix multiplyConst(Matrix m, ElType x){
 }
 /* I.S. m terdefinisi, k terdefinisi */
 /* F.S. Mengalikan setiap elemen m dengan k */
-void pMultiplyConst(Matrix *m, ElType k){
+void pMultiplyConst(Matrix *m, MatElType k){
 	int i, j;
 	for(i = 0; i < ROWS(*m); i++){
 		for(j = 0; j < COLS(*m); j++){
