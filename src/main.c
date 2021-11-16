@@ -5,6 +5,8 @@
 #include "main_menu.h"
 #include "read_file.h"
 
+// TO DO: efek & reward dari Heavy item dan perishable item
+
 /* Kerangka dari fungsi utama*/
 int main(){
     Matrix peta,adj;
