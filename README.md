@@ -23,17 +23,25 @@ This project is maintained by 5 people :
    harus didahulukan untuk diantarkan kepada pelanggan semua terdapat pada program ini.
    
 ## Bahasa
-   Bahasa yang digunakan adalah bahasa c
+   Bahasa yang digunakan adalah bahasa C
    
 ## Setup Penggunaan
-   pastikan gcc sudah terinstall
+   pastikan GCC sudah terinstall
    * Windows
+      1. Unduh [Make for Windows](http://gnuwin32.sourceforge.net/downlinks/make.php)
+      2. Jalankan setup, catat folder tempat instalasi GnuWin32
+      3. Tambahkan folder `bin` dari installation folder GnuWin32 ke [Path dalam Environment Variables Windows](https://www.architectryan.com/2018/03/17/add-to-the-path-on-windows-10/)
+      4. Jalankan perintah berikut pada Windows Powershell/Command Prompt
+   ```
+   > make
+   > ./main.exe
    ```
    
-   ```
    * Linux
+      <br>Jalankan perintah berikut pada terminal
    ```
-   
+   $ make
+   $ ./main.exe
    ```
    
 ## Status Tubes
