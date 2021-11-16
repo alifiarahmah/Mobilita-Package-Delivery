@@ -39,7 +39,7 @@ void pickUp(POINT posNow, Matrix LokMat, LList *todo, LList *inprogress, Stack *
 			printItemType(ITEM(thisPesanan));
 			printf(" berhasil diambil!\n");
 			// output tujuan pesanan
-			printf("Tujuan Pesanan: %c\n", posisiSkrg(DROP_OFF(thisPesanan), LokMat));
+			printf("Tujuan Pesanan: %c\n", Name(DROP_OFF(thisPesanan)));
 
 			if(TYPE(ITEM(thisPesanan)) == 'H'){ // heavyItem menambah incTime
 				*incTime++;
