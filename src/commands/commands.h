@@ -15,6 +15,9 @@ void help();
 /* inprogress.c */
 void inProgress(Queue backpack);
 
+/* inventory.c */
+void inventory(ListGadget *l);
+
 /* map.c */
 void initMap (Matrix *peta);
 
