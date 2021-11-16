@@ -31,9 +31,9 @@ int posisiToIdx(char bangunan);
 
 boolean cekAdj (Matrix adjMat, char bangunan, char posisiSkrg);
 
-boolean cekToDo (char bangunan, Queue toDo);
+boolean cekToDo (Matrix peta, char bangunan, LList toDo);
 
-void Map (Matrix adjMat, Matrix lokMat, POINT posNow, Queue toDo, Stack dropOff);
+void Map (Matrix adjMat, Matrix lokMat, POINT posNow, LList toDo, Stack dropOff);
 
 /* move.c */
 void move(Matrix adjMat, POINT *posNow, int *time, ListDin lBuilding, int timestep);

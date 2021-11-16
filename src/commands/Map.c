@@ -8,7 +8,7 @@ void initMap (Matrix *peta){
     int i,j;
     for (i=0;i<ROWS(*peta);i++){
         for (j=0;j<COLS(*peta);j++){
-            if ((i == 0) | (j == 0) | (i == ROWS(*peta)-1) | (j == COLS(*peta)-1)){
+            if ((i == 0) || (j == 0) || (i == ROWS(*peta)-1) || (j == COLS(*peta)-1)){
                 setElmtMat(peta,'*',i,j);
             }
             else{
@@ -82,18 +82,23 @@ boolean cekAdj (Matrix adjMat, char bangunan, char posisiSkrg){
 }
 
 /* memeriksa apakah bangunan merupakan HEAD dari toDo */
-boolean cekToDo (char bangunan, Queue toDo){
-    Pesanan i;
+boolean cekToDo (Matrix peta, char bangunan, LList toDo){
     boolean ada = false;
-    dequeue(&toDo,&i);
-    if (Name(DROP_OFF(i)) == bangunan){
-        ada = true;
+    POINT point = elmtToPoint(peta,bangunan);
+    Address p = toDo;
+    while (!ada && (p != NULL)){
+        if (EQ(PICK_UP(INFO(p)), point)){
+            ada = true;
+        }
+        else{
+            p = NEXT(p);
+        }
     }
     return ada;
 }
 
 /* mencetak peta */
-void Map (Matrix adjMat, Matrix lokMat, POINT posNow, Queue toDo, Stack dropOff){
+void Map (Matrix adjMat, Matrix lokMat, POINT posNow, LList toDo, Stack dropOff){
     int i,j,warna;
     char bangunan;
     Pesanan drop;
@@ -101,19 +106,21 @@ void Map (Matrix adjMat, Matrix lokMat, POINT posNow, Queue toDo, Stack dropOff)
         for (j=0;j<COLS(lokMat);j++){
             warna = 6;
             bangunan = MAT_ELMT(lokMat,i,j);
-            pop(&dropOff,&drop);
+            if (!isEmptyStack(dropOff)){
+                pop(&dropOff,&drop);
+            }
             if (bangunan!='*' && bangunan!=' '){
                 warna = 5;
             }
             if (cekAdj(adjMat,bangunan,posisiSkrg(posNow,lokMat))){
                 warna = 4;
             }
-            /*if (cekToDo(bangunan,toDo)){
+            if (!isEmptyLL(toDo) && cekToDo(lokMat,bangunan,toDo)){
                 warna = 3;
             }
             if (bangunan == posisiSkrg(DROP_OFF(drop),lokMat)){
                 warna = 2;
-            }*/
+            }
             if (bangunan == posisiSkrg(posNow,lokMat)){
                 warna = 1;
             }

@@ -63,7 +63,7 @@ int main(){
             dropOff(&tas,posisi);
         }
         else if (cekKataSama(command,"MAP")){
-            Map(adj,peta,posisi,pesanan,tas);
+            Map(adj,peta,posisi,todo,tas);
         }
         else if (cekKataSama(command,"TO_DO")){
             todolist(pesanan);
