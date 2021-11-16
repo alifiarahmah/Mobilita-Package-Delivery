@@ -108,12 +108,12 @@ void Map (Matrix adjMat, Matrix lokMat, POINT posNow, Queue toDo, Stack dropOff)
             if (cekAdj(adjMat,bangunan,posisiSkrg(posNow,lokMat))){
                 warna = 4;
             }
-            if (cekToDo(bangunan,toDo)){
+            /*if (cekToDo(bangunan,toDo)){
                 warna = 3;
             }
             if (bangunan == posisiSkrg(DROP_OFF(drop),lokMat)){
                 warna = 2;
-            }
+            }*/
             if (bangunan == posisiSkrg(posNow,lokMat)){
                 warna = 1;
             }

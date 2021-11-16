@@ -12,58 +12,59 @@ int main(){
     ListDin lBuilding;
     char command[50];
     Word fileKonfig;
+    POINT posisi;
+    Stack tas;
 
     ListGadget gadgetInventory;
     int money = 0; // uang Mobita
     int time = 0; // waktu berjalan
-    
+
+    CreateStack(&tas);
     CreateQueue(&pesanan);
     MainMenu(&fileKonfig);
     bacaFile(fileKonfig,&peta,&adj,&pesanan,&lBuilding);
+    posisi = elmtToPoint(peta,'8');
+    Name(posisi) = '8';
+
     do{
         printf("\n\n");
-        printf("Mobita berada di posisi \n");
-        /*print posisi*/
+        printf("Mobita berada di titik %c",MAT_ELMT(peta,Absis(posisi),Ordinat(posisi)));
+        TulisPOINT(posisi);
+        printf("\n");
         printf("Waktu: %d\n", time);
-        /*print waktu*/
         printf("Uang yang dimiliki: %d\n", money);
-        /*print uang*/
         printf("ENTER COMMAND: ");
         scanf("%s",command);
         if (cekKataSama(command,"MOVE")){
-            printf("MOVE");
+            move(adj,&posisi,&time,lBuilding);
         }
         else if (cekKataSama(command,"PICK_UP")){
             printf("PICK_UP");
         }
         else if (cekKataSama(command,"DROP_OFF")){
-            printf("DROP_OFF");
+            dropOff(&tas,posisi);
         }
         else if (cekKataSama(command,"MAP")){
-            printf("MAP");
+            Map(adj,peta,posisi,pesanan,tas);
         }
         else if (cekKataSama(command,"TO_DO")){
             printf("TO_DO");
         }
         else if (cekKataSama(command,"IN_PROGRESS")){
-            printf("IN_PROGRESS");
             inProgress(pesanan);
         }
         else if (cekKataSama(command,"BUY")){
-            printf("BUY");
             buy(&gadgetInventory, &money);
         }
         else if (cekKataSama(command,"INVENTORY")){
-            printf("INVENTORY");
             inventory(&gadgetInventory);
             // TODO: tambah efek dari pemakaian tiap gadget
         }
         else if (cekKataSama(command,"HELP")){
-            printf("HELP:\n");
             help();
         }
         else if (cekKataSama(command,"EXIT")){
-            printf("End\n");
+            printf("TERIMA KASIH SUDAH BERMAIN\n");
         }
         else{
             printf("Masukan command tidak valid, coba lagi!");

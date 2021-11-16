@@ -10,12 +10,14 @@ void move(Matrix adjMat, POINT *posNow, int *time, ListDin lBuilding) {
 
     // Adjacency HQ: Elemen ke-0, Adjacency A: elemen ke-1, dst
     ctr = 1;
-    rowIdx = Name(*posNow) - 64;
+    /*rowIdx = Name(*posNow) - 64;*/
+    rowIdx = posisiToIdx(Name(*posNow));
 
     printf("Posisi yang dapat dicapai: \n");
     // HQ
     if (MAT_ELMT(adjMat, rowIdx, 0) == '1') {
-        printf("%d. HQ (x, y)", ctr);
+        printf("%d. HQ (%x", ctr,Absis(ELMT_DIN(lBuilding,0)));
+        printf(",%x)\n",Ordinat(ELMT_DIN(lBuilding,0)));
         ctr++;
     }
     // Iterasi kolom
@@ -27,6 +29,8 @@ void move(Matrix adjMat, POINT *posNow, int *time, ListDin lBuilding) {
             ctr++;
         }
     }
+
+    ctr--;
 
     // Handler jika input tidak valid
     do {
@@ -54,8 +58,11 @@ void move(Matrix adjMat, POINT *posNow, int *time, ListDin lBuilding) {
                 posSelected++;
             }
         }
+        *posNow = ELMT_DIN(lBuilding, posSelected-1);
+        *time += 1;
     }
-
-    *posNow = ELMT_DIN(lBuilding, posSelected);
-    *time += 1;
+    else{
+        printf("MOVE dibatalkan.\n");
+    }
+    
 }
