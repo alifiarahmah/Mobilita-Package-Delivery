@@ -127,9 +127,6 @@ Matrix inverse1(Matrix m);
 void pInverse1(Matrix *m);
 /* I.S. m terdefinisi */
 /* F.S. m di-invers, yaitu setiap elemennya dinegasikan (dikalikan -1) */
-float determinant(Matrix m);
-/* Prekondisi: isSquare(m) */
-/* Menghitung nilai determinan m */
 void transpose(Matrix *m);
 /* I.S. m terdefinisi dan isSquare(m) */
 /* F.S. m "di-transpose", yaitu setiap elemen m(i,j) ditukar nilainya dengan elemen m(j,i) */

@@ -2,11 +2,10 @@
 #include "commands.h"
 
 #include "../modules/adt.h"
+#include "../read_file.h"
 
 void move(Matrix adjMat, POINT *posNow, int *time, ListDin lBuilding) {
-    // TODO: Merapikan input
     int ctr, rowIdx, input;
-    Word input;
     int posSelected;
 
     // Adjacency HQ: Elemen ke-0, Adjacency A: elemen ke-1, dst
@@ -34,7 +33,8 @@ void move(Matrix adjMat, POINT *posNow, int *time, ListDin lBuilding) {
         printf("Posisi yang dapat dipilih? (Ketik 0 jika ingin kembali)\n");
         printf("ENTER COMMAND: ");
         // TODO: ganti ke mesin kata
-        scanf("%d", &input);
+        startWord();
+        input = charToInt(currentWord);
         if ((input < 0) || (input > ctr)) {
             printf("Input tidak valid. Ulangi. \n");
         }

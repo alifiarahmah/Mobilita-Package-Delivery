@@ -319,21 +319,6 @@ Matrix minor(Matrix m, int r, int c){ // fungsi antara saja
 	}
 	return mc;
 }
-/* Prekondisi: isSquare(m) */
-/* Menghitung nilai determinan m */
-float determinant(Matrix m){
-	int i;
-	float det;
-	if (count(m) == 4){
-		return (MAT_ELMT(m, 0, 0) * MAT_ELMT(m, 1, 1)) - (MAT_ELMT(m, 0, 1) * MAT_ELMT(m, 1, 0));
-	} else {
-		det = 0;
-		for(i = 0; i < COLS(m); i++){
-			det += pow(-1, i) * MAT_ELMT(m, 0, i) * determinant(minor(m, 0, i));
-		}
-	}
-	return det;
-}
 
 /* I.S. m terdefinisi dan isSquare(m) */
 /* F.S. m "di-transpose", yaitu setiap elemen m(i,j) ditukar nilainya dengan elemen m(j,i) */
