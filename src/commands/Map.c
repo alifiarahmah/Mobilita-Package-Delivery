@@ -102,13 +102,15 @@ void Map (Matrix adjMat, Matrix lokMat, POINT posNow, LList toDo, Stack tas){
     int i,j,warna;
     char bangunan;
     Pesanan drop;
+    
+    if (!isEmptyStack(tas)){
+        pop(&tas,&drop);
+    }
+
     for (i=0;i<ROWS(lokMat);i++){
         for (j=0;j<COLS(lokMat);j++){
             warna = 6;
             bangunan = MAT_ELMT(lokMat,i,j);
-            if (!isEmptyStack(tas)){
-                pop(&tas,&drop);
-            }
             if (bangunan!='*' && bangunan!=' '){
                 warna = 5;
             }
@@ -118,7 +120,7 @@ void Map (Matrix adjMat, Matrix lokMat, POINT posNow, LList toDo, Stack tas){
             if (!isEmptyLL(toDo) && cekToDo(lokMat,bangunan,toDo)){
                 warna = 3;
             }
-            if (!isEmptyStack(tas) && bangunan == posisiSkrg(DROP_OFF(drop),lokMat)){
+            if (bangunan == Name(DROP_OFF(drop))){
                 warna = 2;
             }
             if (bangunan == posisiSkrg(posNow,lokMat)){
