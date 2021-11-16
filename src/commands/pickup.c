@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include "commands.h"
 
-#include "Map.c"
 #include "../modules/adt.h"
 
 /*	PICKUP: Mengambil item jika ada pesanan yang harus diambil pada lokasi
