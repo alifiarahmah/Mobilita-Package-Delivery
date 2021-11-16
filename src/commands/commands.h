@@ -42,6 +42,6 @@ void move(Matrix adjMat, POINT *posNow, int *time, ListDin lBuilding, int timest
 void pickUp(POINT posNow, Matrix LokMat, LList *todo, LList *inprogress, Stack *tas, int *incTime);
 
 /* todolist.c */
-void todolist(Queue pesanan);
+void todolist(LList toDo);
 
 #endif

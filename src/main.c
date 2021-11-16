@@ -49,7 +49,7 @@ int main(){
             move(adj,&posisi,&time,lBuilding, 1);
             
             // tiap pindah waktu, pindahin pesanan dari queue pesanan ke linkedlist todo
-            if(TIME(HEAD(pesanan)) == time){
+            while(TIME(HEAD(pesanan)) == time){
                 dequeue(&pesanan, &val);
                 insertLastLL(&todo, val);
             }
@@ -66,7 +66,7 @@ int main(){
             Map(adj,peta,posisi,todo,tas);
         }
         else if (cekKataSama(command,"TO_DO")){
-            todolist(pesanan);
+            todolist(todo);
         }
         else if (cekKataSama(command,"IN_PROGRESS")){
             inProgress(pesanan);
