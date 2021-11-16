@@ -41,10 +41,6 @@ int main(){
         printf("Uang yang dimiliki: %d Yen\n", money);
         printf("ENTER COMMAND: ");
         startWord();
-        for (int i = 0; i < currentWord.length; i++) {
-            command[i] = currentWord.contents[i];
-        }
-        command[currentWord.length] = '\0'; // end of string
         if (cekKataSama(command,"MOVE")){
             move(adj,&posisi,&time,lBuilding, 1);
             
@@ -66,7 +62,7 @@ int main(){
             Map(adj,peta,posisi,pesanan,tas);
         }
         else if (cekKataSama(command,"TO_DO")){
-            printf("TO_DO");
+            todolist(pesanan);
         }
         else if (cekKataSama(command,"IN_PROGRESS")){
             inProgress(pesanan);

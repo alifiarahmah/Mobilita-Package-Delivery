@@ -87,13 +87,7 @@ boolean isFullListGadget(ListGadget l){
 }
 
 /* ********** BACA dan TULIS dengan INPUT/OUTPUT device ********** */
-/* Proses : Menuliskan isi List dengan traversal, List ditulis di antara kurung
-	 siku; antara dua elemen dipisahkan dengan separator "koma", tanpa tambahan
-	 karakter di depan, di tengah, atau di belakang, termasuk spasi dan enter */
-/* I.S. l boleh kosong */
-/* F.S. Jika l tidak kosong: [e1,e2,...,en] */
-/* Contoh : jika ada tiga elemen bernilai 1, 20, 30 akan dicetak: [1,20,30] */
-/* Jika List kosong : menulis [] */
+/* Proses : Menuliskan isi List Gadget, format seperti di inventory */
 void displayListGadget(ListGadget l){
 	int i;
     int j = 1;
@@ -106,14 +100,6 @@ void displayListGadget(ListGadget l){
         }
     }
 }
-
-/* ********** SEARCHING ********** */
-/* ***  Perhatian : List boleh kosong!! *** */
-/* Search apakah ada elemen List l yang bernilai val */
-/* Jika ada, menghasilkan indeks i terkecil, dengan GADGET_ELMT(l,i) = val */
-/* Jika tidak ada atau jika l kosong, mengirimkan IDX_UNDEF */
-/* Skema Searching yang digunakan bebas */
-int indexOfListGadget(ListGadget l, Gadget val){}
 
 /* ********** MENAMBAH DAN MENGHAPUS ELEMEN ********** */
 /* Proses: Menambahkan val sebagai elemen dalam list, di indeks tempat GADGET_UNDEF pertama */
@@ -137,11 +123,5 @@ void deleteGadget(ListGadget *l, int idx, Gadget *val){
     *val = GADGET_ELMT(*l,idx);
     GADGET_ELMT(*l, idx) = GADGET_UNDEF;
 }
-
-/* void buyGadget(ListGadget *l, int money); */
-/* Note: Pindah ke /src/commands/buy.c dengan nama fungsi buy() */
-
-/* void useGadget(ListGadget *l); */
-/* Note: Pindah ke /src/commands/inventory.c dengan nama fungsi inventory() */
 
 #endif

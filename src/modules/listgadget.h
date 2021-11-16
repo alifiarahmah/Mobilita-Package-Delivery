@@ -67,21 +67,7 @@ boolean isFullListGadget(ListGadget l);
 
 /* ********** BACA dan TULIS dengan INPUT/OUTPUT device ********** */
 void displayListGadget(ListGadget l);
-/* Proses : Menuliskan isi List dengan traversal, List ditulis di antara kurung
-	 siku; antara dua elemen dipisahkan dengan separator "koma", tanpa tambahan
-	 karakter di depan, di tengah, atau di belakang, termasuk spasi dan enter */
-/* I.S. l boleh kosong */
-/* F.S. Jika l tidak kosong: [e1,e2,...,en] */
-/* Contoh : jika ada tiga elemen bernilai 1, 20, 30 akan dicetak: [1,20,30] */
-/* Jika List kosong : menulis [] */
-
-/* ********** SEARCHING ********** */
-/* ***  Perhatian : List boleh kosong!! *** */
-int indexOfListGadget(ListGadget l, Gadget val);
-/* Search apakah ada elemen List l yang bernilai val */
-/* Jika ada, menghasilkan indeks i terkecil, dengan GADGET_ELMT(l,i) = val */
-/* Jika tidak ada atau jika l kosong, mengirimkan IDX_UNDEF */
-/* Skema Searching yang digunakan bebas */
+/* Proses : Menuliskan isi List Gadget, format seperti di inventory */
 
 /* ********** MENAMBAH DAN MENGHAPUS ELEMEN DI AKHIR ********** */
 /* *** Menambahkan elemen terakhir *** */
@@ -97,19 +83,5 @@ void deleteGadget(ListGadget *l, int idx, Gadget *val);
 /* F.S. val adalah nilai elemen terakhir l sebelum penghapusan, */
 /*      Banyaknya elemen List berkurang satu */
 /*      List l mungkin menjadi kosong */
-
-/* void buyGadget(ListGadget *l, int money); */
-/* Proses: Menampilkan antarmuka pembelian gadget */
-/* I.S. Mobita berada di Headquarter, banyak gadget dalam inventory tidak melebihi capacity */
-/* F.S. Jika pembelian berhasil, gadget yang terbeli masuk ke inventory */
-/* 		Jika pembelian gagal, menuliskan pesan */
-/* Note: Pindah ke /src/commands/buy.c dengan nama fungsi buy() */
-
-/* void useGadget(ListGadget *l); */
-/* Proses: Menampilkan antarmuka pemakaian gadget */
-/* I.S. Banyak gadget dalam inventory tidak melebihi capacity */
-/* F.S Jika pemakaian berhasil, gadget yang terpakai menghilang dari inventory */
-/*     Jika pemakaian gagal, menuliskan pesan */
-/* Note: Pindah ke /src/commands/inventory.c dengan nama fungsi inventory() */
 
 #endif
