@@ -69,7 +69,7 @@ int main(){
             todolist(pesanan);
         }
         else if (cekKataSama(command,"IN_PROGRESS")){
-            inProgress(pesanan);
+            inProgress(tas);
         }
         else if (cekKataSama(command,"BUY")){
             buy(posisi, peta, &gadgetInventory, &money);
