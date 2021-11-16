@@ -22,21 +22,19 @@
 
 /* Definisi elemen dan koleksi objek */
 typedef struct {
-	Gadget contents[MAXCAP]; /* memori tempat penyimpan elemen (container) */
-	int capacity; /* kapasitas gadget yang dapat ditaruh di inventory, awalnya 5 */
+	Gadget contents[5]; /* memori tempat penyimpan elemen (container) */
 } ListGadget;
-/* Indeks yang digunakan [0..CAPACITY-1] */
+/* Indeks yang digunakan [0..4] */
 /* Jika l adalah ListGadget, cara deklarasi dan akses: */
 /* Deklarasi : l : ListGadget */
 /* Maka cara akses:
-	 ELMT(l,i) untuk mengakses elemen ke-i */
+	 GADGET_ELMT(l,i) untuk mengakses elemen ke-i */
 /* Definisi :
 	 List kosong: semua elemen bernilai VAL_UNDEF
-	 Definisi elemen pertama: ELMT(l,i) dengan i=0 */
+	 Definisi elemen pertama: GADGET_ELMT(l,i) dengan i=0 */
 
 /* ********** SELEKTOR ********** */
-#define ELMT(l, i) (l).contents[(i)]
-#define LG_CAPACITY(l) (l).capacity
+#define GADGET_ELMT(l, i) (l).contents[(i)]
 
 /* ********** KONSTRUKTOR ********** */
 /* Konstruktor : create List kosong  */
@@ -81,7 +79,7 @@ void displayListGadget(ListGadget l);
 /* ***  Perhatian : List boleh kosong!! *** */
 int indexOfListGadget(ListGadget l, Gadget val);
 /* Search apakah ada elemen List l yang bernilai val */
-/* Jika ada, menghasilkan indeks i terkecil, dengan ELMT(l,i) = val */
+/* Jika ada, menghasilkan indeks i terkecil, dengan GADGET_ELMT(l,i) = val */
 /* Jika tidak ada atau jika l kosong, mengirimkan IDX_UNDEF */
 /* Skema Searching yang digunakan bebas */
 

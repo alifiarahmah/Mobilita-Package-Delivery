@@ -22,18 +22,17 @@
 typedef struct {
 	Gadget contents[5]; /* memori tempat penyimpan elemen (container) */
 } ListGadget;
-/* Indeks yang digunakan [0..CAPACITY-1] */
+/* Indeks yang digunakan [0..4] */
 /* Jika l adalah ListGadget, cara deklarasi dan akses: */
 /* Deklarasi : l : ListGadget */
 /* Maka cara akses:
-	 ELMT(l,i) untuk mengakses elemen ke-i */
+	 GADGET_ELMT(l,i) untuk mengakses elemen ke-i */
 /* Definisi :
 	 List kosong: semua elemen bernilai GADGET_UNDEF
-	 Definisi elemen pertama: ELMT(l,i) dengan i=0 */
+	 Definisi elemen pertama: GADGET_ELMT(l,i) dengan i=0 */
 
 /* ********** SELEKTOR ********** */
-#define ELMT(l, i) (l).contents[(i)]
-#define LG_CAPACITY(l) (l).capacity
+#define GADGET_ELMT(l, i) (l).contents[(i)]
 
 /* ********** KONSTRUKTOR ********** */
 /* Konstruktor : create List kosong  */
@@ -43,7 +42,7 @@ typedef struct {
 void CreateListGadget(ListGadget *l){
 	int i;
 	for(i = 0; i < 5; i++){
-		ELMT(*l, i) = GADGET_UNDEF;
+		GADGET_ELMT(*l, i) = GADGET_UNDEF;
 	}
 }
 
@@ -55,7 +54,7 @@ int lengthListGadget(ListGadget l){
 	int i = 0;
 	int count = 0;
 	while(i < 5){
-        while (ELMT(l,i) != GADGET_UNDEF) {
+        while (GADGET_ELMT(l,i) != GADGET_UNDEF) {
             count++;
         }
         i++;
@@ -100,16 +99,8 @@ void displayListGadget(ListGadget l){
     int j = 1;
     for (i = 0; i < 5; i++) {
         printf("%d. ", (i+1));
-        if (ELMT(l,i) != GADGET_UNDEF) {
-            if (ELMT(l,i) == "Kain Pembungkus Waktu") {
-                printf("Kain Pembungkus Waktu (800 Yen)\n");
-            } else if (ELMT(l,i) == "Senter Pembesar") {
-                printf("Senter Pembesar (1200 Yen)\n");
-            } else if (ELMT(l,i) == "Pintu Kemana Saja") {
-                printf("Pintu Kemana Saja (1500 Yen)\n");
-            } else if (ELMT(l,i) == "Mesin Waktu") {
-                printf("Mesin Waktu (3000 Yen)\n");
-            }
+        if (isGadgetValid(GADGET_ELMT(l,i))) {
+					printGadgetName(GADGET_ELMT(l,i));
         } else {
             printf("-\n");
         }
@@ -119,7 +110,7 @@ void displayListGadget(ListGadget l){
 /* ********** SEARCHING ********** */
 /* ***  Perhatian : List boleh kosong!! *** */
 /* Search apakah ada elemen List l yang bernilai val */
-/* Jika ada, menghasilkan indeks i terkecil, dengan ELMT(l,i) = val */
+/* Jika ada, menghasilkan indeks i terkecil, dengan GADGET_ELMT(l,i) = val */
 /* Jika tidak ada atau jika l kosong, mengirimkan IDX_UNDEF */
 /* Skema Searching yang digunakan bebas */
 int indexOfListGadget(ListGadget l, Gadget val){}
@@ -130,10 +121,10 @@ int indexOfListGadget(ListGadget l, Gadget val){}
 /* F.S. val adalah elemen terakhir l yang baru */
 void insertGadget(ListGadget *l, Gadget val){
 	int i = 0;
-	while(ELMT(*l, i) != GADGET_UNDEF){
+	while(GADGET_ELMT(*l, i) != GADGET_UNDEF){
 		i++;
 	}
-	ELMT(*l, i) = val;
+	GADGET_ELMT(*l, i) = val;
 }
 
 /* ********** MENGHAPUS ELEMEN ********** */
@@ -143,8 +134,8 @@ void insertGadget(ListGadget *l, Gadget val){
 /*      Banyaknya elemen List berkurang satu */
 /*      List l mungkin menjadi kosong */
 void deleteGadget(ListGadget *l, int idx, Gadget *val){
-    *val = ELMT(*l,idx);
-    ELMT(*l, idx) = GADGET_UNDEF;
+    *val = GADGET_ELMT(*l,idx);
+    GADGET_ELMT(*l, idx) = GADGET_UNDEF;
 }
 
 /* void buyGadget(ListGadget *l, int money); */

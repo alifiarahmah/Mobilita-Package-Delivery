@@ -34,11 +34,11 @@ boolean isEmptyLL(LList l);
 /* Mengirim true jika list kosong */
 
 /****************** GETTER SETTER ******************/
-Pesanan getElmt(LList l, int idx);
+Pesanan getPesanan(LList l, int idx);
 /* I.S. l terdefinisi, idx indeks yang valid dalam l, yaitu 0..length(l) */
 /* F.S. Mengembalikan nilai elemen l pada indeks idx */
 
-void setElmt(LList *l, int idx, Pesanan val);
+void setPesanan(LList *l, int idx, Pesanan val);
 /* I.S. l terdefinisi, idx indeks yang valid dalam l, yaitu 0..length(l) */
 /* F.S. Mengubah elemen l pada indeks ke-idx menjadi val */
 

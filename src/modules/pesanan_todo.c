@@ -11,7 +11,7 @@ boolean isEmptyLL(LList l) {
     return FIRST(l) == NULL;
 }
 
-Pesanan getElmt(LList l, int idx) {
+Pesanan getPesanan(LList l, int idx) {
     Address p;
     p = l;
     if (!(idx == lengthListLinked(l))) {
@@ -20,11 +20,12 @@ Pesanan getElmt(LList l, int idx) {
         }
         return INFO(p);
     } else {
-        return ;
+        Pesanan x;
+        return x;
     }
 }
 
-void setElmt(LList *l, int idx, Pesanan val) {
+void setPesanan(LList *l, int idx, Pesanan val) {
     int i;
     Address p;
 

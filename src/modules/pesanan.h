@@ -70,7 +70,7 @@ boolean isEmpty(Queue q);
 /* Mengirim true jika q kosong: lihat definisi di atas */
 boolean isFull(Queue q);
 /* Mengirim true jika tabel penampung elemen q sudah penuh */
-/* yaitu jika index head bernilai 0 dan index tail bernilai CAPACITY-1 */
+/* yaitu jika index head bernilai 0 dan index tail bernilai PESANAN_CAPACITY-1 */
 int length(Queue q);
 /* Mengirimkan banyaknya elemen queue. Mengirimkan 0 jika q kosong. */
 

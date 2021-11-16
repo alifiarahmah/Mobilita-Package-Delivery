@@ -139,8 +139,8 @@ void displayElmtDin(ListDin l, IdxType idx) {
 
     p = ELMT_DIN(l, idx);
     printf("%c ", Name(p));
-    printf("(%.0f,", Absis(p));
-    printf("%.0f)", Ordinat(p));
+    printf("(%d,", Absis(p));
+    printf("%d)", Ordinat(p));
 }
 
 /* ********** SEARCHING ********** */

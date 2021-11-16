@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include "boolean.h"
 #include "gadget.h"
 
 /* Proses: Menuliskan output nama Gadget secara lengkap */
@@ -8,20 +9,12 @@
 	3. Pintu Kemana Saja (1500 Yen) gadgetType 'C'
 	4. Mesin Waktu (3000 Yen) gadgetType 'D'
 */
-Gadget getGadgetName(char gtype){
-	char gadget;
-	switch(gtype){
-		case 'A':
-			gadget = 'Kain Pembungkus Waktu';
-		case 'B':
-			gadget = 'Senter Pembesar';
-		case 'C':
-			gadget = 'Pintu Kemana Saja';
-		case 'D':
-			gadget = 'Mesin Waktu';
-	}
-	return gadget;
+
+boolean isGadgetValid(Gadget x){
+    return (x == 'A') || (x == 'B') || (x == 'C') || (x == 'D') || (x == 'E');
 }
+
+// Gadget getGadgetName(char gtype) <- deprecated, pake printGadgetName
 
 void printGadgetName(Gadget x){
     if(x == 'A'){
