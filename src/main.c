@@ -12,6 +12,10 @@ int main(){
     ListDin lBuilding;
     char command[50];
     Word fileKonfig;
+
+    ListGadget gadgetInventory;
+    int money = 0; // uang Mobita
+    int time = 0; // waktu berjalan
     
     CreateQueue(&pesanan);
     MainMenu(&fileKonfig);
@@ -20,9 +24,9 @@ int main(){
         printf("\n\n");
         printf("Mobita berada di posisi \n");
         /*print posisi*/
-        printf("Waktu: \n");
+        printf("Waktu: %d\n", time);
         /*print waktu*/
-        printf("Uang yang dimiliki: \n");
+        printf("Uang yang dimiliki: %d\n", money);
         /*print uang*/
         printf("ENTER COMMAND: ");
         scanf("%s",command);
@@ -43,15 +47,20 @@ int main(){
         }
         else if (cekKataSama(command,"IN_PROGRESS")){
             printf("IN_PROGRESS");
+            inProgress(pesanan);
         }
         else if (cekKataSama(command,"BUY")){
             printf("BUY");
+            buy(&gadgetInventory, &money);
         }
         else if (cekKataSama(command,"INVENTORY")){
             printf("INVENTORY");
+            inventory(&gadgetInventory);
+            // TODO: tambah efek dari pemakaian tiap gadget
         }
         else if (cekKataSama(command,"HELP")){
             printf("HELP");
+            help();
         }
         else if (cekKataSama(command,"EXIT")){
             printf("End\n");
