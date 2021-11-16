@@ -3,20 +3,21 @@
 
 #include "../modules/adt.h"
 
-void inProgress(LList pesanan) {
+void inProgress(LList inprogress) {
     int idx;
     int ctr;
     POINT pointDropOff;
     Item order;
     Pesanan pesan;
 
-    if (!isEmptyLL(pesanan)) {
+    if (!isEmptyLL(inprogress)) {
         ctr = 0;
-        Address p;
+        Address p = inprogress;
         
         printf("Pesanan yang sedang diantarkan: \n");
         while(p != NULL) {
             pesan = INFO(p);
+            ctr++;
             if (TYPE(ITEM(pesan)) == 'N'){
                 printf("%d. Normal Item (Tujuan: %c)\n",ctr,Name(DROP_OFF(pesan)));
             }
@@ -29,6 +30,7 @@ void inProgress(LList pesanan) {
             else{
                 printf("%d. VIP Item (Tujuan: %c)\n",ctr,Name(DROP_OFF(pesan)));
             }
+            p = NEXT(p);
         }
     } 
     
