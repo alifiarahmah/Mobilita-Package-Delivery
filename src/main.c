@@ -14,18 +14,22 @@ int main(){
     Word fileKonfig;
     POINT posisi;
     Stack tas;
-
     ListGadget gadgetInventory;
-    CreateListGadget(&gadgetInventory);
+    LList todo, inprogress;
+
     int money = 0; // uang Mobita
     int time = 0; // waktu berjalan
 
+    CreateListGadget(&gadgetInventory);
     CreateStack(&tas);
     CreateQueue(&pesanan);
     MainMenu(&fileKonfig);
     bacaFile(fileKonfig,&peta,&adj,&pesanan,&lBuilding);
     posisi = elmtToPoint(peta,'8');
     Name(posisi) = '8';
+
+    // temporary variables
+    Pesanan val;
 
     do{
         printf("\n\n");
@@ -38,6 +42,14 @@ int main(){
         scanf("%s",command);
         if (cekKataSama(command,"MOVE")){
             move(adj,&posisi,&time,lBuilding);
+            
+            // tiap pindah waktu, pindahin pesanan dari queue pesanan ke linkedlist todo
+            if(TIME(HEAD(pesanan)) == time){
+                dequeue(&pesanan, &val);
+                insertLastLL(&todo, val);
+            }
+            // tiap pindah waktu, item yang lewat time limit perish
+
         }
         else if (cekKataSama(command,"PICK_UP")){
             printf("PICK_UP");
