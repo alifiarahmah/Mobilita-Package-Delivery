@@ -62,7 +62,7 @@ int main(){
             Map(adj,peta,posisi,pesanan,tas);
         }
         else if (cekKataSama(command,"TO_DO")){
-            printf("TO_DO");
+            todolist(pesanan);
         }
         else if (cekKataSama(command,"IN_PROGRESS")){
             inProgress(pesanan);
