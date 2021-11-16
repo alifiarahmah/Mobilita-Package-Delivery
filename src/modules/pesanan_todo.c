@@ -173,24 +173,3 @@ int lengthListLinked(LList l) {
     }
     return i;
 }
-
-LList concat(LList l1, LList l2) {
-    LList l3;
-    Address p;
-
-    CreateList(&l3);
-    p = l1;
-
-    while (p != NULL) {
-        insertLastLL(&l3, INFO(p));
-        p = NEXT(p);
-    }
-
-    p = l2;
-    while (p != NULL) {
-        insertLastLL(&l3, INFO(p));
-        p = NEXT(p);
-    }
-
-    return l3;
-}

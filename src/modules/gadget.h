@@ -15,9 +15,6 @@ typedef char Gadget;
 
 boolean isGadgetValid(Gadget x);
 
-// Gadget getGadgetName(char gtype); <- deprecated, pake printGadgetName
-/*mengembalikan nama gadget*/
-
 /* Proses: Menuliskan output nama Gadget secara lengkap */
 void printGadgetName(Gadget x);
 

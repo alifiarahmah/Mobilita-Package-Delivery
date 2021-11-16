@@ -82,23 +82,8 @@ void deleteAt(LList *l, int idx, Pesanan *val);
 /*      Elemen l pada indeks ke-idx dihapus dari l */
 
 /****************** PROSES SEMUA ELEMEN LIST ******************/
-void displayListLinked(LList l);
-// void printInfo(LList l);
-/* I.S. List mungkin kosong */
-/* F.S. Jika list tidak kosong, iai list dicetak ke kanan: [e1,e2,...,en] */
-/* Contoh : jika ada tiga elemen bernilai 1, 20, 30 akan dicetak: [1,20,30] */
-/* Jika list kosong : menulis [] */
-/* Tidak ada tambahan karakter apa pun di awal, akhir, atau di tengah */
 
 int lengthListLinked(LList l);
 /* Mengirimkan banyaknya elemen list; mengirimkan 0 jika list kosong */
-
-/****************** PROSES TERHADAP LIST ******************/
-LList concat(LList l1, LList l2);
-/* I.S. l1 dan l2 sembarang */
-/* F.S. l1 dan l2 kosong, l3 adalah hasil konkatenasi l1 & l2 */
-/* Konkatenasi dua buah list : l1 dan l2    */
-/* menghasilkan l3 yang baru (dengan elemen list l1 dan l2 secara beurutan). */
-/* Tidak ada alokasi/dealokasi pada prosedur ini */
 
 #endif
