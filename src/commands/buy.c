@@ -7,12 +7,13 @@
 /*      Terdapat uang sebesar money yen, uang bisa kosong */
 /* F.S. Jika list gadget tidak kosong dan uang cukup, gadget yang terbeli masuk ke inventory */
 /* 		Jika pembelian gagal, menuliskan pesan. */
-void buyGadget(ListGadget *l, int money){
-	if(!isFullListGadget(*l)){
-			char command, gtype;
-			int cost;
-		printf("Uang anda sekarang: %d Yen\n", money);
-		printf("Gadget yang tersedia:\n"); // iterasi pake list
+void buy(ListGadget *l, int *money){
+	if(!isFullListGadget(*l)){ // masih bisa membeli gadget
+        char command, gtype;
+        int cost;
+
+		printf("Uang anda sekarang: %d Yen\n", *money);
+		printf("Gadget yang tersedia:\n");
 		printf("1. Kain Pembungkus Waktu (800 Yen)\n");
 		printf("2. Senter Pembesar (1200 Yen)\n");
 		printf("3. Pintu Kemana Saja (1500 Yen)\n");
@@ -33,8 +34,8 @@ void buyGadget(ListGadget *l, int money){
             cost = 3000; // Mesin waktu
             gtype = 'D';
         }
-        if (money >= cost){
-            money -= cost;
+        if (*money >= cost){
+            *money -= cost;
             insertGadget(l, gtype);
             printGadgetName(gtype);
             printf(" berhasil dibeli.\n");
