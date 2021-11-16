@@ -39,7 +39,7 @@ void Map (Matrix adjMat, Matrix lokMat, POINT posNow, Queue toDo, Stack dropOff)
 void move(Matrix adjMat, POINT *posNow, int *time, ListDin lBuilding);
 
 /* pickup.c */
-void pickUp(POINT posNow, Matrix LokMat, LList *todo, LList *inprogress, Stack *tas);
+void pickUp(POINT posNow, Matrix LokMat, LList *todo, LList *inprogress, Stack *tas, int *incTime);
 
 /* todolist.c */
 void todolist(Pesanan *L, Queue *Q);

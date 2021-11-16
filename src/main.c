@@ -19,6 +19,7 @@ int main(){
 
     int money = 0; // uang Mobita
     int time = 0; // waktu berjalan
+    int incTime = 1; // skala penambahan waktu
 
     CreateListGadget(&gadgetInventory);
     CreateStack(&tas);
@@ -52,7 +53,7 @@ int main(){
 
         }
         else if (cekKataSama(command,"PICK_UP")){
-            printf("PICK_UP");
+            pickUp(posisi, peta, &todo, &inprogress, &tas, &incTime);
         }
         else if (cekKataSama(command,"DROP_OFF")){
             dropOff(&tas,posisi);

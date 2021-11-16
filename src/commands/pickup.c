@@ -3,7 +3,7 @@
 
 #include "../modules/adt.h"
 
-void pickUp(POINT posNow, Matrix LokMat, LList *todo, LList *inprogress, Stack *tas){
+void pickUp(POINT posNow, Matrix LokMat, LList *todo, LList *inprogress, Stack *tas, int *incTime){
 	Pesanan thisPesanan;
 	boolean pesananFound = false;
 	Address p = *todo;
@@ -25,9 +25,12 @@ void pickUp(POINT posNow, Matrix LokMat, LList *todo, LList *inprogress, Stack *
 			// output tipe pesanan
 			printf("Pesanan berupa ");
 			printItemType(ITEM(thisPesanan));
-			printf("berhasil diambil!\n");
+			printf(" berhasil diambil!\n");
 			// output tujuan pesanan
 			printf("Tujuan Pesanan: %c\n", posisiSkrg(DROP_OFF(thisPesanan), LokMat));
+			if(TYPE(ITEM(thisPesanan)) == 'H'){ // heavyItem
+				*incTime++;
+			}
 		} else {
 			printf("Tas anda penuh. Anda tidak dapat menambah pesanan lagi.\n");
 		}
