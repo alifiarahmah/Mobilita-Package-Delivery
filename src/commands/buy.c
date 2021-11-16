@@ -12,7 +12,7 @@ boolean isCommandValid(char command){
 /* F.S. Jika list gadget tidak kosong dan uang cukup, gadget yang terbeli masuk ke inventory */
 /* 		Jika pembelian gagal, menuliskan pesan. */
 void buy(POINT posNow, Matrix lokMat, ListGadget *l, int *money){
-    if (EQ(posNow, elmtToPoint(lokMat,'8'))){ // lagi di headquarter
+    if (Name(posNow) == '8'){ // lagi di headquarter
         if(!isFullListGadget(*l)){ // masih bisa membeli gadget
             char command, gtype;
             int cost = 0;
