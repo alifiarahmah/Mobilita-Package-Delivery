@@ -14,19 +14,23 @@ void pickUp(POINT posNow, Matrix LokMat, LList *todo, LList *inprogress, Stack *
 	Pesanan thisPesanan;
 
 	boolean pesananFound = false;
+	int i = 0;
 	Address p = *todo;
 	while(!pesananFound && (p != NULL)){ // iterasi todo, cari yang posisinya sesuai dengan posNow
 		if(EQ(PICK_UP(INFO(p)), posNow)){
 			pesananFound = true;
-			deleteAt(todo, indexOfLL(*todo, thisPesanan), &thisPesanan); // delete pesanan dari todo
+			deleteAt(todo, i, &thisPesanan); // delete pesanan dari todo
+			thisPesanan = INFO(p);
 		} else {
 			p = NEXT(p);
+			i++;
 		}
 	}
 
 	if (pesananFound){ // ketemu
 
-		if (IDX_TOP(*tas)+1 > TASCAPACITY(*tas)){ // kalo tasnya tidak penuh
+		if (!isFullStack(*tas)){ // kalo tasnya tidak penuh
+
 			insertLastLL(inprogress, thisPesanan); // taroh pesanan ke inprogress
 			push(tas, thisPesanan); // taroh itemnya ke tas
 
@@ -36,14 +40,16 @@ void pickUp(POINT posNow, Matrix LokMat, LList *todo, LList *inprogress, Stack *
 			printf(" berhasil diambil!\n");
 			// output tujuan pesanan
 			printf("Tujuan Pesanan: %c\n", posisiSkrg(DROP_OFF(thisPesanan), LokMat));
-			if(TYPE(ITEM(thisPesanan)) == 'H'){ // heavyItem
+
+			if(TYPE(ITEM(thisPesanan)) == 'H'){ // heavyItem menambah incTime
 				*incTime++;
 			}
-		} else {
+
+		} else { // tas penuh
 			printf("Tas anda penuh. Anda tidak dapat menambah pesanan lagi.\n");
 		}
 
-	} else {
+	} else { // tidak ada pesanan di posisi itu
 		printf("Pesanan tidak ditemukan!\n");
 	}
 }
