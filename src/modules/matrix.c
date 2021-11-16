@@ -83,7 +83,7 @@ void copyMatrix(Matrix mIn, Matrix *mRes){
 /* Contoh: Jika nRow = 3 dan nCol = 3, maka contoh cara membaca isi matriks :
 1 2 3
 4 5 6
-8 9 10 
+8 9 10
 */
 void readMatrix(Matrix *m, int nRow, int nCol){
 	CreateMatrix(nRow, nCol, m);
@@ -95,7 +95,7 @@ void readMatrix(Matrix *m, int nRow, int nCol){
 	}
 }
 /* I.S. m terdefinisi */
-/* F.S. Nilai m(i,j) ditulis ke layar per baris per kolom, masing-masing elemen per baris 
+/* F.S. Nilai m(i,j) ditulis ke layar per baris per kolom, masing-masing elemen per baris
    dipisahkan sebuah spasi */
 /* Proses: Menulis nilai setiap elemen m ke layar dengan traversal per baris dan per kolom */
 /* Contoh: Menulis matriks 3x3 (ingat di akhir tiap baris, tidak ada spasi)
@@ -118,7 +118,7 @@ void displayMatrix(Matrix m){
 	}
 }
 
-void setElmtMatrix (Matrix *m, char val, int row, int col){
+void setElmtMat (Matrix *m, char val, int row, int col){
    MAT_ELMT(*m,row,col) = val;
 }
 /*Memasukkan elemen ke dalam sebuah matriks pada indeks tertentu*/
@@ -210,10 +210,10 @@ void pMultiplyConst(Matrix *m, MatElType k){
 /* Juga merupakan strong eq karena getLastIdxCol(m1) = getLastIdxCol(m2) */
 boolean isEqual(Matrix m1, Matrix m2){
 	boolean check;
-	check = ((ROWS(m1) * COLS(m1)) == (ROWS(m2) * COLS(m2))) 
+	check = ((ROWS(m1) * COLS(m1)) == (ROWS(m2) * COLS(m2)))
 	&& (ROWS(m1) == ROWS(m2))
 	&& (COLS(m1) == COLS(m2))
-	&& (getLastIdxCol(m1) == getLastIdxCol(m2)) 
+	&& (getLastIdxCol(m1) == getLastIdxCol(m2))
 	&& (getLastIdxRow(m1) == getLastIdxRow(m2));
 	int i = 0, j = 0;
 	for(i = 0; i < ROWS(m1); i++){
@@ -243,7 +243,7 @@ int count(Matrix m){
 boolean isSquare(Matrix m){
 	return ROWS(m) == COLS(m);
 }
-/* Mengirimkan true jika m adalah matriks simetri : isSquare(m) 
+/* Mengirimkan true jika m adalah matriks simetri : isSquare(m)
    dan untuk setiap elemen m, m(i,j)=m(j,i) */
 boolean isSymmetric(Matrix m){
 	boolean check = isSquare(m);
@@ -257,7 +257,7 @@ boolean isSymmetric(Matrix m){
 	}
 	return check;
 }
-/* Mengirimkan true jika m adalah matriks satuan: isSquare(m) dan 
+/* Mengirimkan true jika m adalah matriks satuan: isSquare(m) dan
    setiap elemen diagonal m bernilai 1 dan elemen yang bukan diagonal bernilai 0 */
 boolean isIdentity(Matrix m){
 	boolean check = isSquare(m);
@@ -275,7 +275,7 @@ boolean isIdentity(Matrix m){
 	}
 	return check;
 }
-/* Mengirimkan true jika m adalah matriks sparse: matriks “jarang” dengan definisi: 
+/* Mengirimkan true jika m adalah matriks sparse: matriks “jarang” dengan definisi:
    hanya maksimal 5% dari memori matriks yang efektif bukan bernilai 0 */
 boolean isSparse(Matrix m){
 	int i, j, counter;
@@ -305,7 +305,7 @@ Matrix minor(Matrix m, int r, int c){ // fungsi antara saja
 	for(i = 0; i < ROWS(m); i++){ // loop baris m
 		if (i != r){ // biar hemat beberapa putaran sj
 			for(j = 0; j < COLS(m); j++){ // loop kolom m
-				if (j != c){ // 
+				if (j != c){ //
 					MAT_ELMT(mc, ic, jc) = MAT_ELMT(m, i, j);
 					if (jc == COLS(mc)-1){ // increment indeks ngisi mc
 						jc = 0;
