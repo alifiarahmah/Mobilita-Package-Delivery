@@ -3,21 +3,21 @@
 
 #include "../modules/adt.h"
 
-void inProgress(Queue pesanan) {
+void inProgress(Stack backpack) {
     int idx;
     int ctr;
     POINT pointDropOff;
     Item order;
 
-    printf("Pesanan yang sedang diantarkan: \n");
-    if (!isEmpty(pesanan)) {
+    if (!isEmptyStack(backpack)) {
         ctr = 0;
-        idx = IDX_HEAD(pesanan);
+        idx = IDX_TOP(backpack);
 
-        while (idx != IDX_TAIL(pesanan) + 1) {
+        printf("Pesanan yang sedang diantarkan: \n");
+        while (idx >= 0) {
             ctr++;
-            order = ITEM(pesanan.buffer[idx]);
-            pointDropOff = DROP_OFF(pesanan.buffer[idx]);
+            order = ITEM(backpack.buffer[idx]);
+            pointDropOff = DROP_OFF(backpack.buffer[idx]);
             printf("%d. ", ctr);
             printItemType(order);
             printf(" (Tujuan: %c)\n", Name(pointDropOff));
