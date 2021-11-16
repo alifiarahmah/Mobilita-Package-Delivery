@@ -8,6 +8,7 @@
 /* Proses : Melakukan alokasi, membuat sebuah s kosong */
 void CreateStack(Stack *s){
 	IDX_TOP(*s) = IDX_UNDEF;
+	TASCAPACITY(*s) = 3;
 }
 
 /* ************ Prototype ************ */
@@ -17,7 +18,7 @@ boolean isEmptyStack(Stack s){
 }
 /* Mengirim true jika tabel penampung nilai s stack penuh */
 boolean isFullStack(Stack s){
-	return IDX_TOP(s) == STACK_CAPACITY-1;
+	return IDX_TOP(s) == TASCAPACITY(s)-1;
 }
 
 /* ************ Menambahkan sebuah elemen ke Stack ************ */
