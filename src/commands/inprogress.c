@@ -4,17 +4,23 @@
 #include "../modules/adt.h"
 
 void inProgress(LList inprogress) {
-    int idx;
     int ctr;
-    POINT pointDropOff;
-    Item order;
     Pesanan pesan;
 
     if (!isEmptyLL(inprogress)) {
         ctr = 0;
+        LList revInprogress;
         Address p = inprogress;
+
+        CreateList(&revInprogress);
+        // Menampilkan dari paling baru, sehingga list harus di reverse
+        while (p != NULL) {
+            insertFirst(&revInprogress, INFO(p));
+            p = NEXT(p);
+        }
         
         printf("Pesanan yang sedang diantarkan: \n");
+        p = revInprogress;
         while(p != NULL) {
             pesan = INFO(p);
             ctr++;
