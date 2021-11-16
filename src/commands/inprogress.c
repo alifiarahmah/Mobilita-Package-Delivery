@@ -8,6 +8,7 @@ void inProgress(Stack backpack) {
     int ctr;
     POINT pointDropOff;
     Item order;
+    Pesanan pesan;
 
     if (!isEmptyStack(backpack)) {
         ctr = 0;
