@@ -3,32 +3,20 @@
 
 #include "../modules/adt.h"
 
-void inProgress(Stack backpack) {
+void inProgress(LList pesanan) {
     int idx;
     int ctr;
     POINT pointDropOff;
     Item order;
     Pesanan pesan;
 
-    if (!isEmptyStack(backpack)) {
+    if (!isEmptyLL(pesanan)) {
         ctr = 0;
-        idx = IDX_TOP(backpack);
-
-        /*printf("Pesanan yang sedang diantarkan: \n");
-        while (idx >= 0) {
-            ctr++;
-            order = ITEM(backpack.buffer[idx]);
-            pointDropOff = DROP_OFF(backpack.buffer[idx]);
-            printf("%d. ", ctr);
-            printItemType(order);
-            printf(" (Tujuan: %c)\n", Name(pointDropOff));
-            idx++;
-        }*/
+        Address p;
         
         printf("Pesanan yang sedang diantarkan: \n");
-        while(!isEmptyStack(backpack)){
-            ctr++;
-            pop(&backpack,&pesan);
+        while(p != NULL) {
+            pesan = INFO(p);
             if (TYPE(ITEM(pesan)) == 'N'){
                 printf("%d. Normal Item (Tujuan: %c)\n",ctr,Name(DROP_OFF(pesan)));
             }

@@ -13,7 +13,7 @@ void dropOff(Stack *s, POINT p);
 void help();
 
 /* inprogress.c */
-void inProgress(Stack backpack);
+void inProgress(LList pesanan);
 
 /* inventory.c */
 void inventory(ListGadget *l);
