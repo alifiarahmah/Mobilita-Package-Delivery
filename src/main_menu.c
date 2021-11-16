@@ -10,7 +10,7 @@ int cekFileAda(char namaFile[]){
     Word path,isi;
 
     getcwd(cwd, sizeof(cwd));
-    path = concatKata(cwd,"\\src\\config\\");
+    path = concatKata(cwd,"/src/config/");
     isi = concatKata(path.contents,namaFile);
     if (fileKonfigurasi = fopen(isi.contents,"r")){
         fclose(fileKonfigurasi);
@@ -25,7 +25,7 @@ Word getFullPath(char namaFile[]){
     Word path,isi;
 
     getcwd(cwd, sizeof(cwd));
-    path = concatKata(cwd,"\\src\\config\\");
+    path = concatKata(cwd,"/src/config/");
     isi = concatKata(path.contents,namaFile);
     return isi;
 }
