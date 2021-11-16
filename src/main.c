@@ -16,6 +16,7 @@ int main(){
     Stack tas;
 
     ListGadget gadgetInventory;
+    CreateListGadget(&gadgetInventory);
     int money = 0; // uang Mobita
     int time = 0; // waktu berjalan
 
@@ -32,7 +33,7 @@ int main(){
         TulisPOINT(posisi);
         printf("\n");
         printf("Waktu: %d\n", time);
-        printf("Uang yang dimiliki: %d\n", money);
+        printf("Uang yang dimiliki: %d Yen\n", money);
         printf("ENTER COMMAND: ");
         scanf("%s",command);
         if (cekKataSama(command,"MOVE")){
