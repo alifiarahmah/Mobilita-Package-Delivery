@@ -124,17 +124,20 @@ void setElmtMat (Matrix *m, char val, int row, int col){
 /*Memasukkan elemen ke dalam sebuah matriks pada indeks tertentu*/
 
 POINT elmtToPoint(Matrix m, MatElType bangunan){
-   int row,col;
-   for (int i=0;i<ROWS(m);i++){
-      for (int j=0;j<COLS(m);j++){
-         if (MAT_ELMT(m,i,j) == bangunan){
-            row = i;
-            col = j;
-            break;
-         }
-      }
-   }
-   return MakePOINT(row,col);
+	POINT p;
+	int row,col;
+	for (int i=0;i<ROWS(m);i++){
+		for (int j=0;j<COLS(m);j++){
+			if (MAT_ELMT(m,i,j) == bangunan){
+				row = i;
+				col = j;
+				break;
+			}
+		}
+	}
+	p = MakePOINT(row,col);
+	Name(p) = bangunan;
+	return p;
 }
 /* convert dari bangunan menjadi koordinat(type Point) */
 

@@ -20,12 +20,16 @@ void printItemType(Item x){
 	switch(TYPE(x)){
 		case 'P':
 			printf("Perishable Item");
+            break;
 		case 'N':
 			printf("Normal Item");
+            break;
 		case 'H':
 			printf("Heavy Item");
+            break;
 		case 'V':
 			printf("VIP Item");
+            break;
 	}
 }
 /*mengembalikan nama item*/

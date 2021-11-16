@@ -14,7 +14,8 @@ void inventory(ListGadget *l) {
     Gadget val;
     displayListGadget(*l);
     printf("Gadget mana yang ingin digunakan? (ketik 0 jika ingin kembali): ");
-    scanf("%d", &command);
+    startWord();
+    command = charToInt(currentWord);
     /* Sesuai Command*/
     if (GADGET_ELMT(*l, command-1) != GADGET_UNDEF) {
         deleteGadget(l, command-1, &val);

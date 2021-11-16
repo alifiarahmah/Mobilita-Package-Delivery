@@ -68,7 +68,7 @@ void printWord(Word kata);
 /* I.S. : Sembarang 
    F.S. : kata tertulis di layar */
 
-void cekKata();
+int charToInt (Word kata);
 
 #endif
 

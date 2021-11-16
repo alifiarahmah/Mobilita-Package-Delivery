@@ -37,11 +37,13 @@ void MainMenu(Word *filePath){
     printf("1.NEW GAME\n");
     printf("2.EXIT\n");
     printf("Masukkan pilihan anda:");
-    scanf("%d",&pilihan);
+    startWord();
+    pilihan = charToInt(currentWord);
     while ((pilihan != 1) && (pilihan != 2)){
         printf("Masukan pilihan salah, coba lagi!\n");
         printf("Masukkan pilihan anda:");
-        scanf("%d",&pilihan);
+        startWord();
+        pilihan = charToInt(currentWord);
     }
 
     if (pilihan == 1){

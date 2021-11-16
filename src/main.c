@@ -40,7 +40,11 @@ int main(){
         printf("Waktu: %d\n", time);
         printf("Uang yang dimiliki: %d Yen\n", money);
         printf("ENTER COMMAND: ");
-        scanf("%s",command);
+        startWord();
+        for (int i = 0; i < currentWord.length; i++) {
+            command[i] = currentWord.contents[i];
+        }
+        command[currentWord.length] = '\0'; // end of string
         if (cekKataSama(command,"MOVE")){
             move(adj,&posisi,&time,lBuilding, 1);
             

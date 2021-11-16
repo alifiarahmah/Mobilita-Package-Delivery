@@ -7,15 +7,6 @@
 boolean endWord;
 Word currentWord;
 
-int charToInt (Word kata){
-    int total = 0,x;
-    for (int i=0;i<kata.length;i++){
-        x = kata.contents[i] - '0';
-        total = total*10 + x;
-    }
-    return total;
-}
-
 void swap(Pesanan *xp, Pesanan *yp)
 {
     Pesanan temp = *xp;
