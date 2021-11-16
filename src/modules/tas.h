@@ -50,5 +50,12 @@ void pop(Stack *s, Pesanan *val);
 /* I.S. s tidak mungkin kosong */
 /* F.S. val adalah nilai elemen TOP yang lama, IDX_TOP berkurang 1 */
 
+/* ************ Menambah kapasitas Stack ************ */
+void increaseTasCapacity(Stack *s);
+/* Menambah kapasitas tas sejumlah 1 */
+/* I.S. Tas terdefinisi */
+/* F.S. TASCAPACITY(*s) bertambah 1 */
+
+
 #endif
 

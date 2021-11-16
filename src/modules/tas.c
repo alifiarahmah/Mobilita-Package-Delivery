@@ -38,3 +38,11 @@ void pop(Stack *s, Pesanan *val){
 	*val = TOP(*s);
 	IDX_TOP(*s)--;
 }
+
+/* ************ Menambah kapasitas Stack ************ */
+/* Menambah kapasitas tas sejumlah 1 */
+/* I.S. Tas terdefinisi */
+/* F.S. TASCAPACITY(*s) bertambah 1 */
+void increaseTasCapacity(Stack *s){
+	TASCAPACITY(*s)++;
+}
