@@ -55,7 +55,10 @@ int main(){
                 insertLastLL(&todo, val);
                 i++;
             }
-            printf("%d pesanan baru masuk!",i);
+            
+            if (i != 0){
+                printf("%d pesanan baru masuk!",i);
+            }
             // tiap pindah waktu, item yang lewat time limit perish
 
         }
