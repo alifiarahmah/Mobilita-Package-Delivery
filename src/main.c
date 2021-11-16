@@ -41,6 +41,10 @@ int main(){
         printf("Uang yang dimiliki: %d Yen\n", money);
         printf("ENTER COMMAND: ");
         startWord();
+        for (int i = 0; i < currentWord.length; i ++) {
+            command[i] = currentWord.contents[i];
+        }
+        command[currentWord.length] = '\0';
         if (cekKataSama(command,"MOVE")){
             move(adj,&posisi,&time,lBuilding, 1);
             
