@@ -11,15 +11,16 @@ void inProgress(Queue pesanan) {
 
     printf("Pesanan yang sedang diantarkan: \n");
     if (!isEmpty(pesanan)) {
-        ctr = 1;
+        ctr = 0;
         idx = IDX_HEAD(pesanan);
 
-        pointDropOff = DROP_OFF(pesanan.buffer[idx]);
-        order = ITEM(pesanan.buffer[idx]);
-        while (idx != IDX_TAIL(pesanan)) {
-            printf("%d. ", idx+1);
+        while (idx != IDX_TAIL(pesanan) + 1) {
+            ctr++;
+            order = ITEM(pesanan.buffer[idx]);
+            pointDropOff = DROP_OFF(pesanan.buffer[idx]);
+            printf("%d. ", ctr);
             printItemType(order);
-            printf(" (Tujuan: %c)", Name(pointDropOff));
+            printf(" (Tujuan: %c)\n", Name(pointDropOff));
             idx++;
         }
     } else {
