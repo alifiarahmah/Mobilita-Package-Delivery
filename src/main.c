@@ -55,7 +55,7 @@ int main(){
             inProgress(pesanan);
         }
         else if (cekKataSama(command,"BUY")){
-            buy(&gadgetInventory, &money);
+            buy(posisi, peta, &gadgetInventory, &money);
         }
         else if (cekKataSama(command,"INVENTORY")){
             inventory(&gadgetInventory);

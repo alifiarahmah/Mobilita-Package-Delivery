@@ -4,7 +4,7 @@
 #include "../modules/adt.h"
 
 /* buy.c */
-void buy(ListGadget *l, int *money);
+void buy(POINT posNow, Matrix lokMat, ListGadget *l, int *money);
 
 /* dropoff.c */
 void dropOff(Stack *s, POINT p);
