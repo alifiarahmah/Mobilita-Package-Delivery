@@ -10,13 +10,14 @@
 /* F.S Jika pemakaian berhasil, gadget yang terpakai menghilang dari inventory */
 /*     Jika pemakaian gagal, menuliskan pesan */
 void inventory(ListGadget *l) {
-    int command, val;
+    int command;
+    Gadget val;
     displayListGadget(*l);
     printf("Gadget mana yang ingin digunakan? (ketik 0 jika ingin kembali): ");
     scanf("%d", &command);
     /* Sesuai Command*/
-    if (ELMT(*l, command-1) != GADGET_UNDEF) {
-        deleteGadget(&l, command-1, &val);
+    if (GADGET_ELMT(*l, command-1) != GADGET_UNDEF) {
+        deleteGadget(l, command-1, &val);
     }
     else {
 		printf("Tidak ada Gadget yang dapat digunakan!\n");

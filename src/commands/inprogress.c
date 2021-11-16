@@ -17,8 +17,8 @@ void inProgress(Queue pesanan) {
         pointDropOff = DROP_OFF(pesanan.buffer[idx]);
         order = ITEM(pesanan.buffer[idx]);
         while (idx != IDX_TAIL(pesanan)) {
-            printf("%d. ");
-            getItemType(order);
+            printf("%d. ", idx+1);
+            printItemType(order);
             printf(" (Tujuan: %c)", Name(pointDropOff));
             idx++;
         }
