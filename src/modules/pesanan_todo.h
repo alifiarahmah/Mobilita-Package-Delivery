@@ -1,9 +1,7 @@
 /* pesanan_total.h */
-/*  Menyimpan semua daftar pesanan yang masuk ke Mobita dalam bentuk Linked */
-/*	Sebelum nanti dimasukkan ke Queue */
+/* Modifikasi ADT Linked List */
+/* Menyimpan semua daftar pesanan yang masuk tiap waktunya, hasil pemindahan dari Queue pesanan */
 
-/* contoh ADT list berkait dengan representasi fisik pointer  */
-/* Representasi Address dengan pointer */
 
 #ifndef LIST_H
 #define LIST_H
