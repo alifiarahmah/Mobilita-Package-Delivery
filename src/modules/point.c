@@ -23,7 +23,7 @@ POINT MakePOINT (int X, int Y){
 /* *** KELOMPOK Interaksi dengan I/O device, BACA/TULIS  *** */                                                 
 void BacaPOINT (POINT * P){
    int x, y;
-   scanf("%f %f", &x, &y);
+   scanf("%d %d", &x, &y);
    *P = MakePOINT(x, y);
 }
 /* Membaca nilai absis dan ordinat dari keyboard dan membentuk 
@@ -34,7 +34,7 @@ void BacaPOINT (POINT * P){
 /* I.S. Sembarang */
 /* F.S. P terdefinisi */
 void TulisPOINT (POINT P){
-   printf("(%.2f,%.2f)", Absis(P), Ordinat(P));
+   printf("(%d,%d)", Absis(P), Ordinat(P));
 }
 /* Nilai P ditulis ke layar dengan format "(X,Y)" 
    tanpa spasi, enter, atau karakter lain di depan, belakang, 
