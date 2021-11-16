@@ -7,7 +7,7 @@
 #include "boolean.h"
 #include "charmachine.h"
 
-#define WM_CAPACITY 50
+#define WM_CAPACITY 100
 #define BLANK ' '
 #define NEWLINE '\n'
 
