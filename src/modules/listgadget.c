@@ -54,10 +54,10 @@ int lengthListGadget(ListGadget l){
 	int i = 0;
 	int count = 0;
 	while(i < 5){
-        while (GADGET_ELMT(l,i) != GADGET_UNDEF) {
-            count++;
-        }
-        i++;
+		if (GADGET_ELMT(l,i) != GADGET_UNDEF) {
+			count++;
+		}
+		i++;
 	}
 	return count;
 }
