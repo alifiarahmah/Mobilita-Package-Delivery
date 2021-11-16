@@ -3,46 +3,42 @@
 
 #include "../modules/adt.h"
 
-/*	PICKUP: Mengambil item jika ada pesanan yang harus diambil pada lokasi
-	Proses:
-	1. 	Iterasi queue pesanan-yang-harus-dikerjakan,
-		cari pesanan pertama dengan pickup di point tsb
-		Pakai indexOf()
-	2.	Jika ketemu, pesanan dimasukkan ke
-		linked list pesanan-yang-sedang-dikerjakan
-		- insertLast() pesanan-yang-harus
-		- deleteAt() dari pesanan-yang-sedang
-		Kontakan lagi buat caritau struct pesanannya kaya gimana
-		Jika tidak ketemu, printf("Pesanan tidak ditemukan!\n");
-	3.	Setelah dimasukkan, keluarkan pesanan berhasil diambil
-		Lalu tulis tujuan
-	TODO:
-	- Bedakan list statis, dinamis, dan linked list dari ADTnya, soalnya nama-namanya konflik
-*/
+/* Proses: mengambil item jika ada pesanan yang harus diambil pada lokasi. */
+/* I.S. posNow, LokMat, todo, inprogress, tas terdefinisi */
+/* F.S. Jika ada pesanan pada lokasi dan tas tidak penuh, */
+/* 			- Item didelete dari todo */
+/* 			- Item di-insertLast ke inprogress */
+/* 			- Item dimasukkan ke tas */
+/* 			Jika tidak ada pesanan pada lokasi, ditampilkan pesan. */
+void pickUp(POINT posNow, Matrix LokMat, LList *todo, LList *inprogress, Stack *tas, int *incTime){
+	Pesanan thisPesanan;
 
-void pickUp(POINT posNow, Matrix LokMat, Queue *queuePesanan, LList *todo, Stack *tas){
-	// search dari queue, eh, gaboleh langsung cabut dari badannya kan ya queue tuh?
-	// jadi cek dari head aja
-	// cek lokasi pick up queue terbaru sama seperti lokasi kita sekarang
-	if (EQ(posNow, PICK_UP(HEAD(*queuePesanan)))){
-		// ceritanya udah ketemu dulu, dequeque?
-		Pesanan thisPesanan;
-		dequeue(queuePesanan, &thisPesanan);
+	boolean pesananFound = false;
+	Address p = *todo;
+	while(!pesananFound && (p != NULL)){ // iterasi todo, cari yang posisinya sesuai dengan posNow
+		if(EQ(PICK_UP(INFO(p)), posNow)){
+			pesananFound = true;
+			deleteAt(todo, indexOfLL(*todo, thisPesanan), &thisPesanan); // delete pesanan dari todo
+		} else {
+			p = NEXT(p);
+		}
+	}
+
+	if (pesananFound){ // ketemu
 
 		if (IDX_TOP(*tas)+1 > TASCAPACITY(*tas)){ // kalo tasnya tidak penuh
-			insertLastLL(todo, thisPesanan); // taroh queue ke inprogress
+			insertLastLL(inprogress, thisPesanan); // taroh pesanan ke inprogress
 			push(tas, thisPesanan); // taroh itemnya ke tas
 
 			// output tipe pesanan
-			if(TYPE(ITEM(thisPesanan)) == 'N'){
-				printf("Pesanan berupa Normal Item berhasil diambil!\n");
-			} else if(TYPE(ITEM(thisPesanan)) == 'H'){
-				printf("Pesanan berupa Heavy Item berhasil diambil!\n");
-			} else if(TYPE(ITEM(thisPesanan)) == 'P'){
-				printf("Pesanan berupa Perishable Item berhasil diambil!\n");
-			}
+			printf("Pesanan berupa ");
+			printItemType(ITEM(thisPesanan));
+			printf(" berhasil diambil!\n");
 			// output tujuan pesanan
 			printf("Tujuan Pesanan: %c\n", posisiSkrg(DROP_OFF(thisPesanan), LokMat));
+			if(TYPE(ITEM(thisPesanan)) == 'H'){ // heavyItem
+				*incTime++;
+			}
 		} else {
 			printf("Tas anda penuh. Anda tidak dapat menambah pesanan lagi.\n");
 		}
