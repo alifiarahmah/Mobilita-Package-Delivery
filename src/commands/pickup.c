@@ -3,8 +3,16 @@
 
 #include "../modules/adt.h"
 
+/* Proses: mengambil item jika ada pesanan yang harus diambil pada lokasi. */
+/* I.S. posNow, LokMat, todo, inprogress, tas terdefinisi */
+/* F.S. Jika ada pesanan pada lokasi dan tas tidak penuh, */
+/* 			- Item didelete dari todo */
+/* 			- Item di-insertLast ke inprogress */
+/* 			- Item dimasukkan ke tas */
+/* 			Jika tidak ada pesanan pada lokasi, ditampilkan pesan. */
 void pickUp(POINT posNow, Matrix LokMat, LList *todo, LList *inprogress, Stack *tas, int *incTime){
 	Pesanan thisPesanan;
+
 	boolean pesananFound = false;
 	Address p = *todo;
 	while(!pesananFound && (p != NULL)){ // iterasi todo, cari yang posisinya sesuai dengan posNow
