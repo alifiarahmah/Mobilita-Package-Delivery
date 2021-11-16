@@ -16,7 +16,7 @@ typedef struct item
    int expired;
 } Item;
 
-#define TYPE_UNDEF = 'X'
+#define TYPE_UNDEF 'X'
 #define TYPE(x) (x).type
 #define EXPIRED(x) (x).expired
 

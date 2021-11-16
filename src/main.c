@@ -18,10 +18,12 @@ int main(){
     Stack tas;
     ListGadget gadgetInventory;
     LList todo, inprogress;
+    char output;
 
     int money = 0; // uang Mobita
     int time = 0; // waktu berjalan
     int incTime = 1; // skala penambahan waktu
+    int saveTime; // tempat penyimpan waktu sebelum ability
 
     CreateListGadget(&gadgetInventory);
     CreateStack(&tas);
@@ -48,8 +50,8 @@ int main(){
         }
         command[currentWord.length] = '\0';
         if (cekKataSama(command,"MOVE")){
-            move(adj,&posisi,&time,lBuilding, 1);
-            
+            move(adj,&posisi,&time,lBuilding,&incTime,saveTime);
+
             // tiap pindah waktu, pindahin pesanan dari queue pesanan ke linkedlist todo
             int i = 0;
             while(TIME(HEAD(pesanan)) == time){
@@ -57,7 +59,7 @@ int main(){
                 insertLastLL(&todo, val);
                 i++;
             }
-            
+
             if (i != 0){
                 printf("%d pesanan baru masuk!",i);
             }
@@ -68,7 +70,7 @@ int main(){
             pickUp(posisi, peta, &todo, &inprogress, &tas, &incTime);
         }
         else if (cekKataSama(command,"DROP_OFF")){
-            dropOff(&tas,posisi);
+            dropOff(&tas,posisi,&money,&output);
         }
         else if (cekKataSama(command,"MAP")){
             Map(adj,peta,posisi,todo,tas);
@@ -83,7 +85,7 @@ int main(){
             buy(posisi, peta, &gadgetInventory, &money);
         }
         else if (cekKataSama(command,"INVENTORY")){
-            inventory(&gadgetInventory);
+            inventory(&gadgetInventory,&time,&incTime,&saveTime);
             // TODO: tambah efek dari pemakaian tiap gadget
         }
         else if (cekKataSama(command,"HELP")){
