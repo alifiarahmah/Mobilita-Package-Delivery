@@ -98,7 +98,7 @@ boolean cekToDo (Matrix peta, char bangunan, LList toDo){
 }
 
 /* mencetak peta */
-void Map (Matrix adjMat, Matrix lokMat, POINT posNow, LList toDo, Stack dropOff){
+void Map (Matrix adjMat, Matrix lokMat, POINT posNow, LList toDo, Stack tas){
     int i,j,warna;
     char bangunan;
     Pesanan drop;
@@ -106,8 +106,8 @@ void Map (Matrix adjMat, Matrix lokMat, POINT posNow, LList toDo, Stack dropOff)
         for (j=0;j<COLS(lokMat);j++){
             warna = 6;
             bangunan = MAT_ELMT(lokMat,i,j);
-            if (!isEmptyStack(dropOff)){
-                pop(&dropOff,&drop);
+            if (!isEmptyStack(tas)){
+                pop(&tas,&drop);
             }
             if (bangunan!='*' && bangunan!=' '){
                 warna = 5;
@@ -118,7 +118,7 @@ void Map (Matrix adjMat, Matrix lokMat, POINT posNow, LList toDo, Stack dropOff)
             if (!isEmptyLL(toDo) && cekToDo(lokMat,bangunan,toDo)){
                 warna = 3;
             }
-            if (bangunan == posisiSkrg(DROP_OFF(drop),lokMat)){
+            if (!isEmptyStack(tas) && bangunan == posisiSkrg(DROP_OFF(drop),lokMat)){
                 warna = 2;
             }
             if (bangunan == posisiSkrg(posNow,lokMat)){

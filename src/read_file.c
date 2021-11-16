@@ -82,10 +82,10 @@ void bacaFile (Word namafile, Matrix *peta, Matrix *adj, Queue *pesanan, ListDin
         int tMasuk = charToInt(currentWord);
         advWord();
         POINT pickUp = elmtToPoint(*peta,currentWord.contents[0]);
-	Name(pickUp) = currentWord.contents[0];
+	    Name(pickUp) = currentWord.contents[0];
         advWord();
         POINT dropOff = elmtToPoint(*peta,currentWord.contents[0]);
-	Name(dropOff) = currentWord.contents[0];
+	    Name(dropOff) = currentWord.contents[0];
         advWord();
         char type = currentWord.contents[0];
         if (type == 'P'){
@@ -95,7 +95,8 @@ void bacaFile (Word namafile, Matrix *peta, Matrix *adj, Queue *pesanan, ListDin
         createItem(&item,type,Ptval);
         SetPesanan(&psn,tMasuk,pickUp,dropOff,item,Ptval);
         temp[i] = psn;
-    }   
+    }
+
 
     sortPsn(temp,M);
 

@@ -49,10 +49,13 @@ int main(){
             move(adj,&posisi,&time,lBuilding, 1);
             
             // tiap pindah waktu, pindahin pesanan dari queue pesanan ke linkedlist todo
+            int i = 0;
             while(TIME(HEAD(pesanan)) == time){
                 dequeue(&pesanan, &val);
                 insertLastLL(&todo, val);
+                i++;
             }
+            printf("%d pesanan baru masuk!",i);
             // tiap pindah waktu, item yang lewat time limit perish
 
         }
