@@ -36,7 +36,7 @@ boolean cekToDo (char bangunan, Queue toDo);
 void Map (Matrix adjMat, Matrix lokMat, POINT posNow, Queue toDo, Stack dropOff);
 
 /* move.c */
-void move(Matrix adjMat, POINT *posNow, int *time, ListDin lBuilding);
+void move(Matrix adjMat, POINT *posNow, int *time, ListDin lBuilding, int timestep);
 
 /* pickup.c */
 void pickUp(POINT posNow, Matrix LokMat, Queue *queuePesanan, LList *todo, Stack *tas);

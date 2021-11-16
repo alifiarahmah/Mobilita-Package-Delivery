@@ -41,7 +41,7 @@ int main(){
         printf("ENTER COMMAND: ");
         scanf("%s",command);
         if (cekKataSama(command,"MOVE")){
-            move(adj,&posisi,&time,lBuilding);
+            move(adj,&posisi,&time,lBuilding, 1);
             
             // tiap pindah waktu, pindahin pesanan dari queue pesanan ke linkedlist todo
             if(TIME(HEAD(pesanan)) == time){

@@ -4,7 +4,7 @@
 #include "../modules/adt.h"
 #include "../read_file.h"
 
-void move(Matrix adjMat, POINT *posNow, int *time, ListDin lBuilding) {
+void move(Matrix adjMat, POINT *posNow, int *time, ListDin lBuilding, int timestep) {
     int ctr, rowIdx, input;
     int posSelected;
 
@@ -59,7 +59,7 @@ void move(Matrix adjMat, POINT *posNow, int *time, ListDin lBuilding) {
             }
         }
         *posNow = ELMT_DIN(lBuilding, posSelected-1);
-        *time += 1;
+        *time += timestep;
     }
     else{
         printf("MOVE dibatalkan.\n");
