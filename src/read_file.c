@@ -102,11 +102,12 @@ void bacaFile (Word namafile, Matrix *peta, Matrix *adj, Queue *pesanan, ListDin
         createItem(&item,type,Ptval);
         SetPesanan(&psn,tMasuk,pickUp,dropOff,item,Ptval);
         temp[i] = psn;
-    }
+    }   
 
     sortPsn(temp,M);
 
     for (int i=0;i<M;i++){
         enqueue(pesanan,temp[i]);
     }
+    
 }

@@ -10,13 +10,24 @@ int cekFileAda(char namaFile[]){
     Word path,isi;
 
     getcwd(cwd, sizeof(cwd));
-    path = concatKata(cwd,"\\config\\");
+    path = concatKata(cwd,"\\src\\config\\");
     isi = concatKata(path.contents,namaFile);
     if (fileKonfigurasi = fopen(isi.contents,"r")){
         fclose(fileKonfigurasi);
         return 1;
     }
     return 0;
+}
+
+Word getFullPath(char namaFile[]){
+    FILE *fileKonfigurasi;
+    char cwd[WM_CAPACITY];
+    Word path,isi;
+
+    getcwd(cwd, sizeof(cwd));
+    path = concatKata(cwd,"\\src\\config\\");
+    isi = concatKata(path.contents,namaFile);
+    return isi;
 }
 
 void MainMenu(Word *filePath){
@@ -41,7 +52,7 @@ void MainMenu(Word *filePath){
             printf("Masukkan nama file konfigurasi level (dalam .txt):");
             startWord();
         }
-        *filePath = stringToWord(namaFile);
+        *filePath = getFullPath(currentWord.contents);
         printf("\n");
     }
     else if (pilihan == 2){

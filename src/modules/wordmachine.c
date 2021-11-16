@@ -46,7 +46,6 @@ void advWord(){
 
 void copyWord(){
     int i = 0;
-
     while ((currentChar != BLANK) && (currentChar != NEWLINE) && (currentChar != MARK) && (i < WM_CAPACITY)){
         currentWord.contents[i] = currentChar;
         adv();
