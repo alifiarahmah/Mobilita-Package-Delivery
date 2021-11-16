@@ -106,6 +106,12 @@ void readListDin(ListDin *l) {
 		// printf("%d)", Ordinat(ELMT_DIN(*l, i)));
     }
 }
+void setElmtLDin(ListDin *lDin, char bangunan, float absis, float ordinat, int index){
+    POINT koordinat = MakePOINT(absis,ordinat);
+    Name(koordinat) = bangunan;
+    ELMT_DIN(*lDin,index) = koordinat;
+}
+
 
 /* Proses : Menuliskan isi list dengan traversal, list ditulis di antara kurung siku;
 	 antara dua elemen dipisahkan dengan separator "koma", tanpa tambahan karakter di depan,

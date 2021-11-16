@@ -1,6 +1,8 @@
 #include "boolean.h"
 #include "item.h"
 
+#include <stdio.h>
+
 /* KREATOR */
 /* I.S. x bebas
    F.S. Item x terdefinisi dengan tipe itemType dan expired expiryTime

@@ -23,6 +23,6 @@ void inProgress(Queue pesanan) {
             idx++;
         }
     } else {
-        printf("Pesanan kosong.");
+        printf("Pesanan kosong.\n");
     }
 }

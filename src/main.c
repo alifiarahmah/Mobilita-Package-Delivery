@@ -1,20 +1,21 @@
 #include <stdio.h>
 
+#include "commands/commands.h"
 #include "modules/adt.h"
 #include "main_menu.h"
 #include "read_file.h"
 
 /* Kerangka dari fungsi utama*/
-/* fungsi baca file belom dimasukin tapi harusny udah bisa dibuat fungsi jadi dari kerangka */
 int main(){
     Matrix peta,adj;
     Queue pesanan;
+    ListDin lBuilding;
     char command[50];
     Word fileKonfig;
     
     CreateQueue(&pesanan);
     MainMenu(&fileKonfig);
-    bacaFile(fileKonfig,&peta,&adj,&pesanan);
+    bacaFile(fileKonfig,&peta,&adj,&pesanan,&lBuilding);
     do{
         printf("\n\n");
         printf("Mobita berada di posisi \n");

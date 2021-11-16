@@ -15,13 +15,13 @@ void move(Matrix adjMat, POINT *posNow, int *time, ListDin lBuilding) {
 
     printf("Posisi yang dapat dicapai: \n");
     // HQ
-    if (MAT_ELMT(adjMat, rowIdx, 0) == 1) {
+    if (MAT_ELMT(adjMat, rowIdx, 0) == '1') {
         printf("%d. HQ (x, y)", ctr);
         ctr++;
     }
     // Iterasi kolom
     for (int j = 1; j < COLS(adjMat); j++) {
-        if (MAT_ELMT(adjMat, rowIdx, j) == 1) {
+        if (MAT_ELMT(adjMat, rowIdx, j) == '1') {
             printf("%d. ", ctr);
             displayElmtDin(lBuilding, j);
             printf("\n");
@@ -48,7 +48,7 @@ void move(Matrix adjMat, POINT *posNow, int *time, ListDin lBuilding) {
             if (ctr == input) {
                 break;
             } else {
-                if (ELMT_(adjMat, rowIdx, j) == 1) {
+                if (MAT_ELMT(adjMat, rowIdx, j) == '1') {
                     ctr++;
                 }
                 posSelected++;

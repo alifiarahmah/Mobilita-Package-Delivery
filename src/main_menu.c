@@ -35,11 +35,11 @@ void MainMenu(Word *filePath){
 
     if (pilihan == 1){
         printf("Masukkan nama file konfigurasi level (dalam .txt):");
-        scanf("%s",&namaFile);
-        while ((cekFileAda(namaFile) == 0)){
+        startWord();
+        while ((cekFileAda(currentWord.contents) == 0)){
             printf("File tidak ditemukan, coba lagi!\n");
             printf("Masukkan nama file konfigurasi level (dalam .txt):");
-            scanf("%s",&namaFile);
+            startWord();
         }
         *filePath = stringToWord(namaFile);
         printf("\n");

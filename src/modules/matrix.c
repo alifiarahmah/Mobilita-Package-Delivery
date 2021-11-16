@@ -123,7 +123,7 @@ void setElmtMatrix (Matrix *m, char val, int row, int col){
 }
 /*Memasukkan elemen ke dalam sebuah matriks pada indeks tertentu*/
 
-POINT elmtToPoint(Matrix m,MatElType bangunan){
+POINT elmtToPoint(Matrix m, MatElType bangunan){
    int row,col;
    for (int i=0;i<ROWS(m);i++){
       for (int j=0;j<COLS(m);j++){

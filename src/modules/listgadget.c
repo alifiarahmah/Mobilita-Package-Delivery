@@ -33,7 +33,7 @@ typedef struct {
 
 /* ********** SELEKTOR ********** */
 #define ELMT(l, i) (l).contents[(i)]
-#define CAPACITY(l) (l).capacity
+#define LG_CAPACITY(l) (l).capacity
 
 /* ********** KONSTRUKTOR ********** */
 /* Konstruktor : create List kosong  */

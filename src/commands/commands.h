@@ -1,6 +1,8 @@
 #ifndef COMMAND_H
 #define COMMAND_H
 
+#include "../modules/adt.h"
+
 /* buy.c */
 void buy(int money, ListGadget inventory);
 
@@ -13,7 +15,7 @@ void help();
 /* inprogress.c */
 void inProgress(Queue backpack);
 
-/* Map.c */
+/* map.c */
 void initMap (Matrix *peta);
 
 void isiMap (Matrix *peta, int jumlah);

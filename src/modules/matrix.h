@@ -74,10 +74,10 @@ void displayMatrix(Matrix m);
 8 9 10
 */
 
-void setElmtMatrix (Matrix *m, char val, int row, int col);
+void setElmtMat (Matrix *m, char val, int row, int col);
 /*Memasukkan elemen ke dalam sebuah matriks pada indeks tertentu*/
 
-POINT elmtToPoint(Matrix m,MatElType bangunan);
+POINT elmtToPoint(Matrix m, MatElType bangunan);
 /* convert dari bangunan menjadi koordinat(type Point) */
 
 /* ********** KELOMPOK OPERASI ARITMATIKA TERHADAP TYPE ********** */

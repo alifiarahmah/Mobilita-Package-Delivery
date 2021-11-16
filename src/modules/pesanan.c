@@ -43,7 +43,7 @@ boolean isEmpty(Queue q) {
 boolean isFull(Queue q) {
 /* Mengirim true jika tabel penampung elemen q sudah penuh */
 /* yaitu jika index head bernilai 0 dan index tail bernilai CAPACITY-1 */
-    return (IDX_HEAD(q) == 0) && (IDX_TAIL(q) == CAPACITY-1);
+    return (IDX_HEAD(q) == 0) && (IDX_TAIL(q) == P_CAPACITY-1);
 }
 int length(Queue q) {
 /* Mengirimkan banyaknya elemen queue. Mengirimkan 0 jika q kosong. */
@@ -65,7 +65,7 @@ void enqueue(Queue *q, Pesanan val) {
 		IDX_HEAD(*q) = 0;
 		IDX_TAIL(*q) = 0;
 	} else {
-		if (IDX_TAIL(*q) == (CAPACITY-1)){
+		if (IDX_TAIL(*q) == (P_CAPACITY-1)){
 			for(i = IDX_HEAD(*q); i <= IDX_TAIL(*q); i++){
 				(*q).buffer[i - IDX_HEAD(*q)] = (*q).buffer[i];
 			}
