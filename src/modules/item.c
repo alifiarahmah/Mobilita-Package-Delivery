@@ -21,11 +21,11 @@ void printItemType(Item x){
 		case 'P':
 			printf("Perishable Item");
 		case 'N':
-			printf("Perishable Item");
+			printf("Normal Item");
 		case 'H':
-			printf("Perishable Item");
+			printf("Heavy Item");
 		case 'V':
-			printf("Perishable Item");
+			printf("VIP Item");
 	}
 }
 /*mengembalikan nama item*/
