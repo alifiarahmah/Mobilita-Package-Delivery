@@ -59,7 +59,7 @@ int main(){
             // TODO: tambah efek dari pemakaian tiap gadget
         }
         else if (cekKataSama(command,"HELP")){
-            printf("HELP");
+            printf("HELP:\n");
             help();
         }
         else if (cekKataSama(command,"EXIT")){

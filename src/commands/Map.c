@@ -111,7 +111,7 @@ void Map (Matrix adjMat, Matrix lokMat, POINT posNow, Queue toDo, Stack dropOff)
             if (cekToDo(bangunan,toDo)){
                 warna = 3;
             }
-            if (bangunan == TYPE(ITEM(drop))){
+            if (bangunan == posisiSkrg(DROP_OFF(drop),lokMat)){
                 warna = 2;
             }
             if (bangunan == posisiSkrg(posNow,lokMat)){
