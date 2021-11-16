@@ -100,7 +100,7 @@ void displayListGadget(ListGadget l){
     for (i = 0; i < 5; i++) {
         printf("%d. ", (i+1));
         if (isGadgetValid(GADGET_ELMT(l,i))) {
-					printGadgetName(GADGET_ELMT(l,i));
+					printGadgetName(GADGET_ELMT(l,i)); printf("\n");
         } else {
             printf("-\n");
         }
