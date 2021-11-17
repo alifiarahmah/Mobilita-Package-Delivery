@@ -140,10 +140,7 @@ int main(){
             }
             else if (cekKataSama(command,"RETURN")){
                 returnToSender(&inprogress, &todo, &tas, &canReturn);
-
-				if ((isEmpty(pesanan)) && (isEmptyLL(todo)) && (isEmptyLL(inprogress)) && (isEmptyStack(tas)) && (Name(posisi) != '8')) {
-                    printf("Pesanan sudah habis. Silahkan kembali ke Headquarter.\n");
-                } 
+				
             }
             else if (cekKataSama(command,"EXIT")){
                 printf("TERIMA KASIH SUDAH BERMAIN\n");

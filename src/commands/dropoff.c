@@ -35,7 +35,7 @@ void dropOff(Stack *tas, LList *inprogress, POINT p, int *money, char *output, i
         *output = TYPE(ITEM(TOP(*tas)));
         pop(tas,&val);
         deleteFirst(inprogress, &val); // delete dari list inprogress
-        *psnBerhasil++;
+        *psnBerhasil = *psnBerhasil + 1;
     } else {
         printf("Tidak terdapat pesanan yang dapat diantarkan\n");
         *output = TYPE_UNDEF;
