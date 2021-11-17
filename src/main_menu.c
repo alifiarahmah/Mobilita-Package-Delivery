@@ -49,12 +49,20 @@ void MainMenu(Word *filePath){
     if (pilihan == 1){
         printf("Masukkan nama file konfigurasi level (dalam .txt):");
         startWord();
-        while ((cekFileAda(currentWord.contents) == 0)){
+        for (int i=0;i<currentWord.length;i++){
+            namaFile[i] = currentWord.contents[i];
+        }
+        namaFile[currentWord.length] = '\0';
+        while ((cekFileAda(namaFile) == 0)){
             printf("File tidak ditemukan, coba lagi!\n");
             printf("Masukkan nama file konfigurasi level (dalam .txt):");
             startWord();
+            for (int i=0;i<currentWord.length;i++){
+                namaFile[i] = currentWord.contents[i];
+            }
+            namaFile[currentWord.length] = '\0';
         }
-        *filePath = getFullPath(currentWord.contents);
+        *filePath = getFullPath(namaFile);
         printf("\n");
     }
     else if (pilihan == 2){
