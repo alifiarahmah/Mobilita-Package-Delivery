@@ -23,7 +23,8 @@ int main(){
     int money = 0; // uang Mobita
     int time = 0; // waktu berjalan
     int incTime = 1; // skala penambahan waktu
-    int saveTime; // tempat penyimpan waktu sebelum ability
+    int saveTime = 0; // tempat penyimpan waktu sebelum ability
+    int timeSpeed = 0; // menyimpan ability Speed Boost
 
     CreateListGadget(&gadgetInventory);
     CreateStack(&tas);
@@ -50,7 +51,7 @@ int main(){
         }
         command[currentWord.length] = '\0';
         if (cekKataSama(command,"MOVE")){
-            move(adj,&posisi,&time,lBuilding,&incTime,saveTime);
+            move(adj,&posisi,&time,lBuilding,&incTime,saveTime,&timeSpeed);
 
             // tiap pindah waktu, pindahin pesanan dari queue pesanan ke linkedlist todo
             int i = 0;
@@ -67,10 +68,10 @@ int main(){
 
         }
         else if (cekKataSama(command,"PICK_UP")){
-            pickUp(posisi, peta, &todo, &inprogress, &tas, &incTime);
+            pickUp(posisi, peta, &todo, &inprogress, &tas, &incTime, &timeSpeed);
         }
         else if (cekKataSama(command,"DROP_OFF")){
-            dropOff(&tas,posisi,&money,&output);
+            dropOff(&tas,posisi,&money,&output,&incTime,&timeSpeed);
         }
         else if (cekKataSama(command,"MAP")){
             Map(adj,peta,posisi,todo,tas);

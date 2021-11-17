@@ -10,7 +10,7 @@
 /* 			- Item di-insertLast ke inprogress */
 /* 			- Item dimasukkan ke tas */
 /* 			Jika tidak ada pesanan pada lokasi, ditampilkan pesan. */
-void pickUp(POINT posNow, Matrix LokMat, LList *todo, LList *inprogress, Stack *tas, int *incTime){
+void pickUp(POINT posNow, Matrix LokMat, LList *todo, LList *inprogress, Stack *tas, int *incTime, int *timeSpeed){
 	Pesanan thisPesanan;
 
 	boolean pesananFound = false;
@@ -43,6 +43,9 @@ void pickUp(POINT posNow, Matrix LokMat, LList *todo, LList *inprogress, Stack *
 
 			if(TYPE(ITEM(thisPesanan)) == 'H'){ // heavyItem menambah incTime
 				*incTime++;
+				if (*timeSpeed != 0) {
+                    *timeSpeed = 0;
+				}
 			}
 
 		} else { // tas penuh
