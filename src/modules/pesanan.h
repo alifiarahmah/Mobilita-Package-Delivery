@@ -21,6 +21,7 @@ typedef struct {
     POINT pickup;
     POINT dropoff;
     Item item;
+	int PtimeInit;
     int Ptime;
 } Pesanan;
 
@@ -34,18 +35,19 @@ typedef struct {
 
 /* ********* AKSES (Selektor) ********* */
 /* Jika p adalah Pesanan dan q adalah Queue, maka akses elemen : */
-#define TIME(p)     (p).time
-#define PICK_UP(p)  (p).pickup
-#define DROP_OFF(p) (p).dropoff
-#define ITEM(p)     (p).item
-#define PTIME(p)    (p).Ptime
-#define IDX_HEAD(q) (q).idxHead
-#define IDX_TAIL(q) (q).idxTail
-#define     HEAD(q) (q).buffer[(q).idxHead]
-#define     TAIL(q) (q).buffer[(q).idxTail]
+#define TIME(p)       (p).time
+#define PICK_UP(p)    (p).pickup
+#define DROP_OFF(p)   (p).dropoff
+#define ITEM(p)       (p).item
+#define PTIME(p)      (p).Ptime
+#define PTIME_INIT(p) (p).PtimeInit
+#define IDX_HEAD(q)   (q).idxHead
+#define IDX_TAIL(q)   (q).idxTail
+#define     HEAD(q)   (q).buffer[(q).idxHead]
+#define     TAIL(q)   (q).buffer[(q).idxTail]
 
 /* *** Selektor lain *** */
-void SetPesanan(Pesanan *p, int tval, POINT pval, POINT dval, Item ival, int Ptval);
+void SetPesanan(Pesanan *p, int tval, POINT pval, POINT dval, Item ival, int Ptval, int Ptinitval);
 /* I.S. pesanan p sembarang */
 /* F.S. pesanan p terbentuk dengan sbb: */
 /* - time bernilai tval */
