@@ -7,8 +7,14 @@ boolean endWord;
 Word currentWord;
 
 void ignoreBlank(){
+	int i = 0;
     while ((currentChar == BLANK) || (currentChar == NEWLINE)){
         adv();
+		i++;
+		// avoid infinite loop
+		if (i > 1000){
+			break;
+		}
     }
 }
 
