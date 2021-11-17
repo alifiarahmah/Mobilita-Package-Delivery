@@ -32,7 +32,7 @@ void todolist(LList toDo){
     int i = 1;
     while(p != NULL){
         if (TYPE(ITEM(INFO(p))) == 'P'){
-            printf("%d. %c -> %c (Perishable Item), sisa waktu: %d\n", i,Name(PICK_UP(INFO(p))),Name(DROP_OFF(INFO(p))),(PTIME(INFO(p))-TIME(INFO(p))));
+            printf("%d. %c -> %c (Perishable Item), sisa waktu: %d\n", i,Name(PICK_UP(INFO(p))),Name(DROP_OFF(INFO(p))),(PTIME(INFO(p))/*-TIME(INFO(p))*/));
         }
         else if (TYPE(ITEM(INFO(p))) == 'N'){
             printf("%d. %c -> %c (Normal Item)\n", i,Name(PICK_UP(INFO(p))),Name(DROP_OFF(INFO(p))));

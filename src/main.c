@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include<stdlib.h>
 
 #include "commands/commands.h"
 #include "modules/adt.h"
@@ -47,6 +48,7 @@ int main(){
     int timeSpeed = 0; // menyimpan ability Speed Boost
     boolean canReturn = false; // kondisi apakah Mobita bisa return
     int VIP = 0; // efek dari pesanan VIP
+    int psnBerhasil = 0; //jumlah pesanan yang berhasil diantarkan
 
     CreateListGadget(&gadgetInventory);
     CreateStack(&tas);
@@ -72,6 +74,8 @@ int main(){
             command[i] = currentWord.contents[i];
         }
         command[currentWord.length] = '\0';
+        system("cls");
+
         if (cekKataSama(command,"MOVE")){
             move(adj,&posisi,&time,lBuilding,&incTime,saveTime,&timeSpeed);
 
@@ -98,7 +102,7 @@ int main(){
             pickUp(posisi, peta, &todo, &inprogress, &tas, &incTime, &timeSpeed, VIP);
         }
         else if (cekKataSama(command,"DROP_OFF")){
-            dropOff(&tas,&inprogress,posisi,&money,&output,&incTime,&timeSpeed,&canReturn,&VIP);
+            dropOff(&tas,&inprogress,posisi,&money,&output,&incTime,&timeSpeed,&canReturn,&VIP,&psnBerhasil);
         }
         else if (cekKataSama(command,"MAP")){
             Map(adj,peta,posisi,todo,tas);
@@ -124,9 +128,19 @@ int main(){
         else if (cekKataSama(command,"EXIT")){
             printf("TERIMA KASIH SUDAH BERMAIN\n");
         }
+        else if ((isEmpty(pesanan)) && (isEmptyLL(todo)) && (isEmptyLL(inprogress)) && (isEmptyStack(tas)) && (Name(posisi) == '8')){
+            printf("TERIMA KASIH SUDAH BERMAIN\n");
+            printf("Semua pesanan berhasil dikirim.\n");
+            break;
+        }
         else{
             printf("Masukan command tidak valid, coba lagi!");
         }
     }while(!cekKataSama(command,"EXIT"));
+    
+    printf("-------------Statistik Akhir-------------");
+    printf("Jumlah pesanan yang berhasil diantar: %d\n",psnBerhasil);
+    printf("Waktu yang terlampaui: %d\n",time);
+
     exit(0);
 }
