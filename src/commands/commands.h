@@ -10,13 +10,13 @@ void buy(POINT posNow, Matrix lokMat, ListGadget *l, int *money);
 void dropOff(Stack *tas, LList *inprogress, POINT p, int *money, char *output, int *incTime, int* timeSpeed);
 
 /* help.c */
-void help();
+void help(boolean *canReturn);
 
 /* inprogress.c */
 void inProgress(LList pesanan);
 
 /* inventory.c */
-void inventory(ListGadget *l, int *time, int *incTime, int *saveTime);
+void inventory(ListGadget *l, int *time, int *incTime, int *saveTime, Stack *s);
 
 /* map.c */
 void initMap (Matrix *peta);
@@ -40,6 +40,9 @@ void move(Matrix adjMat, POINT *posNow, int *time, ListDin lBuilding, int *times
 
 /* pickup.c */
 void pickUp(POINT posNow, Matrix LokMat, LList *todo, LList *inprogress, Stack *tas, int *incTime, int *timeSpeed);
+
+/* return.c */
+void returnToSender(LList *inprogress, LList *todo, Stack *tas, boolean *canReturn);
 
 /* todolist.c */
 void todolist(LList toDo);

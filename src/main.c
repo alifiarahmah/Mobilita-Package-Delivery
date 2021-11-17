@@ -25,6 +25,7 @@ int main(){
     int incTime = 1; // skala penambahan waktu
     int saveTime = 0; // tempat penyimpan waktu sebelum ability
     int timeSpeed = 0; // menyimpan ability Speed Boost
+    boolean canReturn = false; // kondisi apakah Mobita bisa return
 
     CreateListGadget(&gadgetInventory);
     CreateStack(&tas);
@@ -64,7 +65,9 @@ int main(){
             if (i != 0){
                 printf("%d pesanan baru masuk!",i);
             }
+
             // tiap pindah waktu, item yang lewat time limit perish
+            // perishExpiredItem(&time, &inprogress, &tas);
 
         }
         else if (cekKataSama(command,"PICK_UP")){
@@ -86,11 +89,14 @@ int main(){
             buy(posisi, peta, &gadgetInventory, &money);
         }
         else if (cekKataSama(command,"INVENTORY")){
-            inventory(&gadgetInventory,&time,&incTime,&saveTime);
+            inventory(&gadgetInventory,&time,&incTime,&saveTime,&tas);
             // TODO: tambah efek dari pemakaian tiap gadget
         }
         else if (cekKataSama(command,"HELP")){
-            help();
+            help(&canReturn);
+        }
+        else if (cekKataSama(command,"RETURN")){
+            returnToSender(&inprogress, &todo, &tas, &canReturn);
         }
         else if (cekKataSama(command,"EXIT")){
             printf("TERIMA KASIH SUDAH BERMAIN\n");
