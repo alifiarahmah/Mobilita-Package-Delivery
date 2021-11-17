@@ -85,6 +85,18 @@ void reducePerish(Stack *tas, LList *inprogress, int time){
     }
 }
 
+void countHeavy(LList inProgress, int *jumlah){
+    Address p = inProgress;
+    int total = 0;
+    while (p != NULL){
+        if (TYPE(ITEM(INFO(p))) == 'H'){
+            total++;
+        }
+        p = NEXT(p);
+    }
+    *jumlah = total;
+}
+
 /* Kerangka dari fungsi utama*/
 int main(){
     Matrix peta,adj;
@@ -106,6 +118,7 @@ int main(){
     boolean canReturn = false; // kondisi apakah Mobita bisa return
     int VIP = 0; // efek dari pesanan VIP
     int psnBerhasil = 0; //jumlah pesanan yang berhasil diantarkan
+    int heavy = 0; //jumlah heavy item
 
     CreateListGadget(&gadgetInventory);
     CreateStack(&tas);
@@ -152,6 +165,13 @@ int main(){
                     insertLastLL(&todo, val);
                     i++;
                 }
+
+                countHeavy(inprogress,&heavy);
+                time += heavy;
+                if (heavy != 0){
+                    printf("Mobita diperlambat sebanyak %d unit waktu.\n",heavy);
+                }
+
 
                 tempTime = time - tempTime;
                 reducePerish(&tas,&inprogress,tempTime);
