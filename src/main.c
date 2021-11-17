@@ -108,7 +108,6 @@ int main(){
     Stack tas;
     ListGadget gadgetInventory;
     LList todo, inprogress;
-    char output;
     Gadget gadgetUsed;
 
     int money = 0; // uang Mobita
@@ -119,7 +118,6 @@ int main(){
     boolean canReturn = false; // kondisi apakah Mobita bisa return
     int VIP = 0; // efek dari pesanan VIP
     int psnBerhasil = 0; //jumlah pesanan yang berhasil diantarkan
-    int heavy = 0; //jumlah heavy item
 
     CreateListGadget(&gadgetInventory);
     CreateStack(&tas);
@@ -158,21 +156,16 @@ int main(){
 
                 // tiap pindah waktu, pindahin pesanan dari queue pesanan ke linkedlist todo
                 int i = 0;
-                while(TIME(HEAD(pesanan)) == time){
-                    if (TYPE(ITEM(HEAD(pesanan))) == 'V') {
-                        VIP++;
+                for (int j=tempTime;j<=time;j++){
+                    while(TIME(HEAD(pesanan)) == j){
+                        if (TYPE(ITEM(HEAD(pesanan))) == 'V') {
+                            VIP++;
+                        }
+                        dequeue(&pesanan, &val);
+                        insertLastLL(&todo, val);
+                        i++;
                     }
-                    dequeue(&pesanan, &val);
-                    insertLastLL(&todo, val);
-                    i++;
                 }
-
-                countHeavy(inprogress,&heavy);
-                time += heavy;
-                if (heavy != 0){
-                    printf("Mobita diperlambat sebanyak %d unit waktu.\n",heavy);
-                }
-
 
                 tempTime = time - tempTime;
                 reducePerish(&tas,&inprogress,tempTime);
@@ -189,7 +182,7 @@ int main(){
                 pickUp(posisi, peta, &todo, &inprogress, &tas, &incTime, &timeSpeed, VIP);
             }
             else if (cekKataSama(command,"DROP_OFF")){
-                dropOff(&tas,&inprogress,posisi,&money,&output,&incTime,&timeSpeed,&canReturn,&VIP,&psnBerhasil);
+                dropOff(&tas,&inprogress,posisi,&money,&incTime,&timeSpeed,&canReturn,&VIP,&psnBerhasil);
             
                 if ((isEmpty(pesanan)) && (isEmptyLL(todo)) && (isEmptyLL(inprogress)) && (isEmptyStack(tas)) && (Name(posisi) != '8')) {
                     printf("Pesanan sudah habis. Silahkan kembali ke Headquarter.\n");

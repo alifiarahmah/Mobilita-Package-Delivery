@@ -81,7 +81,21 @@ boolean cekAdj (Matrix adjMat, char bangunan, char posisiSkrg){
     return adj;
 }
 
-/* memeriksa apakah bangunan merupakan HEAD dari toDo */
+boolean cekVIP(LList todo){
+    boolean ada = false;
+    Address p = todo;
+    while((p != NULL) && !ada){
+        if(TYPE(ITEM(INFO(p))) == 'V'){
+            ada = true;
+        }
+        else{
+            p = NEXT(p);
+        }
+    }
+    return ada;
+}
+
+/* memeriksa apakah bangunan ada pada toDo */
 boolean cekToDo (Matrix peta, char bangunan, LList toDo){
     boolean ada = false;
     POINT point = elmtToPoint(peta,bangunan);
@@ -94,6 +108,18 @@ boolean cekToDo (Matrix peta, char bangunan, LList toDo){
             p = NEXT(p);
         }
     }
+    /*else{
+        while (!ada && (p != NULL)){
+            if (TYPE(ITEM(INFO(p))) == 'V'){
+                if (EQ(PICK_UP(INFO(p)), point)){
+                    ada = true;
+                }
+            }
+            else{
+                p = NEXT(p);
+            }
+        }
+    }*/
     return ada;
 }
 

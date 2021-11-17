@@ -2,7 +2,7 @@
 #include "../modules/adt.h"
 #include "commands.h"
 
-void dropOff(Stack *tas, LList *inprogress, POINT p, int *money, char *output, int *incTime, int *timeSpeed, boolean *canReturn, int *VIP, int *psnBerhasil) {
+void dropOff(Stack *tas, LList *inprogress, POINT p, int *money, int *incTime, int *timeSpeed, boolean *canReturn, int *VIP, int *psnBerhasil) {
     Pesanan val;
     if (EQ(DROP_OFF(TOP(*tas)),p)) { /* harus memakai adt pesanan untuk menunjukkan point dropnya dimana */
         if (TYPE(ITEM(TOP(*tas))) == 'N') {
@@ -12,7 +12,7 @@ void dropOff(Stack *tas, LList *inprogress, POINT p, int *money, char *output, i
             printf("Pesanan Heavy Item berhasil diantarkan\n");
             printf("Uang yang didapatkan: 400 Yen\n");
             printf("Ability yang didapatkan: Speed Boost\n");
-            *incTime--;
+            *incTime -= 1;
             if (*incTime == 1) {
                 *timeSpeed = 10;
             }
@@ -32,12 +32,10 @@ void dropOff(Stack *tas, LList *inprogress, POINT p, int *money, char *output, i
             *VIP--;
         }
         *money += getItemPrice(ITEM(TOP(*tas)));
-        *output = TYPE(ITEM(TOP(*tas)));
         pop(tas,&val);
         deleteFirst(inprogress, &val); // delete dari list inprogress
         *psnBerhasil = *psnBerhasil + 1;
     } else {
         printf("Tidak terdapat pesanan yang dapat diantarkan\n");
-        *output = TYPE_UNDEF;
     }
 }

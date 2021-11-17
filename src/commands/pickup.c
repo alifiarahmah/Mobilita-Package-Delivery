@@ -53,7 +53,7 @@ void pickUp(POINT posNow, Matrix LokMat, LList *todo, LList *inprogress, Stack *
 			printf("Tujuan Pesanan: %c\n", Name(DROP_OFF(thisPesanan)));
 
 			if(TYPE(ITEM(thisPesanan)) == 'H'){ // heavyItem menambah incTime
-				*incTime++;
+				*incTime += 1;
 				if (*timeSpeed != 0) {
                     *timeSpeed = 0;
 				}

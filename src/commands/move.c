@@ -64,9 +64,9 @@ void move(Matrix adjMat, POINT *posNow, int *time, ListDin lBuilding, int *times
                 *time += *timestep;
             } else {
                 if (*timeSpeed % 2 != 0) {
-                    *time++;
+                    *time += 1;
                 }
-                *timeSpeed--;
+                *timeSpeed -= 1;
             }
         } else {
             *timestep = saveTime;

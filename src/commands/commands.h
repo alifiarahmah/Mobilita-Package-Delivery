@@ -7,7 +7,7 @@
 void buy(POINT posNow, Matrix lokMat, ListGadget *l, int *money);
 
 /* dropoff.c */
-void dropOff(Stack *tas, LList *inprogress, POINT p, int *money, char *output, int *incTime, int* timeSpeed, boolean *canReturn, int *VIP, int* psnBerhasil);
+void dropOff(Stack *tas, LList *inprogress, POINT p, int *money, int *incTime, int* timeSpeed, boolean *canReturn, int *VIP, int* psnBerhasil);
 
 /* help.c */
 void help(boolean *canReturn);
