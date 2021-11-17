@@ -94,6 +94,9 @@ void bacaFile (Word namafile, Matrix *peta, Matrix *adj, Queue *pesanan, ListDin
         }
         createItem(&item,type,Ptval);
         SetPesanan(&psn,tMasuk,pickUp,dropOff,item,Ptval);
+        if (type == 'P') {
+            DPTIME(psn) = Ptval;
+        }
         temp[i] = psn;
     }
 

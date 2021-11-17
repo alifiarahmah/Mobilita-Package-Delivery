@@ -22,6 +22,7 @@ typedef struct {
     POINT dropoff;
     Item item;
     int Ptime;
+    int Dptime;  /* Default perishable time, untuk pesanan perishable yang ingin di-reset */
 } Pesanan;
 
 /* Definisi List keseluruhan pesanan yang harus diselesaikan Mobita. */
@@ -39,6 +40,7 @@ typedef struct {
 #define DROP_OFF(p)   (p).dropoff
 #define ITEM(p)       (p).item
 #define PTIME(p)      (p).Ptime
+#define DPTIME(p)      (p).Dptime
 #define PTIME_INIT(p) (p).PtimeInit
 #define IDX_HEAD(q)   (q).idxHead
 #define IDX_TAIL(q)   (q).idxTail

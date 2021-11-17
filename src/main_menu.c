@@ -36,18 +36,18 @@ void MainMenu(Word *filePath){
     printf("SELAMAT DATANG DI PERMAINAN MOBITA\n");
     printf("1.NEW GAME\n");
     printf("2.EXIT\n");
-    printf("Masukkan pilihan anda:");
+    printf("Masukkan pilihan anda: ");
     startWord();
     pilihan = charToInt(currentWord);
     while ((pilihan != 1) && (pilihan != 2)){
         printf("Masukan pilihan salah, coba lagi!\n");
-        printf("Masukkan pilihan anda:");
+        printf("Masukkan pilihan anda: ");
         startWord();
         pilihan = charToInt(currentWord);
     }
 
     if (pilihan == 1){
-        printf("Masukkan nama file konfigurasi level (dalam .txt):");
+        printf("Masukkan nama file konfigurasi level (dalam .txt): ");
         startWord();
         for (int i=0;i<currentWord.length;i++){
             namaFile[i] = currentWord.contents[i];
@@ -55,7 +55,7 @@ void MainMenu(Word *filePath){
         namaFile[currentWord.length] = '\0';
         while ((cekFileAda(namaFile) == 0)){
             printf("File tidak ditemukan, coba lagi!\n");
-            printf("Masukkan nama file konfigurasi level (dalam .txt):");
+            printf("Masukkan nama file konfigurasi level (dalam .txt): ");
             startWord();
             for (int i=0;i<currentWord.length;i++){
                 namaFile[i] = currentWord.contents[i];

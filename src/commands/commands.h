@@ -16,7 +16,7 @@ void help(boolean *canReturn);
 void inProgress(LList pesanan);
 
 /* inventory.c */
-void inventory(ListGadget *l, int *time, int *incTime, int *saveTime, Stack *s);
+void inventory(ListGadget *l, int *time, int *incTime, int *saveTime, Stack *s, LList *inprogress);
 
 /* map.c */
 void initMap (Matrix *peta);

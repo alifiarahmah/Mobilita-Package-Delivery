@@ -9,7 +9,7 @@
 /* I.S. Banyak gadget dalam inventory tidak melebihi capacity */
 /* F.S Jika pemakaian berhasil, gadget yang terpakai menghilang dari inventory */
 /*     Jika pemakaian gagal, menuliskan pesan */
-void inventory(ListGadget *l, int *time, int *incTime, int *saveTime, Stack *s) {
+void inventory(ListGadget *l, int *time, int *incTime, int *saveTime, Stack *s, LList *inprogress) {
     int command;
     Gadget val;
     displayListGadget(*l);
@@ -21,7 +21,8 @@ void inventory(ListGadget *l, int *time, int *incTime, int *saveTime, Stack *s) 
         deleteGadget(l, command-1, &val);
         if (val == 'A') {
             if (TYPE(ITEM(TOP(*s))) == 'P') {
-                PTIME(TOP(*s)) += *time - TIME(TOP(*s));
+                PTIME(TOP(*s)) = DPTIME(TOP(*s));
+                PTIME(INFO(FIRST(*inprogress))) = DPTIME(TOP(*s));
             }
             printf("Kain Pembungkus Waktu berhasil digunakan\n");
         } else if (val == 'B') {
@@ -30,8 +31,9 @@ void inventory(ListGadget *l, int *time, int *incTime, int *saveTime, Stack *s) 
         } else if (val == 'C') {
             *saveTime = *incTime;
             *incTime = 0;
+            
             printf("Pintu Kemana Saja berhasil digunakan\n");
-        } else {
+        } else if (val == 'D') {
             if (*time > 50) {
                 *time -= 50;
             } else {

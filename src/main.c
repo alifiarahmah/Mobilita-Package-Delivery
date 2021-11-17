@@ -110,7 +110,7 @@ int main(){
     LList todo, inprogress;
     char output;
 
-    int money = 0; // uang Mobita
+    int money = 10000; // uang Mobita
     int time = 0; // waktu berjalan
     int incTime = 1; // skala penambahan waktu
     int saveTime = 0; // tempat penyimpan waktu sebelum ability
@@ -208,7 +208,7 @@ int main(){
                 buy(posisi, peta, &gadgetInventory, &money);
             }
             else if (cekKataSama(command,"INVENTORY")){
-                inventory(&gadgetInventory,&time,&incTime,&saveTime,&tas);
+                inventory(&gadgetInventory,&time,&incTime,&saveTime,&tas, &inprogress);
             }
             else if (cekKataSama(command,"HELP")){
                 help(&canReturn);
