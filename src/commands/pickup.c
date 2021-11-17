@@ -31,7 +31,7 @@ void pickUp(POINT posNow, Matrix LokMat, LList *todo, LList *inprogress, Stack *
 
 		if (!isFullStack(*tas)){ // kalo tasnya tidak penuh
 
-			insertLastLL(inprogress, thisPesanan); // taroh pesanan ke inprogress
+			insertFirst(inprogress, thisPesanan); // taroh pesanan ke inprogress
 			push(tas, thisPesanan); // taroh itemnya ke tas
 
 			// output tipe pesanan
