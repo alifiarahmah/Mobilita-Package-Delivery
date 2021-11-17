@@ -19,18 +19,32 @@
 /* F.S. Jika time-TIME() elemen dari list lebih dari PTIME, elemen terhapus */
 /*      Item di-pop dari tas */
 // TODO: pindahin entah ke mana
-void perishExpiredItem(int time, LList *inprogress, Stack *tas){
-    Pesanan val;
+void perishExpiredItem(LList *inprogress, Stack *tas){
+    Pesanan val,psn;
+    Stack dummy;
     int i = 0;
     Address p = *inprogress; // iterasi inprogress
     while(p != NULL){
         if(PTIME(INFO(p)) == 0){ // countdown perish item sudah 0
             deleteAt(inprogress, i, &val);
-            deleteIdxTas(tas, i, &val);
-        } else {
-            p = NEXT(p);
-            i++;
         }
+        p = NEXT(p);
+        i++;
+    }
+
+    //tas
+    CreateStack(&dummy);
+    TASCAPACITY(dummy) = TASCAPACITY(*tas);
+    while (!isEmptyStack(*tas)){
+        pop(tas,&psn);
+        if(PTIME(psn) != 0){
+            push(&dummy,psn);
+        }
+    }
+
+    while (!isEmptyStack(dummy)){
+        pop(&dummy,&psn);
+        push(tas,psn);
     }
 }
 
@@ -147,7 +161,7 @@ int main(){
                 }
 
                 // tiap pindah waktu, item yang lewat time limit perish
-                // perishExpiredItem(time, &inprogress, &tas);
+                perishExpiredItem(&inprogress, &tas);
 
             }
             else if (cekKataSama(command,"PICK_UP")){
