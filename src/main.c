@@ -46,6 +46,7 @@ int main(){
     int saveTime = 0; // tempat penyimpan waktu sebelum ability
     int timeSpeed = 0; // menyimpan ability Speed Boost
     boolean canReturn = false; // kondisi apakah Mobita bisa return
+    int VIP = 0; // efek dari pesanan VIP
 
     CreateListGadget(&gadgetInventory);
     CreateStack(&tas);
@@ -77,6 +78,9 @@ int main(){
             // tiap pindah waktu, pindahin pesanan dari queue pesanan ke linkedlist todo
             int i = 0;
             while(TIME(HEAD(pesanan)) == time){
+                if (TYPE(ITEM(HEAD(pesanan))) == 'V') {
+                    VIP++;
+                }
                 dequeue(&pesanan, &val);
                 insertLastLL(&todo, val);
                 i++;
@@ -91,10 +95,10 @@ int main(){
 
         }
         else if (cekKataSama(command,"PICK_UP")){
-            pickUp(posisi, peta, &todo, &inprogress, &tas, &incTime, &timeSpeed);
+            pickUp(posisi, peta, &todo, &inprogress, &tas, &incTime, &timeSpeed, VIP);
         }
         else if (cekKataSama(command,"DROP_OFF")){
-            dropOff(&tas,&inprogress,posisi,&money,&output,&incTime,&timeSpeed,&canReturn);
+            dropOff(&tas,&inprogress,posisi,&money,&output,&incTime,&timeSpeed,&canReturn,&VIP);
         }
         else if (cekKataSama(command,"MAP")){
             Map(adj,peta,posisi,todo,tas);
@@ -110,7 +114,6 @@ int main(){
         }
         else if (cekKataSama(command,"INVENTORY")){
             inventory(&gadgetInventory,&time,&incTime,&saveTime,&tas);
-            // TODO: tambah efek dari pemakaian tiap gadget
         }
         else if (cekKataSama(command,"HELP")){
             help(&canReturn);

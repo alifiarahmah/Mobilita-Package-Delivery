@@ -7,7 +7,7 @@
 void buy(POINT posNow, Matrix lokMat, ListGadget *l, int *money);
 
 /* dropoff.c */
-void dropOff(Stack *tas, LList *inprogress, POINT p, int *money, char *output, int *incTime, int* timeSpeed, boolean *canReturn);
+void dropOff(Stack *tas, LList *inprogress, POINT p, int *money, char *output, int *incTime, int* timeSpeed, boolean *canReturn, int *VIP);
 
 /* help.c */
 void help(boolean *canReturn);
@@ -39,7 +39,7 @@ void Map (Matrix adjMat, Matrix lokMat, POINT posNow, LList toDo, Stack dropOff)
 void move(Matrix adjMat, POINT *posNow, int *time, ListDin lBuilding, int *timestep, int saveTime, int *timeSpeed);
 
 /* pickup.c */
-void pickUp(POINT posNow, Matrix LokMat, LList *todo, LList *inprogress, Stack *tas, int *incTime, int *timeSpeed);
+void pickUp(POINT posNow, Matrix LokMat, LList *todo, LList *inprogress, Stack *tas, int *incTime, int *timeSpeed, int VIP);
 
 /* return.c */
 void returnToSender(LList *inprogress, LList *todo, Stack *tas, boolean *canReturn);

@@ -2,7 +2,7 @@
 #include "../modules/adt.h"
 #include "commands.h"
 
-void dropOff(Stack *tas, LList *inprogress, POINT p, int *money, char *output, int *incTime, int *timeSpeed, boolean *canReturn) {
+void dropOff(Stack *tas, LList *inprogress, POINT p, int *money, char *output, int *incTime, int *timeSpeed, boolean *canReturn, int *VIP) {
     Pesanan val;
     if (EQ(DROP_OFF(TOP(*tas)),p)) { /* harus memakai adt pesanan untuk menunjukkan point dropnya dimana */
         if (TYPE(ITEM(TOP(*tas))) == 'N') {
@@ -29,6 +29,7 @@ void dropOff(Stack *tas, LList *inprogress, POINT p, int *money, char *output, i
             printf("Ability yang didapatkan: Return To Sender\n");
             *canReturn = true;
             printf("Anda dapat menggunakan perintah RETURN!\n");
+            *VIP--;
         }
         *money += getItemPrice(ITEM(TOP(*tas)));
         *output = TYPE(ITEM(TOP(*tas)));

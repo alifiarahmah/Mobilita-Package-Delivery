@@ -10,21 +10,32 @@
 /* 			- Item di-insertLast ke inprogress */
 /* 			- Item dimasukkan ke tas */
 /* 			Jika tidak ada pesanan pada lokasi, ditampilkan pesan. */
-void pickUp(POINT posNow, Matrix LokMat, LList *todo, LList *inprogress, Stack *tas, int *incTime, int *timeSpeed){
+void pickUp(POINT posNow, Matrix LokMat, LList *todo, LList *inprogress, Stack *tas, int *incTime, int *timeSpeed, int VIP){
 	Pesanan thisPesanan;
 
 	boolean pesananFound = false;
 	int i = 0;
 	Address p = *todo;
 	while(!pesananFound && (p != NULL)){ // iterasi todo, cari yang posisinya sesuai dengan posNow
-		if(EQ(PICK_UP(INFO(p)), posNow)){
-			pesananFound = true;
-			deleteAt(todo, i, &thisPesanan); // delete pesanan dari todo
-			thisPesanan = INFO(p);
-		} else {
-			p = NEXT(p);
-			i++;
-		}
+	    if (VIP > 0) {
+            if(EQ(PICK_UP(INFO(p)), posNow) && TYPE(ITEM(INFO(p))) == 'V'){
+                pesananFound = true;
+                deleteAt(todo, i, &thisPesanan); // delete pesanan dari todo
+                thisPesanan = INFO(p);
+            } else {
+                p = NEXT(p);
+                i++;
+            }
+	    } else {
+            if(EQ(PICK_UP(INFO(p)), posNow)){
+                pesananFound = true;
+                deleteAt(todo, i, &thisPesanan); // delete pesanan dari todo
+                thisPesanan = INFO(p);
+            } else {
+                p = NEXT(p);
+                i++;
+            }
+	    }
 	}
 
 	if (pesananFound){ // ketemu
