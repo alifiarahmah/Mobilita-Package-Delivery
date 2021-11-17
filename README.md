@@ -7,7 +7,7 @@ This project is maintained by 5 people :
  |Febryola Kurnia Putri |     13520140   |  
   |Vito Ghifari |    13520153   |  
    |Willy Wilsen |     13520160    |  
-
+   
 ## What is this project about?
    Projek ini dibuat bertujuan untuk memenuhi tugas besar mata kuliah IF2110, Algoritma dan Struktur Data.
    Tugas ini merupakan implementasi dari materi yang telah dipelajari di kelas yaitu implementasi ADT pada program
@@ -43,6 +43,15 @@ This project is maintained by 5 people :
    $ make
    $ ./main.exe
    ```
+
+## Pembagian Kerja
+   |Nama  | NIM| Deskripsi Kerja|
+   | ----- | ------------ | --------------- |
+  |Alifia Rahmah   |   13520122     |  Merencanakan dan mengimplementasikan command BUY,PICK_UP, modifikasi ADT linked list|
+ | Jevant Jedidia Augustine  |    13520133    |  Membuat main menu(new game dan exit), modifikasi mesin kata |
+ |Febryola Kurnia Putri |     13520140   |  Membentuk ADT baru untuk type gadget, item, dan command TO_DO |
+  |Vito Ghifari |    13520153   |  Merencanakan dan mengimplementasikan command IN_PROGRESS,MOVE,HELP |
+   |Willy Wilsen |     13520160    | Merencanakan dan mengimplementasikan command DROP_OFF, INVENTORY |
    
 ## Status Tubes
    finished
