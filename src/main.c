@@ -19,7 +19,7 @@ void perishExpiredItem(int time, LList *inprogress, Stack *tas){
     while(p != NULL){
         if(time - TIME(INFO(p)) > PTIME(INFO(p))){ // item lebih lama di tas daripada perish timenya
             deleteAt(inprogress, i, &val);
-            deleteIdxTas(&tas, i, &val);
+            deleteIdxTas(tas, i, &val);
         } else {
             p = NEXT(p);
             i++;
