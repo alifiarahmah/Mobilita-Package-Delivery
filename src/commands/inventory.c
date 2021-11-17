@@ -19,19 +19,25 @@ void inventory(ListGadget *l, int *time, int *incTime, int *saveTime, Stack *s) 
     /* Sesuai Command*/
     if (GADGET_ELMT(*l, command-1) != GADGET_UNDEF) {
         deleteGadget(l, command-1, &val);
-        if (val == "A") {
-
-        } else if (val == "B") {
-            increase2TimesTasCapacity(s); // Masih dipertanyakan jangka waktunya
-        } else if (val == "C") {
+        if (val == 'A') {
+            if (TYPE(ITEM(TOP(*s))) == 'P') {
+                PTIME(TOP(*s)) += *time - TIME(TOP(*s));
+            }
+            printf("Kain Pembungkus Waktu berhasil digunakan\n");
+        } else if (val == 'B') {
+            increase2TimesTasCapacity(s);
+            printf("Senter Pembesar berhasil digunakan\n");
+        } else if (val == 'C') {
             *saveTime = *incTime;
             *incTime = 0;
+            printf("Pintu Kemana Saja berhasil digunakan\n");
         } else {
             if (*time > 50) {
                 *time -= 50;
             } else {
                 *time = 0;
             }
+            printf("Mesin Waktu berhasil digunakan\n");
         }
     }
     else {
