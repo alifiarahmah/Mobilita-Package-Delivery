@@ -24,7 +24,7 @@ void perishExpiredItem(int time, LList *inprogress, Stack *tas){
     int i = 0;
     Address p = *inprogress; // iterasi inprogress
     while(p != NULL){
-        if(time - TIME(INFO(p)) > PTIME(INFO(p))){ // item lebih lama di tas daripada perish timenya
+        if(PTIME(INFO(p)) == 0){ // countdown perish item sudah 0
             deleteAt(inprogress, i, &val);
             deleteIdxTas(tas, i, &val);
         } else {
