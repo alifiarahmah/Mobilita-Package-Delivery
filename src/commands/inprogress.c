@@ -3,32 +3,27 @@
 
 #include "../modules/adt.h"
 
-void inProgress(Stack backpack) {
-    int idx;
+void inProgress(LList inprogress) {
     int ctr;
-    POINT pointDropOff;
-    Item order;
     Pesanan pesan;
 
-    if (!isEmptyStack(backpack)) {
+    if (!isEmptyLL(inprogress)) {
         ctr = 0;
-        idx = IDX_TOP(backpack);
+        LList revInprogress;
+        Address p = inprogress;
 
-        /*printf("Pesanan yang sedang diantarkan: \n");
-        while (idx >= 0) {
-            ctr++;
-            order = ITEM(backpack.buffer[idx]);
-            pointDropOff = DROP_OFF(backpack.buffer[idx]);
-            printf("%d. ", ctr);
-            printItemType(order);
-            printf(" (Tujuan: %c)\n", Name(pointDropOff));
-            idx++;
-        }*/
+        CreateList(&revInprogress);
+        // Menampilkan dari paling baru, sehingga list harus di reverse
+        while (p != NULL) {
+            insertFirst(&revInprogress, INFO(p));
+            p = NEXT(p);
+        }
         
         printf("Pesanan yang sedang diantarkan: \n");
-        while(!isEmptyStack(backpack)){
+        p = revInprogress;
+        while(p != NULL) {
+            pesan = INFO(p);
             ctr++;
-            pop(&backpack,&pesan);
             if (TYPE(ITEM(pesan)) == 'N'){
                 printf("%d. Normal Item (Tujuan: %c)\n",ctr,Name(DROP_OFF(pesan)));
             }
@@ -41,6 +36,7 @@ void inProgress(Stack backpack) {
             else{
                 printf("%d. VIP Item (Tujuan: %c)\n",ctr,Name(DROP_OFF(pesan)));
             }
+            p = NEXT(p);
         }
     } 
     

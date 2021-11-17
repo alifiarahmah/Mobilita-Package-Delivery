@@ -44,5 +44,7 @@ void pop(Stack *s, Pesanan *val){
 /* I.S. Tas terdefinisi */
 /* F.S. TASCAPACITY(*s) bertambah 1 */
 void increaseTasCapacity(Stack *s){
-	TASCAPACITY(*s)++;
+    if (TASCAPACITY(*s) < 100) {
+        TASCAPACITY(*s)++;
+    }
 }
