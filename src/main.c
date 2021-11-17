@@ -94,7 +94,7 @@ int main(){
             pickUp(posisi, peta, &todo, &inprogress, &tas, &incTime, &timeSpeed);
         }
         else if (cekKataSama(command,"DROP_OFF")){
-            dropOff(&tas,&inprogress,posisi,&money,&output,&incTime,&timeSpeed);
+            dropOff(&tas,&inprogress,posisi,&money,&output,&incTime,&timeSpeed,&canReturn);
         }
         else if (cekKataSama(command,"MAP")){
             Map(adj,peta,posisi,todo,tas);
