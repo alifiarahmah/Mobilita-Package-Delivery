@@ -21,7 +21,6 @@ typedef struct {
     POINT pickup;
     POINT dropoff;
     Item item;
-	int PtimeInit;
     int Ptime;
 } Pesanan;
 
@@ -47,7 +46,7 @@ typedef struct {
 #define     TAIL(q)   (q).buffer[(q).idxTail]
 
 /* *** Selektor lain *** */
-void SetPesanan(Pesanan *p, int tval, POINT pval, POINT dval, Item ival, int Ptval, int Ptinitval);
+void SetPesanan(Pesanan *p, int tval, POINT pval, POINT dval, Item ival, int Ptval);
 /* I.S. pesanan p sembarang */
 /* F.S. pesanan p terbentuk dengan sbb: */
 /* - time bernilai tval */

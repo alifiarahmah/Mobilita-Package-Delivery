@@ -93,7 +93,7 @@ void bacaFile (Word namafile, Matrix *peta, Matrix *adj, Queue *pesanan, ListDin
             Ptval = charToInt(currentWord);
         }
         createItem(&item,type,Ptval);
-        SetPesanan(&psn,tMasuk,pickUp,dropOff,item,Ptval,Ptval);
+        SetPesanan(&psn,tMasuk,pickUp,dropOff,item,Ptval);
         temp[i] = psn;
     }
 
