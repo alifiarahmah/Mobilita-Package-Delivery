@@ -16,7 +16,7 @@ void help(boolean *canReturn);
 void inProgress(LList pesanan);
 
 /* inventory.c */
-void inventory(ListGadget *l, int *time, int *incTime, int *saveTime, Stack *s, LList *inprogress);
+void inventory(ListGadget *l, int *time, int *incTime, int *saveTime, Stack *s, LList *inprogress, Gadget *gadgetUsed);
 
 /* map.c */
 void initMap (Matrix *peta);
@@ -36,7 +36,7 @@ boolean cekToDo (Matrix peta, char bangunan, LList toDo);
 void Map (Matrix adjMat, Matrix lokMat, POINT posNow, LList toDo, Stack dropOff);
 
 /* move.c */
-void move(Matrix adjMat, POINT *posNow, int *time, ListDin lBuilding, int *timestep, int saveTime, int *timeSpeed);
+void move(Matrix adjMat, POINT *posNow, int *time, ListDin lBuilding, int *timestep, int saveTime, int *timeSpeed, boolean useGadget);
 
 /* pickup.c */
 void pickUp(POINT posNow, Matrix LokMat, LList *todo, LList *inprogress, Stack *tas, int *incTime, int *timeSpeed, int VIP);

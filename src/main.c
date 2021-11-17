@@ -109,8 +109,9 @@ int main(){
     ListGadget gadgetInventory;
     LList todo, inprogress;
     char output;
+    Gadget gadgetUsed;
 
-    int money = 10000; // uang Mobita
+    int money = 0; // uang Mobita
     int time = 0; // waktu berjalan
     int incTime = 1; // skala penambahan waktu
     int saveTime = 0; // tempat penyimpan waktu sebelum ability
@@ -153,7 +154,7 @@ int main(){
 
             if (cekKataSama(command,"MOVE")){
                 int tempTime = time;
-                move(adj,&posisi,&time,lBuilding,&incTime,saveTime,&timeSpeed);
+                move(adj,&posisi,&time,lBuilding,&incTime,saveTime,&timeSpeed, false);
 
                 // tiap pindah waktu, pindahin pesanan dari queue pesanan ke linkedlist todo
                 int i = 0;
@@ -208,7 +209,11 @@ int main(){
                 buy(posisi, peta, &gadgetInventory, &money);
             }
             else if (cekKataSama(command,"INVENTORY")){
-                inventory(&gadgetInventory,&time,&incTime,&saveTime,&tas, &inprogress);
+                inventory(&gadgetInventory,&time,&incTime,&saveTime,&tas, &inprogress, &gadgetUsed);
+                if (gadgetUsed == 'C') {
+                    // Pintu kemana saja digunakan
+                    move(adj,&posisi,&time,lBuilding,&incTime,saveTime,&timeSpeed, true);
+                }
             }
             else if (cekKataSama(command,"HELP")){
                 help(&canReturn);

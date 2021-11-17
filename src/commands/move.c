@@ -1,10 +1,10 @@
 #include <stdio.h>
-#include "commands.h"
 
 #include "../modules/adt.h"
 #include "../read_file.h"
+#include "commands.h"
 
-void move(Matrix adjMat, POINT *posNow, int *time, ListDin lBuilding, int *timestep, int saveTime,int *timeSpeed) {
+void move(Matrix adjMat, POINT *posNow, int *time, ListDin lBuilding, int *timestep, int saveTime, int *timeSpeed, boolean useGadget) {
     int ctr, rowIdx, input;
     int posSelected;
 
@@ -15,14 +15,15 @@ void move(Matrix adjMat, POINT *posNow, int *time, ListDin lBuilding, int *times
 
     printf("Posisi yang dapat dicapai: \n");
     // HQ
-    if (MAT_ELMT(adjMat, rowIdx, 0) == '1') {
-        printf("%d. HQ (%x", ctr,Absis(ELMT_DIN(lBuilding,0)));
-        printf(",%x)\n",Ordinat(ELMT_DIN(lBuilding,0)));
+    // useGadget == menggunakan pintu kemana saja
+    if (((MAT_ELMT(adjMat, rowIdx, 0) == '1') || useGadget) && ('8' != Name(*posNow))) {
+        printf("%d. HQ (%x", ctr, Absis(ELMT_DIN(lBuilding, 0)));
+        printf(",%x)\n", Ordinat(ELMT_DIN(lBuilding, 0)));
         ctr++;
     }
     // Iterasi kolom
     for (int j = 1; j < COLS(adjMat); j++) {
-        if (MAT_ELMT(adjMat, rowIdx, j) == '1') {
+        if (((MAT_ELMT(adjMat, rowIdx, j) == '1') || useGadget) && (Name(ELMT_DIN(lBuilding, j)) != Name(*posNow))) {
             printf("%d. ", ctr);
             displayElmtDin(lBuilding, j);
             printf("\n");
@@ -36,7 +37,6 @@ void move(Matrix adjMat, POINT *posNow, int *time, ListDin lBuilding, int *times
     do {
         printf("Posisi yang dapat dipilih? (Ketik 0 jika ingin kembali)\n");
         printf("ENTER COMMAND: ");
-        // TODO: ganti ke mesin kata
         startWord();
         input = charToInt(currentWord);
         if ((input < 0) || (input > ctr)) {
@@ -58,8 +58,8 @@ void move(Matrix adjMat, POINT *posNow, int *time, ListDin lBuilding, int *times
                 posSelected++;
             }
         }
-        *posNow = ELMT_DIN(lBuilding, posSelected-1);
-        if (*timestep != 0) {
+        *posNow = ELMT_DIN(lBuilding, posSelected - 1);
+        if ((*timestep != 0) && !useGadget) {
             if (*timeSpeed == 0) {
                 *time += *timestep;
             } else {
@@ -71,9 +71,7 @@ void move(Matrix adjMat, POINT *posNow, int *time, ListDin lBuilding, int *times
         } else {
             *timestep = saveTime;
         }
-    }
-    else{
+    } else {
         printf("MOVE dibatalkan.\n");
     }
-
 }
