@@ -16,15 +16,18 @@ void dropOff(Stack *s, POINT p, int *money, char *output, int *incTime, int *tim
             if (*incTime == 1) {
                 *timeSpeed = 10;
             }
+            printf("Karena mendapat semangat, anda bergerak lebih cepat!\n");
         } else if (TYPE(ITEM(TOP(*s))) == 'P') {
             printf("Pesanan Perishable Item berhasil diantarkan\n");
             printf("Uang yang didapatkan: 400 Yen\n");
             printf("Ability yang didapatkan: Increase Capacity\n");
             increaseTasCapacity(s);
+            printf("Kapasitas tas anda bertambah 1!\n");
         } else if (TYPE(ITEM(TOP(*s))) == 'V') {
             printf("Pesanan VIP Item berhasil diantarkan\n");
             printf("Uang yang didapatkan: 600 Yen\n");
             printf("Ability yang didapatkan: Return To Sender\n");
+            printf("Anda dapat menggunakan perintah RETURN!\n");
         }
         *money += getItemPrice(ITEM(TOP(*s)));
         *output = TYPE(ITEM(TOP(*s)));
