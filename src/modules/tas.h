@@ -55,7 +55,11 @@ void increaseTasCapacity(Stack *s);
 /* Menambah kapasitas tas sejumlah 1 */
 /* I.S. Tas terdefinisi */
 /* F.S. TASCAPACITY(*s) bertambah 1 */
-
+void increase2TimesTasCapacity(Stack *s);
+/* Menambah kapasitas tas sejumlah 2 kali lipat sebelumnya */
+/* I.S. Tas terdefinisi */
+/* F.S. TASCAPACITY(*s) bertambah 2 kali lipat saat TASCAPACITY(*s) < 50
+   TASCAPACITY(*s) = 100 saat TASCAPACITY >= 50 */
 
 #endif
 

@@ -2,7 +2,7 @@
 #include "../modules/adt.h"
 #include "commands.h"
 
-void dropOff(Stack *s, POINT p, int *money, char *output) {
+void dropOff(Stack *s, POINT p, int *money, char *output, int *incTime, int *timeSpeed) {
     Pesanan val;
     if (EQ(DROP_OFF(TOP(*s)),p)) { /* harus memakai adt pesanan untuk menunjukkan point dropnya dimana */
         if (TYPE(ITEM(TOP(*s))) == 'N') {
@@ -12,6 +12,10 @@ void dropOff(Stack *s, POINT p, int *money, char *output) {
             printf("Pesanan Heavy Item berhasil diantarkan\n");
             printf("Uang yang didapatkan: 400 Yen\n");
             printf("Ability yang didapatkan: Speed Boost\n");
+            *incTime--;
+            if (*incTime == 1) {
+                *timeSpeed = 10;
+            }
         } else if (TYPE(ITEM(TOP(*s))) == 'P') {
             printf("Pesanan Perishable Item berhasil diantarkan\n");
             printf("Uang yang didapatkan: 400 Yen\n");

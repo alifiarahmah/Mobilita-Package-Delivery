@@ -9,7 +9,7 @@
 /* I.S. Banyak gadget dalam inventory tidak melebihi capacity */
 /* F.S Jika pemakaian berhasil, gadget yang terpakai menghilang dari inventory */
 /*     Jika pemakaian gagal, menuliskan pesan */
-void inventory(ListGadget *l, int *time, int *incTime, int *saveTime) {
+void inventory(ListGadget *l, int *time, int *incTime, int *saveTime, Stack *s) {
     int command;
     Gadget val;
     displayListGadget(*l);
@@ -22,7 +22,7 @@ void inventory(ListGadget *l, int *time, int *incTime, int *saveTime) {
         if (val == "A") {
 
         } else if (val == "B") {
-
+            increase2TimesTasCapacity(s); // Masih dipertanyakan jangka waktunya
         } else if (val == "C") {
             *saveTime = *incTime;
             *incTime = 0;

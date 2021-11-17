@@ -4,7 +4,7 @@
 #include "../modules/adt.h"
 #include "../read_file.h"
 
-void move(Matrix adjMat, POINT *posNow, int *time, ListDin lBuilding, int *timestep, int saveTime) {
+void move(Matrix adjMat, POINT *posNow, int *time, ListDin lBuilding, int *timestep, int saveTime,int *timeSpeed) {
     int ctr, rowIdx, input;
     int posSelected;
 
@@ -60,7 +60,14 @@ void move(Matrix adjMat, POINT *posNow, int *time, ListDin lBuilding, int *times
         }
         *posNow = ELMT_DIN(lBuilding, posSelected-1);
         if (*timestep != 0) {
-            *time += *timestep;
+            if (*timeSpeed == 0) {
+                *time += *timestep;
+            } else {
+                if (*timeSpeed % 2 != 0) {
+                    *time++;
+                }
+                *timeSpeed--;
+            }
         } else {
             *timestep = saveTime;
         }

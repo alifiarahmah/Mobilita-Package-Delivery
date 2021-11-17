@@ -42,9 +42,21 @@ void pop(Stack *s, Pesanan *val){
 /* ************ Menambah kapasitas Stack ************ */
 /* Menambah kapasitas tas sejumlah 1 */
 /* I.S. Tas terdefinisi */
-/* F.S. TASCAPACITY(*s) bertambah 1 */
+/* F.S. TASCAPACITY(*s) bertambah 1 saat TASCAPACITY(*s) < STACK_CAPACITY */
 void increaseTasCapacity(Stack *s){
-    if (TASCAPACITY(*s) < 100) {
+    if (TASCAPACITY(*s) < STACK_CAPACITY) {
         TASCAPACITY(*s)++;
+    }
+}
+
+/* Menambah kapasitas tas sejumlah 2 kali lipat sebelumnya */
+/* I.S. Tas terdefinisi */
+/* F.S. TASCAPACITY(*s) bertambah 2 kali lipat saat TASCAPACITY(*s) < 50
+   TASCAPACITY(*s) = 100 saat TASCAPACITY >= 50 */
+void increase2TimesTasCapacity(Stack *s) {
+    if (TASCAPACITY(*s) < 50) {
+        TASCAPACITY(*s) = 2 * TASCAPACITY(*s);
+    } else {
+        TASCAPACITY(*s) = 100;
     }
 }
