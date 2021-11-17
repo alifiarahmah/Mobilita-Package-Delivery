@@ -37,10 +37,10 @@ void todolist(LList toDo){
         else if (TYPE(ITEM(INFO(p))) == 'N'){
             printf("%d. %c -> %c (Normal Item)\n", i,Name(PICK_UP(INFO(p))),Name(DROP_OFF(INFO(p))));
         }
-        else if (TYPE(ITEM(INFO(p))) == 'N'){
+        else if (TYPE(ITEM(INFO(p))) == 'H'){
             printf("%d. %c -> %c (Heavy Item)\n", i,Name(PICK_UP(INFO(p))),Name(DROP_OFF(INFO(p))));
         }
-        else{
+        else { // TYPE(ITEM(INFO(p))) == 'V'
             printf("%d. %c -> %c (VIP Item)\n", i,Name(PICK_UP(INFO(p))),Name(DROP_OFF(INFO(p))));
         }
         i++;

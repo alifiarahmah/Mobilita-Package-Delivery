@@ -33,7 +33,7 @@ void inProgress(LList inprogress) {
             else if (TYPE(ITEM(pesan)) == 'P'){
                 printf("%d. Perishable Item (Tujuan: %c)\n",ctr,Name(DROP_OFF(pesan)));
             }
-            else{
+            else { // TYPE(ITEM(pesan)) == 'V'
                 printf("%d. VIP Item (Tujuan: %c)\n",ctr,Name(DROP_OFF(pesan)));
             }
             p = NEXT(p);
