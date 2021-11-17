@@ -6,6 +6,12 @@
 #include "main_menu.h"
 #include "read_file.h"
 
+#if defined(__WIN32) || defined(__WIN64) // Powershell
+    #define clearscreen system("cls")
+#else // Bash
+    #define clearscreen system("clear")
+#endif
+
 // TO DO: efek & reward dari Heavy item dan perishable item
 
 /* Proses: iterasi elemen di inprogress dan tas, dan menghapus semua item yang sudah perish */
@@ -74,7 +80,7 @@ int main(){
             command[i] = currentWord.contents[i];
         }
         command[currentWord.length] = '\0';
-        system("cls");
+        clearscreen;
 
         if (cekKataSama(command,"MOVE")){
             move(adj,&posisi,&time,lBuilding,&incTime,saveTime,&timeSpeed);
@@ -95,7 +101,7 @@ int main(){
             }
 
             // tiap pindah waktu, item yang lewat time limit perish
-            perishExpiredItem(time, &inprogress, &tas);
+            // perishExpiredItem(time, &inprogress, &tas);
 
         }
         else if (cekKataSama(command,"PICK_UP")){
