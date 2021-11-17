@@ -11,6 +11,7 @@ void returnToSender(LList *inprogress, LList *todo, Stack *tas, boolean *canRetu
 		if ((TYPE(ITEM(INFO(FIRST(*inprogress)))) != 'V')){ // teratas bukan VIP Item
 			pop(tas, &val);
 			deleteFirst(inprogress, &val);
+			PTIME(val) = EXPIRED(ITEM(val)); // reset perish countdown time
 			insertLastLL(todo, val);
 
 			printItemType(ITEM(val));
