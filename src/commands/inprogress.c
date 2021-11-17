@@ -22,7 +22,7 @@ void inProgress(LList inprogress) {
                 printf("%d. Heavy Item (Tujuan: %c)\n",ctr,Name(DROP_OFF(pesan)));
             }
             else if (TYPE(ITEM(pesan)) == 'P'){
-                printf("%d. Perishable Item (Tujuan: %c)\n",ctr,Name(DROP_OFF(pesan)));
+                printf("%d. Perishable Item (Tujuan: %c) (Waktu tersisa: %d)\n",ctr,Name(DROP_OFF(pesan)),PTIME(pesan));
             }
             else { // TYPE(ITEM(pesan)) == 'V'
                 printf("%d. VIP Item (Tujuan: %c)\n",ctr,Name(DROP_OFF(pesan)));

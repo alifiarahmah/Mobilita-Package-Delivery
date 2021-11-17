@@ -34,6 +34,43 @@ void perishExpiredItem(int time, LList *inprogress, Stack *tas){
     }
 }
 
+
+void reducePerish(Stack *tas, LList *inprogress, int time){
+    Address p = *inprogress;
+    Pesanan pesan;
+    Stack dummy;
+
+    //reduce inprogress
+    while (p != NULL){
+        if (TYPE(ITEM(INFO(p))) == 'P'){
+            PTIME(INFO(p)) = PTIME(INFO(p)) - time;
+            if (PTIME(INFO(p)) < 0){
+                PTIME(INFO(p)) = 0;
+            }
+        }
+        p = NEXT(p);
+    }
+
+    //reduce tas
+    CreateStack(&dummy);
+    TASCAPACITY(dummy) = TASCAPACITY(*tas);
+    while (!isEmptyStack(*tas)){
+        pop(tas,&pesan);
+        if (TYPE(ITEM(pesan)) == 'P'){
+            PTIME(pesan) = PTIME(pesan) - time;
+            if (PTIME(pesan) < 0){
+                PTIME(pesan) = 0;
+            }
+        }
+        push(&dummy,pesan);
+    }
+
+    while (!isEmptyStack(dummy)){
+        pop(&dummy,&pesan);
+        push(tas,pesan);
+    }
+}
+
 /* Kerangka dari fungsi utama*/
 int main(){
     Matrix peta,adj;
@@ -88,6 +125,7 @@ int main(){
             clearscreen;
 
             if (cekKataSama(command,"MOVE")){
+                int tempTime = time;
                 move(adj,&posisi,&time,lBuilding,&incTime,saveTime,&timeSpeed);
 
                 // tiap pindah waktu, pindahin pesanan dari queue pesanan ke linkedlist todo
@@ -100,6 +138,9 @@ int main(){
                     insertLastLL(&todo, val);
                     i++;
                 }
+
+                tempTime = time - tempTime;
+                reducePerish(&tas,&inprogress,tempTime);
 
                 if (i != 0){
                     printf("%d pesanan baru masuk!",i);
