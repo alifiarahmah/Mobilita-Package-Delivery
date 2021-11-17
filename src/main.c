@@ -69,6 +69,13 @@ int main(){
 
     do{
         printf("\n\n");
+
+        if ((isEmpty(pesanan)) && (isEmptyLL(todo)) && (isEmptyLL(inprogress)) && (isEmptyStack(tas)) && (Name(posisi) == '8')){
+            printf("TERIMA KASIH SUDAH BERMAIN\n");
+            printf("Semua pesanan berhasil dikirim.\n");
+            break;
+        }
+        
         printf("Mobita berada di titik %c",MAT_ELMT(peta,Absis(posisi),Ordinat(posisi)));
         TulisPOINT(posisi);
         printf("\n");
@@ -134,17 +141,12 @@ int main(){
         else if (cekKataSama(command,"EXIT")){
             printf("TERIMA KASIH SUDAH BERMAIN\n");
         }
-        else if ((isEmpty(pesanan)) && (isEmptyLL(todo)) && (isEmptyLL(inprogress)) && (isEmptyStack(tas)) && (Name(posisi) == '8')){
-            printf("TERIMA KASIH SUDAH BERMAIN\n");
-            printf("Semua pesanan berhasil dikirim.\n");
-            break;
-        }
         else{
             printf("Masukan command tidak valid, coba lagi!");
         }
     }while(!cekKataSama(command,"EXIT"));
     
-    printf("-------------Statistik Akhir-------------");
+    printf("-------------Statistik Akhir-------------\n");
     printf("Jumlah pesanan yang berhasil diantar: %d\n",psnBerhasil);
     printf("Waktu yang terlampaui: %d\n",time);
 
