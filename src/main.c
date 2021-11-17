@@ -7,6 +7,26 @@
 
 // TO DO: efek & reward dari Heavy item dan perishable item
 
+/* Proses: iterasi elemen di inprogress dan tas, dan menghapus semua item yang sudah perish */
+/* I.S. Terdefinisi */
+/* F.S. Jika time-TIME() elemen dari list lebih dari PTIME, elemen terhapus */
+/*      Item di-pop dari tas */
+// TODO: pindahin entah ke mana
+void perishExpiredItem(int time, LList *inprogress, Stack *tas){
+    Pesanan val;
+    int i = 0;
+    Address p = *inprogress; // iterasi inprogress
+    while(p != NULL){
+        if(time - TIME(INFO(p)) > PTIME(INFO(p))){ // item lebih lama di tas daripada perish timenya
+            deleteAt(inprogress, i, &val);
+            deleteIdxTas(&tas, i, &val);
+        } else {
+            p = NEXT(p);
+            i++;
+        }
+    }
+}
+
 /* Kerangka dari fungsi utama*/
 int main(){
     Matrix peta,adj;
@@ -67,7 +87,7 @@ int main(){
             }
 
             // tiap pindah waktu, item yang lewat time limit perish
-            // perishExpiredItem(&time, &inprogress, &tas);
+            perishExpiredItem(time, &inprogress, &tas);
 
         }
         else if (cekKataSama(command,"PICK_UP")){

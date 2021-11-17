@@ -39,6 +39,18 @@ void pop(Stack *s, Pesanan *val){
 	IDX_TOP(*s)--;
 }
 
+/* Menghapus elemen dengan indeks idx dari Stack s */
+/* I.S. idx indeks yang valid di s */
+/* F.S. val berisi item dengan indeks idx dari list, val dihapus dari list, IDX_TOP berkurang 1,  */
+void deleteIdxTas(Stack *s, int idx, Pesanan *val){
+  *val = (*s).buffer[idx];
+  int i;
+  for(i = idx+1; i <= IDX_TOP(*s); i++){
+      (*s).buffer[i-1] = (*s).buffer[i];
+  }
+  IDX_TOP(*s)--;
+}
+
 /* ************ Menambah kapasitas Stack ************ */
 /* Menambah kapasitas tas sejumlah 1 */
 /* I.S. Tas terdefinisi */

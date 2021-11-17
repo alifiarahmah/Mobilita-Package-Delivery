@@ -50,6 +50,11 @@ void pop(Stack *s, Pesanan *val);
 /* I.S. s tidak mungkin kosong */
 /* F.S. val adalah nilai elemen TOP yang lama, IDX_TOP berkurang 1 */
 
+void deleteIdxTas(Stack *s, int idx, Pesanan *val);
+/* Menghapus elemen dengan indeks idx dari Stack s */
+/* I.S. idx indeks yang valid di s */
+/* F.S. val berisi item dengan indeks idx dari list, val dihapus dari list, IDX_TOP berkurang 1,  */
+
 /* ************ Menambah kapasitas Stack ************ */
 void increaseTasCapacity(Stack *s);
 /* Menambah kapasitas tas sejumlah 1 */
