@@ -48,7 +48,7 @@ This project is maintained by 5 people :
    |Nama  | NIM| Deskripsi Kerja|
    | ----- | ------------ | --------------- |
   |Alifia Rahmah   |   13520122     |  Merencanakan dan mengimplementasikan command BUY,PICK_UP, RETURN|
- | Jevant Jedidia Augustine  |    13520133    |  Membuat main menu(new game dan exit), modifikasi mesin kata |
+ | Jevant Jedidia Augustine  |    13520133    |  Membuat main menu(new game dan exit), modifikasi mesin kata, merencanakan dan mengimplementasikan command MAP |
  |Febryola Kurnia Putri |     13520140   |  Membentuk ADT baru untuk type gadget, item, dan command TO_DO |
   |Vito Ghifari |    13520153   |  Merencanakan dan mengimplementasikan command IN_PROGRESS,MOVE,HELP |
    |Willy Wilsen |     13520160    | Merencanakan dan mengimplementasikan command DROP_OFF, INVENTORY, efek VIP item |
