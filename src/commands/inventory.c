@@ -29,6 +29,7 @@ void inventory(ListGadget *l, int *time, int *incTime, int *saveTime, Stack *s, 
         } else if (val == 'B') {
             increase2TimesTasCapacity(s);
             printf("Senter Pembesar berhasil digunakan\n");
+            printf("Kapasitas tas menjadi dua kali lebih besar!\n");
         } else if (val == 'C') {
             *saveTime = *incTime;
             *incTime = 0;
@@ -40,6 +41,7 @@ void inventory(ListGadget *l, int *time, int *incTime, int *saveTime, Stack *s, 
                 *time = 0;
             }
             printf("Mesin Waktu berhasil digunakan\n");
+            printf("Waktu berkurang sebanyak 50 unit!\n");
         }
     }
     else {
