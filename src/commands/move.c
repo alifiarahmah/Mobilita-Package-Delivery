@@ -67,6 +67,9 @@ void move(Matrix adjMat, POINT *posNow, int *time, ListDin lBuilding, int *times
                     *time += 1;
                 }
                 *timeSpeed -= 1;
+                if (*timeSpeed == 0) {
+                    printf("Ability Speed Boost telah habis\n");
+                }
             }
         } else {
             *timestep = saveTime;
