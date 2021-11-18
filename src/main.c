@@ -12,8 +12,6 @@
     #define clearscreen system("clear")
 #endif
 
-// TO DO: efek & reward dari Heavy item dan perishable item
-
 /* Proses: iterasi elemen di inprogress dan tas, dan menghapus semua item yang sudah perish */
 /* I.S. Terdefinisi */
 /* F.S. Jika time-TIME() elemen dari list lebih dari PTIME, elemen terhapus */
@@ -85,7 +83,6 @@ void reducePerish(Stack *tas, LList *inprogress, int time){
     }
 }
 
-/* Kerangka dari fungsi utama*/
 int main(){
     Matrix peta,adj;
     Queue pesanan;

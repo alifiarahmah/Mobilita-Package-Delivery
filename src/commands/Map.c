@@ -53,6 +53,9 @@ void printBerwarna (int pilihan, char bangunan){
     case 5:
         print_black(bangunan);
         break;
+    case 7:
+        print_cyan(bangunan);
+        break;
     default:
         printf("%c",bangunan);
         break;
@@ -79,6 +82,21 @@ boolean cekAdj (Matrix adjMat, char bangunan, char posisiSkrg){
         adj = true;
     }
     return adj;
+}
+
+boolean cekVIP (Matrix peta, char bangunan, LList toDo){
+    boolean ada = false;
+    POINT point = elmtToPoint(peta,bangunan);
+    Address p = toDo;
+    while (!ada && (p != NULL)){
+        if (TYPE(ITEM(INFO(p))) == 'V'){
+            if (EQ(PICK_UP(INFO(p)), point)){
+                ada = true;
+            }
+        }
+        p = NEXT(p);
+    }
+    return ada;
 }
 
 /* memeriksa apakah bangunan ada pada toDo */
@@ -119,6 +137,9 @@ void Map (Matrix adjMat, Matrix lokMat, POINT posNow, LList toDo, Stack tas){
             }
             if (!isEmptyLL(toDo) && cekToDo(lokMat,bangunan,toDo)){
                 warna = 3;
+            }
+            if (!isEmptyLL(toDo) && cekVIP(lokMat,bangunan,toDo)){
+                warna = 7;
             }
             if (bangunan == Name(DROP_OFF(drop))){
                 warna = 2;
