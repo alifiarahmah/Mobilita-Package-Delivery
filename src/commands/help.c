@@ -13,7 +13,8 @@ void help(boolean *canReturn) {
     printf("7. BUY        -> Menampilkan gadget yang dapat dibeli dan membelinya (Hanya dapat dipanggil di HQ)\n");
     printf("8. INVENTORY  -> Menampilkan list isi inventory\n");
     printf("9. HELP       -> Menampilkan menu ini\n");
+    printf("10. EXIT      -> Keluar dari permainan\n");
     if(canReturn){
-        printf("10. RETURN    -> Mengembalikan item di tumpukan teratas kembali ke posisi pick up");
+        printf("11. RETURN    -> Mengembalikan item di tumpukan teratas kembali ke posisi pick up");
     }
 }
