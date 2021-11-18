@@ -56,6 +56,8 @@ void pickUp(POINT posNow, Matrix LokMat, LList *todo, LList *inprogress, Stack *
 				*incTime += 1;
 				if (*timeSpeed != 0) {
                     *timeSpeed = 0;
+                    printf("Anda mendapatkan pesanan Heavy Item\n");
+                    printf("Ability Speed Boost hilang\n");
 				}
 			}
 
