@@ -38,6 +38,9 @@ void pickUp(POINT posNow, Matrix LokMat, LList *todo, LList *inprogress, Stack *
 	    }
 	}
 
+	if(!pesananFound && (VIP > 0)){
+		printf("Pesanan tidak dapat diambil. Selesaikan pesanan VIP terlebih dahulu.\n");
+	} else 
 	if (pesananFound){ // ketemu
 
 		if (!isFullStack(*tas)){ // kalo tasnya tidak penuh
