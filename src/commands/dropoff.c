@@ -11,12 +11,15 @@ void dropOff(Stack *tas, LList *inprogress, POINT p, int *money, int *incTime, i
         } else if (TYPE(ITEM(TOP(*tas))) == 'H') {
             printf("Pesanan Heavy Item berhasil diantarkan\n");
             printf("Uang yang didapatkan: 400 Yen\n");
-            printf("Ability yang didapatkan: Speed Boost\n");
             *incTime -= 1;
             if (*incTime == 1) {
                 *timeSpeed = 10;
+                printf("Ability yang didapatkan: Speed Boost\n");
+                printf("Karena berhasil mengantarkan Heavy Item, anda bergerak lebih cepat!\n");
+            } else {
+                printf("Tas Anda terlalu berat\n");
+                printf("Gagal mendapatkan ability Speed Boost\n");
             }
-            printf("Karena mendapat semangat, anda bergerak lebih cepat!\n");
         } else if (TYPE(ITEM(TOP(*tas))) == 'P') {
             printf("Pesanan Perishable Item berhasil diantarkan\n");
             printf("Uang yang didapatkan: 400 Yen\n");
