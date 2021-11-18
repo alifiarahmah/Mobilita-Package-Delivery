@@ -142,6 +142,7 @@ int main(){
             printf("\n");
             printf("Waktu: %d\n", time);
             printf("Uang yang dimiliki: %d Yen\n", money);
+            printf("Banyak pesanan VIP: %d\n", VIP);
             printf("ENTER COMMAND: ");
             startWord();
             for (int i = 0; i < currentWord.length; i ++) {
