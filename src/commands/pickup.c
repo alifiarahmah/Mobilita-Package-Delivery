@@ -14,10 +14,15 @@ void pickUp(POINT posNow, Matrix LokMat, LList *todo, LList *inprogress, Stack *
 	Pesanan thisPesanan;
 
 	boolean pesananFound = false;
+	boolean adaPesanan = false;
 	int i = 0;
 	Address p = *todo;
 	while(!pesananFound && (p != NULL)){ // iterasi todo, cari yang posisinya sesuai dengan posNow
 	    if (VIP > 0) {
+            if(EQ(PICK_UP(INFO(p)), posNow)){
+                adaPesanan = true;
+            }
+
             if(EQ(PICK_UP(INFO(p)), posNow) && TYPE(ITEM(INFO(p))) == 'V'){
                 pesananFound = true;
                 deleteAt(todo, i, &thisPesanan); // delete pesanan dari todo
@@ -38,9 +43,6 @@ void pickUp(POINT posNow, Matrix LokMat, LList *todo, LList *inprogress, Stack *
 	    }
 	}
 
-    if(!pesananFound && (VIP > 0)){
-		printf("Pesanan tidak dapat diambil. Selesaikan pesanan VIP terlebih dahulu.\n");
-	} else
 	if (pesananFound){ // ketemu
 
 		if (!isFullStack(*tas)){ // kalo tasnya tidak penuh
@@ -68,7 +70,9 @@ void pickUp(POINT posNow, Matrix LokMat, LList *todo, LList *inprogress, Stack *
 			printf("Tas anda penuh. Anda tidak dapat menambah pesanan lagi.\n");
 		}
 
+	} else if (adaPesanan) {
+		printf("Pesanan tidak dapat diambil. Selesaikan pesanan VIP terlebih dahulu.");
 	} else { // tidak ada pesanan di posisi itu
-		printf("Pesanan tidak ditemukan!\n");
+	    printf("Pesanan tidak ditemukan!");
 	}
 }
