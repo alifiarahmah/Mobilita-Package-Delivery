@@ -47,11 +47,11 @@ This project is maintained by 5 people :
 ## Pembagian Kerja
    |Nama  | NIM| Deskripsi Kerja|
    | ----- | ------------ | --------------- |
-  |Alifia Rahmah   |   13520122     |  Merencanakan dan mengimplementasikan command BUY,PICK_UP, modifikasi ADT linked list|
+  |Alifia Rahmah   |   13520122     |  Merencanakan dan mengimplementasikan command BUY,PICK_UP, RETURN|
  | Jevant Jedidia Augustine  |    13520133    |  Membuat main menu(new game dan exit), modifikasi mesin kata |
  |Febryola Kurnia Putri |     13520140   |  Membentuk ADT baru untuk type gadget, item, dan command TO_DO |
   |Vito Ghifari |    13520153   |  Merencanakan dan mengimplementasikan command IN_PROGRESS,MOVE,HELP |
-   |Willy Wilsen |     13520160    | Merencanakan dan mengimplementasikan command DROP_OFF, INVENTORY |
+   |Willy Wilsen |     13520160    | Merencanakan dan mengimplementasikan command DROP_OFF, INVENTORY, efek VIP item |
    
 ## Status Tubes
    finished
