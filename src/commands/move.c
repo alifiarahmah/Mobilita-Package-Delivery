@@ -52,7 +52,7 @@ void move(Matrix adjMat, POINT *posNow, int *time, ListDin lBuilding, int *times
             if (ctr == input) {
                 break;
             } else {
-                if (MAT_ELMT(adjMat, rowIdx, j) == '1') {
+                if (MAT_ELMT(adjMat, rowIdx, j) == '1' || (*timestep == 0 && (Name(ELMT_DIN(lBuilding, j)) != Name(*posNow)))) {
                     ctr++;
                 }
                 posSelected++;

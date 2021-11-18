@@ -85,18 +85,6 @@ void reducePerish(Stack *tas, LList *inprogress, int time){
     }
 }
 
-void countHeavy(LList inProgress, int *jumlah){
-    Address p = inProgress;
-    int total = 0;
-    while (p != NULL){
-        if (TYPE(ITEM(INFO(p))) == 'H'){
-            total++;
-        }
-        p = NEXT(p);
-    }
-    *jumlah = total;
-}
-
 /* Kerangka dari fungsi utama*/
 int main(){
     Matrix peta,adj;
