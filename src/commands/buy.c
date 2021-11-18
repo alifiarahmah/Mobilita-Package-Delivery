@@ -60,6 +60,6 @@ void buy(POINT posNow, Matrix lokMat, ListGadget *l, int *money){
             printf("Inventory anda penuh. Anda tidak bisa membeli gadget baru.\n");
         }
     } else {
-        printf("Sedang tidak di headquarter. Tidak bisa membeli gadget.\n");
+        printf("Pembelian Gadget hanya bisa dilakukan di Headquarter.\n");
     }
 }
