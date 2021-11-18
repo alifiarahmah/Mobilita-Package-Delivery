@@ -153,7 +153,7 @@ int main(){
 
             if (cekKataSama(command,"MOVE")){
                 int tempTime = time;
-                move(adj,&posisi,&time,lBuilding,&incTime,saveTime,&timeSpeed, false);
+                move(adj,&posisi,&time,lBuilding,&incTime,saveTime,&timeSpeed);
 
                 // tiap pindah waktu, pindahin pesanan dari queue pesanan ke linkedlist todo
                 int i = 0;
@@ -184,11 +184,11 @@ int main(){
             }
             else if (cekKataSama(command,"DROP_OFF")){
                 dropOff(&tas,&inprogress,posisi,&money,&incTime,&timeSpeed,&canReturn,&VIP,&psnBerhasil);
-            
+
                 if ((isEmpty(pesanan)) && (isEmptyLL(todo)) && (isEmptyLL(inprogress)) && (isEmptyStack(tas)) && (Name(posisi) != '8')) {
                     printf("Pesanan sudah habis. Silahkan kembali ke Headquarter.\n");
-                } 
-            
+                }
+
             }
             else if (cekKataSama(command,"MAP")){
                 Map(adj,peta,posisi,todo,tas);
@@ -206,7 +206,7 @@ int main(){
                 inventory(&gadgetInventory,&time,&incTime,&saveTime,&tas, &inprogress, &gadgetUsed);
                 if (gadgetUsed == 'C') {
                     // Pintu kemana saja digunakan
-                    move(adj,&posisi,&time,lBuilding,&incTime,saveTime,&timeSpeed, true);
+                    move(adj,&posisi,&time,lBuilding,&incTime,saveTime,&timeSpeed);
                 }
             }
             else if (cekKataSama(command,"HELP")){
@@ -214,7 +214,7 @@ int main(){
             }
             else if (cekKataSama(command,"RETURN")){
                 returnToSender(&inprogress, &todo, &tas, &canReturn);
-				
+
             }
             else if (cekKataSama(command,"EXIT")){
                 printf("TERIMA KASIH SUDAH BERMAIN\n");
@@ -224,7 +224,7 @@ int main(){
             }
         }
     }while(!cekKataSama(command,"EXIT"));
-    
+
     printf("\n-------------Statistik Akhir-------------\n");
     printf("Jumlah pesanan yang berhasil diantar: %d\n",psnBerhasil);
     printf("Waktu yang terlampaui: %d\n",time);

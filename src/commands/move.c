@@ -4,7 +4,7 @@
 #include "../read_file.h"
 #include "commands.h"
 
-void move(Matrix adjMat, POINT *posNow, int *time, ListDin lBuilding, int *timestep, int saveTime, int *timeSpeed, boolean useGadget) {
+void move(Matrix adjMat, POINT *posNow, int *time, ListDin lBuilding, int *timestep, int saveTime, int *timeSpeed) {
     int ctr, rowIdx, input;
     int posSelected;
 
@@ -16,14 +16,14 @@ void move(Matrix adjMat, POINT *posNow, int *time, ListDin lBuilding, int *times
     printf("Posisi yang dapat dicapai: \n");
     // HQ
     // useGadget == menggunakan pintu kemana saja
-    if (((MAT_ELMT(adjMat, rowIdx, 0) == '1') || useGadget) && ('8' != Name(*posNow))) {
+    if (((MAT_ELMT(adjMat, rowIdx, 0) == '1') || *timestep == 0) && ('8' != Name(*posNow))) {
         printf("%d. HQ (%x", ctr, Absis(ELMT_DIN(lBuilding, 0)));
         printf(",%x)\n", Ordinat(ELMT_DIN(lBuilding, 0)));
         ctr++;
     }
     // Iterasi kolom
     for (int j = 1; j < COLS(adjMat); j++) {
-        if (((MAT_ELMT(adjMat, rowIdx, j) == '1') || useGadget) && (Name(ELMT_DIN(lBuilding, j)) != Name(*posNow))) {
+        if (((MAT_ELMT(adjMat, rowIdx, j) == '1') || *timestep == 0) && (Name(ELMT_DIN(lBuilding, j)) != Name(*posNow))) {
             printf("%d. ", ctr);
             displayElmtDin(lBuilding, j);
             printf("\n");
@@ -59,7 +59,7 @@ void move(Matrix adjMat, POINT *posNow, int *time, ListDin lBuilding, int *times
             }
         }
         *posNow = ELMT_DIN(lBuilding, posSelected - 1);
-        if ((*timestep != 0) && !useGadget) {
+        if (*timestep != 0) {
             if (*timeSpeed == 0) {
                 *time += *timestep;
             } else {

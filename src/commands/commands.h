@@ -36,7 +36,7 @@ boolean cekToDo (Matrix peta, char bangunan, LList toDo);
 void Map (Matrix adjMat, Matrix lokMat, POINT posNow, LList toDo, Stack dropOff);
 
 /* move.c */
-void move(Matrix adjMat, POINT *posNow, int *time, ListDin lBuilding, int *timestep, int saveTime, int *timeSpeed, boolean useGadget);
+void move(Matrix adjMat, POINT *posNow, int *time, ListDin lBuilding, int *timestep, int saveTime, int *timeSpeed);
 
 /* pickup.c */
 void pickUp(POINT posNow, Matrix LokMat, LList *todo, LList *inprogress, Stack *tas, int *incTime, int *timeSpeed, int VIP);
