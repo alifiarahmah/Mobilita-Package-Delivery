@@ -29,7 +29,7 @@ void dropOff(Stack *tas, LList *inprogress, POINT p, int *money, int *incTime, i
             printf("Ability yang didapatkan: Return To Sender\n");
             *canReturn = true;
             printf("Anda dapat menggunakan perintah RETURN!\n");
-            *VIP--;
+            *VIP = *VIP - 1;
         }
         *money += getItemPrice(ITEM(TOP(*tas)));
         pop(tas,&val);
