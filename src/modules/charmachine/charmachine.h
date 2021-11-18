@@ -6,7 +6,8 @@
 
 #include "../boolean.h"
 
-#define MARK '\n'
+#define MARK_LF '\n'
+#define MARK_CR '\r'
 /* Char Engine State */
 extern char currentChar;
 extern boolean eot;

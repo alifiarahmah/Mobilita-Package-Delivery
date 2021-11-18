@@ -8,7 +8,7 @@ Word currentWord;
 
 void ignoreBlank(){
 	int i = 0;
-    while ((currentChar == BLANK) || (currentChar == NEWLINE)){
+    while ((currentChar == BLANK) || (currentChar == NEWLINE) || (currentChar == CARRIAGE_RETURN)){
         adv();
 		i++;
 		// avoid infinite loop
@@ -21,7 +21,7 @@ void ignoreBlank(){
 void startWord(){
 	start();
 	ignoreBlank();
-	if (currentChar == MARK){
+	if (currentChar == MARK_LF || currentChar == MARK_CR){
 		endWord = true;
 	} else {
 		endWord = false;
@@ -32,7 +32,7 @@ void startWord(){
 void startWordFile(FILE* file){
     startfile(file);
     ignoreBlank();
-    if (currentChar == MARK){
+    if (currentChar == MARK_LF || currentChar == MARK_CR){
         endWord = true;
     } else {
         endWord = false;
@@ -42,7 +42,7 @@ void startWordFile(FILE* file){
 
 void advWord(){
     ignoreBlank();
-    if (currentChar == MARK){
+    if (currentChar == MARK_LF || currentChar == MARK_CR){
         endWord = true;
     } else {
         copyWord();
@@ -52,7 +52,7 @@ void advWord(){
 
 void copyWord(){
     int i = 0;
-    while ((currentChar != BLANK) && (currentChar != NEWLINE) && (currentChar != MARK) && (i < WM_CAPACITY)){
+    while ((currentChar != BLANK) && (currentChar != NEWLINE) && (currentChar != MARK_LF) && (currentChar != MARK_CR) && (i < WM_CAPACITY)){
         currentWord.contents[i] = currentChar;
         adv();
         i++;

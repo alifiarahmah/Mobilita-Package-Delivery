@@ -10,6 +10,7 @@
 #define WM_CAPACITY 100
 #define BLANK ' '
 #define NEWLINE '\n'
+#define CARRIAGE_RETURN '\r'
 
 typedef struct {
    char contents[WM_CAPACITY]; /* container penyimpan kata, indeks yang dipakai [0..WM_CAPACITY-1] */
