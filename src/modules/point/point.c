@@ -2,7 +2,7 @@
 
 #include <stdio.h>
 #include <math.h>
-#include "boolean.h"
+#include "../boolean.h"
 #include "point.h"
 
 /* *** Notasi Akses: Selektor POINT *** */

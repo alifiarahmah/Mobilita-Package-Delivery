@@ -3,8 +3,8 @@
 #ifndef Matrix_H
 #define Matrix_H
 
-#include "boolean.h"
-#include "point.h"
+#include "../boolean.h"
+#include "../point/point.h"
 
 /* Ukuran minimum dan maksimum baris dan kolom */
 #define ROW_CAP 100

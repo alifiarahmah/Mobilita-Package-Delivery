@@ -6,8 +6,8 @@
 #ifndef LISTGADGET_H
 #define LISTGADGET_H
 
-#include "boolean.h"
-#include "gadget.h"
+#include "../boolean.h"
+#include "../gadget/gadget.h"
 
 /*  Kamus Umum */
 #define MAXCAP 100

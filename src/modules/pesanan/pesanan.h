@@ -4,9 +4,9 @@
 #ifndef PESANAN_H
 #define PESANAN_H
 
-#include "point.h"
-#include "boolean.h"
-#include "item.h"
+#include "../point/point.h"
+#include "../boolean.h"
+#include "../item/item.h"
 
 #define TIME_UNDEF -1
 #ifndef IDX_UNDEF

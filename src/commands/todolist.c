@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include "commands.h"
 
-#include "../modules/pesanan.h"
-#include "../modules/item.h"
+#include "../modules/pesanan/pesanan.h"
+#include "../modules/item/item.h"
 
 void todolist(LList toDo){
     printf("Pesanan pada To Do List:\n");
